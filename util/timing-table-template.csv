@@ -1,0 +1,21 @@
+# Timing table
+# ============
+#
+# Type column
+# -----------
+#
+# The `Type` column can take `p` (periodic) and `s` (sporadic) as values.
+# Sporadic tasks are "made periodic" by assuming their shortest successive
+# inter-arrival time as their period.
+#
+# Schedule column
+# ---------------
+#
+# The following values are allowed in the `Sched.` column:
+#
+# * `co` - cooperative tasks
+# * `pe` - preemptive tasks (with priority; nested interrupts)
+#
+# At least one `co` task must be present.
+#
+Task,        Type,    Sched.,    Freq. in Hz,    Deadline in s,    WCET in s
