@@ -4,13 +4,13 @@
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>140</x>
-      <y>434</y>
+      <x>336</x>
+      <y>504</y>
       <w>182</w>
       <h>98</h>
     </coordinates>
-    <panel_attributes>**Taskuler**
-**in control**
+    <panel_attributes>*Taskuler*
+*in control*
 --
 valign=top
 do/schedulerExec()</panel_attributes>
@@ -19,12 +19,12 @@ do/schedulerExec()</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>112</x>
-      <y>350</y>
+      <x>308</x>
+      <y>420</y>
       <w>588</w>
       <h>210</h>
     </coordinates>
-    <panel_attributes>**Cooperative operation**
+    <panel_attributes>*Cooperative operation*
 valign=top
 </panel_attributes>
     <additional_attributes/>
@@ -32,13 +32,13 @@ valign=top
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>532</x>
-      <y>434</y>
+      <x>728</x>
+      <y>504</y>
       <w>140</w>
       <h>98</h>
     </coordinates>
-    <panel_attributes>**Task runners**
-**in control**
+    <panel_attributes>*Task runners*
+*in control*
 --
 valign=top
 do/execTask()</panel_attributes>
@@ -47,21 +47,21 @@ do/execTask()</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>448</x>
-      <y>252</y>
+      <x>644</x>
+      <y>322</y>
       <w>252</w>
       <h>56</h>
     </coordinates>
-    <panel_attributes>**Preemptive operation**
-**(HW interrupts in control)**
+    <panel_attributes>*Preemptive operation*
+*(HW interrupts in control)*
 fg=gray</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>308</x>
-      <y>392</y>
+      <x>504</x>
+      <y>462</y>
       <w>252</w>
       <h>98</h>
     </coordinates>
@@ -72,8 +72,8 @@ r2=when(task due to run)\n[task enabled]\n/execTaskRunner()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>308</x>
-      <y>490</y>
+      <x>504</x>
+      <y>560</y>
       <w>252</w>
       <h>42</h>
     </coordinates>
@@ -83,8 +83,8 @@ r2=when(task due to run)\n[task enabled]\n/execTaskRunner()</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>210</x>
-      <y>378</y>
+      <x>406</x>
+      <y>448</y>
       <w>28</w>
       <h>28</h>
     </coordinates>
@@ -94,8 +94,8 @@ r2=when(task due to run)\n[task enabled]\n/execTaskRunner()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>210</x>
-      <y>392</y>
+      <x>406</x>
+      <y>462</y>
       <w>42</w>
       <h>70</h>
     </coordinates>
@@ -105,8 +105,8 @@ r2=when(task due to run)\n[task enabled]\n/execTaskRunner()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>504</x>
-      <y>294</y>
+      <x>700</x>
+      <y>364</y>
       <w>112</w>
       <h>84</h>
     </coordinates>
@@ -118,8 +118,8 @@ fg=gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>616</x>
-      <y>294</y>
+      <x>812</x>
+      <y>364</y>
       <w>42</w>
       <h>84</h>
     </coordinates>
@@ -130,8 +130,8 @@ fg=gray</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>728</x>
-      <y>420</y>
+      <x>924</x>
+      <y>490</y>
       <w>168</w>
       <h>70</h>
     </coordinates>
@@ -142,8 +142,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>658</x>
-      <y>420</y>
+      <x>854</x>
+      <y>490</y>
       <w>98</w>
       <h>70</h>
     </coordinates>
@@ -153,8 +153,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>238</x>
-      <y>308</y>
+      <x>434</x>
+      <y>378</y>
       <w>70</w>
       <h>154</h>
     </coordinates>
@@ -164,8 +164,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>728</x>
-      <y>210</y>
+      <x>924</x>
+      <y>280</y>
       <w>168</w>
       <h>182</h>
     </coordinates>
@@ -176,8 +176,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>686</x>
-      <y>252</y>
+      <x>882</x>
+      <y>322</y>
       <w>70</w>
       <h>56</h>
     </coordinates>
@@ -187,8 +187,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>84</x>
-      <y>112</y>
+      <x>280</x>
+      <y>182</y>
       <w>840</w>
       <h>476</h>
     </coordinates>
@@ -201,8 +201,8 @@ fontsize=30</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>126</x>
-      <y>294</y>
+      <x>322</x>
+      <y>364</y>
       <w>28</w>
       <h>28</h>
     </coordinates>
@@ -212,8 +212,8 @@ fontsize=30</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>126</x>
-      <y>308</y>
+      <x>322</x>
+      <y>378</y>
       <w>42</w>
       <h>70</h>
     </coordinates>
@@ -223,12 +223,12 @@ fontsize=30</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>378</x>
-      <y>140</y>
-      <w>112</w>
+      <x>574</x>
+      <y>210</y>
+      <w>98</w>
       <h>42</h>
     </coordinates>
-    <panel_attributes>*UML 2.0*
+    <panel_attributes>UML 2.0
 transparency=0
 layer=1</panel_attributes>
     <additional_attributes/>
@@ -236,8 +236,8 @@ layer=1</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>196</x>
-      <y>238</y>
+      <x>392</x>
+      <y>308</y>
       <w>210</w>
       <h>84</h>
     </coordinates>
@@ -249,8 +249,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>672</x>
-      <y>294</y>
+      <x>868</x>
+      <y>364</y>
       <w>84</w>
       <h>168</h>
     </coordinates>

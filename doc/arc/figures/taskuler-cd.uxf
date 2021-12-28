@@ -410,10 +410,10 @@ fontsize=30</panel_attributes>
     <coordinates>
       <x>670</x>
       <y>20</y>
-      <w>80</w>
+      <w>70</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>*UML 2.0*
+    <panel_attributes>UML 2.0
 transparency=0
 layer=1</panel_attributes>
     <additional_attributes/>

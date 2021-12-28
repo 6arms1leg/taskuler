@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>8</zoom_level>
+  <zoom_level>10</zoom_level>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>312</x>
-      <y>320</y>
-      <w>144</w>
-      <h>40</h>
+      <x>380</x>
+      <y>390</y>
+      <w>180</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;30.0;30.0;30.0;30.0;10.0;70.0;10.0;70.0;30.0;160.0;30.0</additional_attributes>
@@ -15,10 +15,10 @@
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>48</x>
-      <y>224</y>
-      <w>192</w>
-      <h>280</h>
+      <x>50</x>
+      <y>270</y>
+      <w>240</w>
+      <h>350</h>
     </coordinates>
     <panel_attributes>*Task list*
 --
@@ -47,10 +47,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>312</x>
-      <y>384</y>
-      <w>144</w>
-      <h>40</h>
+      <x>380</x>
+      <y>470</y>
+      <w>180</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;30.0;30.0;30.0;30.0;10.0;60.0;10.0;60.0;30.0;160.0;30.0</additional_attributes>
@@ -58,10 +58,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>312</x>
-      <y>416</y>
-      <w>144</w>
-      <h>40</h>
+      <x>380</x>
+      <y>510</y>
+      <w>180</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;30.0;30.0;30.0;30.0;10.0;140.0;10.0;140.0;30.0;160.0;30.0</additional_attributes>
@@ -69,10 +69,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>312</x>
-      <y>448</y>
-      <w>144</w>
-      <h>40</h>
+      <x>380</x>
+      <y>550</y>
+      <w>180</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;30.0;30.0;30.0;30.0;10.0;100.0;10.0;100.0;30.0;160.0;30.0</additional_attributes>
@@ -80,10 +80,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>312</x>
-      <y>352</y>
-      <w>144</w>
-      <h>40</h>
+      <x>380</x>
+      <y>430</y>
+      <w>180</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;30.0;30.0;30.0;30.0;10.0;90.0;10.0;90.0;30.0;160.0;30.0</additional_attributes>
@@ -91,10 +91,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>344</x>
-      <y>224</y>
-      <w>152</w>
-      <h>32</h>
+      <x>420</x>
+      <y>270</y>
+      <w>190</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>All cooperative tasks are due to run at the same time
 style=wordwrap</panel_attributes>
@@ -103,10 +103,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>608</x>
-      <y>192</y>
-      <w>192</w>
-      <h>64</h>
+      <x>750</x>
+      <y>230</y>
+      <w>240</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>All higher priority cooperative tasks are due to run at the same time and lower priority task with longest WCET runs in previous time tick
 style=wordwrap</panel_attributes>
@@ -115,10 +115,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>880</x>
-      <y>208</y>
-      <w>144</w>
-      <h>48</h>
+      <x>1090</x>
+      <y>250</y>
+      <w>180</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Lower priority cooperative task with longest WCET runs in previous time tick
 style=wordwrap</panel_attributes>
@@ -127,10 +127,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>272</x>
-      <y>328</y>
-      <w>40</w>
-      <h>24</h>
+      <x>330</x>
+      <y>400</y>
+      <w>50</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>tsk5
 style=wordwrap</panel_attributes>
@@ -139,10 +139,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>272</x>
-      <y>360</y>
-      <w>40</w>
-      <h>24</h>
+      <x>330</x>
+      <y>440</y>
+      <w>50</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>tsk8
 style=wordwrap</panel_attributes>
@@ -151,10 +151,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>272</x>
-      <y>392</y>
-      <w>40</w>
-      <h>24</h>
+      <x>330</x>
+      <y>480</y>
+      <w>50</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>tsk9
 style=wordwrap</panel_attributes>
@@ -163,10 +163,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>272</x>
-      <y>424</y>
-      <w>48</w>
-      <h>24</h>
+      <x>330</x>
+      <y>520</y>
+      <w>60</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>tsk10
 style=wordwrap</panel_attributes>
@@ -175,10 +175,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>272</x>
-      <y>456</y>
-      <w>48</w>
-      <h>24</h>
+      <x>330</x>
+      <y>560</y>
+      <w>60</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>tsk11
 style=wordwrap</panel_attributes>
@@ -187,10 +187,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>328</x>
-      <y>304</y>
-      <w>24</w>
-      <h>200</h>
+      <x>400</x>
+      <y>370</y>
+      <w>30</w>
+      <h>250</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;230.0</additional_attributes>
@@ -198,10 +198,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>248</x>
-      <y>280</y>
-      <w>56</w>
-      <h>224</h>
+      <x>300</x>
+      <y>340</y>
+      <w>70</w>
+      <h>280</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=Priority</panel_attributes>
@@ -210,10 +210,10 @@ m1=Priority</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>448</x>
-      <y>304</y>
-      <w>40</w>
-      <h>40</h>
+      <x>550</x>
+      <y>370</y>
+      <w>50</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 r1=0</panel_attributes>
@@ -222,10 +222,10 @@ r1=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>448</x>
-      <y>336</y>
-      <w>40</w>
-      <h>40</h>
+      <x>550</x>
+      <y>410</y>
+      <w>50</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 r1=1</panel_attributes>
@@ -234,10 +234,10 @@ r1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>448</x>
-      <y>368</y>
-      <w>40</w>
-      <h>40</h>
+      <x>550</x>
+      <y>450</y>
+      <w>50</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 r1=2</panel_attributes>
@@ -246,10 +246,10 @@ r1=2</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>448</x>
-      <y>400</y>
-      <w>40</w>
-      <h>40</h>
+      <x>550</x>
+      <y>490</y>
+      <w>50</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 r1=3</panel_attributes>
@@ -258,10 +258,10 @@ r1=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>448</x>
-      <y>432</y>
-      <w>40</w>
-      <h>40</h>
+      <x>550</x>
+      <y>530</y>
+      <w>50</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 r1=4</panel_attributes>
@@ -270,10 +270,10 @@ r1=4</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>392</x>
-      <y>496</y>
-      <w>112</w>
-      <h>24</h>
+      <x>480</x>
+      <y>610</y>
+      <w>140</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>Order of execution
 style=wordwrap</panel_attributes>
@@ -282,10 +282,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>456</x>
-      <y>456</y>
-      <w>32</w>
-      <h>56</h>
+      <x>560</x>
+      <y>560</y>
+      <w>40</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;20.0;50.0</additional_attributes>
@@ -293,10 +293,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>160</x>
-      <y>336</y>
-      <w>128</w>
-      <h>88</h>
+      <x>190</x>
+      <y>410</y>
+      <w>160</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>140.0;10.0;10.0;90.0</additional_attributes>
@@ -304,10 +304,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>160</x>
-      <y>368</y>
-      <w>128</w>
-      <h>96</h>
+      <x>190</x>
+      <y>450</y>
+      <w>160</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>140.0;10.0;10.0;100.0</additional_attributes>
@@ -315,10 +315,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>160</x>
-      <y>400</y>
-      <w>128</w>
-      <h>80</h>
+      <x>190</x>
+      <y>490</y>
+      <w>160</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>140.0;10.0;10.0;80.0</additional_attributes>
@@ -326,10 +326,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>160</x>
-      <y>432</y>
-      <w>128</w>
-      <h>56</h>
+      <x>190</x>
+      <y>530</y>
+      <w>160</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>140.0;10.0;10.0;50.0</additional_attributes>
@@ -337,10 +337,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>160</x>
-      <y>456</y>
-      <w>128</w>
-      <h>48</h>
+      <x>190</x>
+      <y>560</y>
+      <w>160</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>140.0;10.0;10.0;40.0</additional_attributes>
@@ -348,10 +348,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>624</x>
-      <y>320</y>
-      <w>104</w>
-      <h>40</h>
+      <x>770</x>
+      <y>390</y>
+      <w>130</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;30.0;30.0;30.0;30.0;10.0;70.0;10.0;70.0;30.0;110.0;30.0</additional_attributes>
@@ -359,10 +359,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>624</x>
-      <y>384</y>
-      <w>104</w>
-      <h>40</h>
+      <x>770</x>
+      <y>470</y>
+      <w>130</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;30.0;30.0;30.0;30.0;10.0;60.0;10.0;60.0;30.0;110.0;30.0</additional_attributes>
@@ -370,10 +370,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>576</x>
-      <y>416</y>
-      <w>152</w>
-      <h>40</h>
+      <x>710</x>
+      <y>510</y>
+      <w>190</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;30.0;30.0;30.0;30.0;10.0;140.0;10.0;140.0;30.0;170.0;30.0</additional_attributes>
@@ -381,10 +381,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>576</x>
-      <y>448</y>
-      <w>152</w>
-      <h>40</h>
+      <x>710</x>
+      <y>550</y>
+      <w>190</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=-
 fg=light_gray</panel_attributes>
@@ -393,10 +393,10 @@ fg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>624</x>
-      <y>352</y>
-      <w>104</w>
-      <h>40</h>
+      <x>770</x>
+      <y>430</y>
+      <w>130</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;30.0;30.0;30.0;30.0;10.0;90.0;10.0;90.0;30.0;110.0;30.0</additional_attributes>
@@ -404,10 +404,10 @@ fg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>592</x>
-      <y>304</y>
-      <w>24</w>
-      <h>200</h>
+      <x>730</x>
+      <y>370</y>
+      <w>30</w>
+      <h>250</h>
     </coordinates>
     <panel_attributes>lt=..</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;230.0</additional_attributes>
@@ -415,10 +415,10 @@ fg=light_gray</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>584</x>
-      <y>496</y>
-      <w>56</w>
-      <h>32</h>
+      <x>720</x>
+      <y>610</y>
+      <w>70</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>time
 tick n-1
@@ -428,10 +428,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>544</x>
-      <y>432</y>
-      <w>40</w>
-      <h>40</h>
+      <x>670</x>
+      <y>530</y>
+      <w>50</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 m1=0</panel_attributes>
@@ -440,10 +440,10 @@ m1=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>544</x>
-      <y>320</y>
-      <w>40</w>
-      <h>120</h>
+      <x>670</x>
+      <y>390</y>
+      <w>50</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 r2=1</panel_attributes>
@@ -452,10 +452,10 @@ r2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>720</x>
-      <y>336</y>
-      <w>40</w>
-      <h>40</h>
+      <x>890</x>
+      <y>410</y>
+      <w>50</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 r1=2</panel_attributes>
@@ -464,10 +464,10 @@ r1=2</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>720</x>
-      <y>368</y>
-      <w>40</w>
-      <h>40</h>
+      <x>890</x>
+      <y>450</y>
+      <w>50</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 r1=3</panel_attributes>
@@ -476,10 +476,10 @@ r1=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>720</x>
-      <y>400</y>
-      <w>40</w>
-      <h>72</h>
+      <x>890</x>
+      <y>490</y>
+      <w>50</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 m2=4
@@ -489,10 +489,10 @@ fg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>640</x>
-      <y>304</y>
-      <w>24</w>
-      <h>200</h>
+      <x>790</x>
+      <y>370</y>
+      <w>30</w>
+      <h>250</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=2</panel_attributes>
@@ -501,10 +501,10 @@ layer=2</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>632</x>
-      <y>496</y>
-      <w>48</w>
-      <h>32</h>
+      <x>780</x>
+      <y>610</y>
+      <w>60</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>time
 tick n
@@ -514,10 +514,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>688</x>
-      <y>464</y>
-      <w>40</w>
-      <h>56</h>
+      <x>850</x>
+      <y>570</y>
+      <w>50</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;30.0;50.0</additional_attributes>
@@ -525,10 +525,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>688</x>
-      <y>504</y>
-      <w>120</w>
-      <h>40</h>
+      <x>850</x>
+      <y>620</y>
+      <w>150</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Arbitrary (but not before time tick n-1)
 style=wordwrap</panel_attributes>
@@ -537,10 +537,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>520</x>
-      <y>544</y>
-      <w>152</w>
-      <h>40</h>
+      <x>640</x>
+      <y>670</y>
+      <w>190</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Lower priority task with longest WCET (not WCRT)
 style=wordwrap</panel_attributes>
@@ -549,10 +549,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>528</x>
-      <y>432</y>
-      <w>80</w>
-      <h>128</h>
+      <x>650</x>
+      <y>530</y>
+      <w>100</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>80.0;10.0;10.0;140.0</additional_attributes>
@@ -560,10 +560,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>896</x>
-      <y>320</y>
-      <w>104</w>
-      <h>40</h>
+      <x>1110</x>
+      <y>390</y>
+      <w>130</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;30.0;30.0;30.0;30.0;10.0;70.0;10.0;70.0;30.0;110.0;30.0</additional_attributes>
@@ -571,10 +571,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>896</x>
-      <y>384</y>
-      <w>104</w>
-      <h>40</h>
+      <x>1110</x>
+      <y>470</y>
+      <w>130</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=-
 fg=light_gray</panel_attributes>
@@ -583,10 +583,10 @@ fg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>848</x>
-      <y>416</y>
-      <w>152</w>
-      <h>40</h>
+      <x>1050</x>
+      <y>510</y>
+      <w>190</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;30.0;30.0;30.0;30.0;10.0;140.0;10.0;140.0;30.0;170.0;30.0</additional_attributes>
@@ -594,10 +594,10 @@ fg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>848</x>
-      <y>448</y>
-      <w>152</w>
-      <h>40</h>
+      <x>1050</x>
+      <y>550</y>
+      <w>190</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=-
 fg=light_gray</panel_attributes>
@@ -606,10 +606,10 @@ fg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>896</x>
-      <y>352</y>
-      <w>104</w>
-      <h>40</h>
+      <x>1110</x>
+      <y>430</y>
+      <w>130</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=-
 fg=light_gray</panel_attributes>
@@ -618,10 +618,10 @@ fg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>864</x>
-      <y>304</y>
-      <w>24</w>
-      <h>200</h>
+      <x>1070</x>
+      <y>370</y>
+      <w>30</w>
+      <h>250</h>
     </coordinates>
     <panel_attributes>lt=..</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;230.0</additional_attributes>
@@ -629,10 +629,10 @@ fg=light_gray</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>856</x>
-      <y>496</y>
-      <w>56</w>
-      <h>32</h>
+      <x>1060</x>
+      <y>610</y>
+      <w>70</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>time
 tick n-1
@@ -642,10 +642,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>816</x>
-      <y>432</y>
-      <w>40</w>
-      <h>40</h>
+      <x>1010</x>
+      <y>530</y>
+      <w>50</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 m1=0</panel_attributes>
@@ -654,10 +654,10 @@ m1=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>816</x>
-      <y>320</y>
-      <w>40</w>
-      <h>120</h>
+      <x>1010</x>
+      <y>390</y>
+      <w>50</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 r2=1</panel_attributes>
@@ -666,10 +666,10 @@ r2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>992</x>
-      <y>336</y>
-      <w>40</w>
-      <h>40</h>
+      <x>1230</x>
+      <y>410</y>
+      <w>50</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 r1=2
@@ -679,10 +679,10 @@ fg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>992</x>
-      <y>368</y>
-      <w>40</w>
-      <h>40</h>
+      <x>1230</x>
+      <y>450</y>
+      <w>50</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 r1=3
@@ -692,10 +692,10 @@ fg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>992</x>
-      <y>400</y>
-      <w>40</w>
-      <h>72</h>
+      <x>1230</x>
+      <y>490</y>
+      <w>50</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 m2=4
@@ -705,10 +705,10 @@ fg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>912</x>
-      <y>304</y>
-      <w>24</w>
-      <h>200</h>
+      <x>1130</x>
+      <y>370</y>
+      <w>30</w>
+      <h>250</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=2</panel_attributes>
@@ -717,10 +717,10 @@ layer=2</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>904</x>
-      <y>496</y>
-      <w>48</w>
-      <h>32</h>
+      <x>1120</x>
+      <y>610</y>
+      <w>60</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>time
 tick n
@@ -730,10 +730,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>800</x>
-      <y>464</y>
-      <w>80</w>
-      <h>72</h>
+      <x>990</x>
+      <y>570</y>
+      <w>100</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>80.0;10.0;10.0;70.0</additional_attributes>
@@ -741,10 +741,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>904</x>
-      <y>544</y>
-      <w>104</w>
-      <h>40</h>
+      <x>1120</x>
+      <y>670</y>
+      <w>130</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Arbitrary (but not before time tick n)
 style=wordwrap</panel_attributes>
@@ -753,10 +753,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>968</x>
-      <y>368</y>
-      <w>32</w>
-      <h>192</h>
+      <x>1200</x>
+      <y>450</y>
+      <w>40</w>
+      <h>240</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;20.0;220.0</additional_attributes>
@@ -764,10 +764,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>960</x>
-      <y>400</y>
-      <w>40</w>
-      <h>160</h>
+      <x>1190</x>
+      <y>490</y>
+      <w>50</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;30.0;180.0</additional_attributes>
@@ -775,10 +775,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>288</x>
-      <y>448</y>
-      <w>112</w>
-      <h>88</h>
+      <x>350</x>
+      <y>550</y>
+      <w>140</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>120.0;10.0;10.0;90.0</additional_attributes>
@@ -786,10 +786,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>320</x>
-      <y>496</y>
-      <w>48</w>
-      <h>32</h>
+      <x>390</x>
+      <y>610</y>
+      <w>60</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>time
 tick n
@@ -799,10 +799,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>320</x>
-      <y>264</y>
-      <w>120</w>
-      <h>32</h>
+      <x>390</x>
+      <y>320</y>
+      <w>150</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>*a) Cooperative tsk11 worst-case scenario*
 style=wordwrap</panel_attributes>
@@ -811,10 +811,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>584</x>
-      <y>264</y>
-      <w>120</w>
-      <h>32</h>
+      <x>720</x>
+      <y>320</y>
+      <w>150</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>*b) Cooperative tsk9 worst-case scenario*
 style=wordwrap</panel_attributes>
@@ -823,10 +823,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>856</x>
-      <y>264</y>
-      <w>120</w>
-      <h>32</h>
+      <x>1060</x>
+      <y>320</y>
+      <w>150</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>*c) Cooperative tsk5 worst-case scenario*
 style=wordwrap</panel_attributes>
@@ -835,10 +835,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>320</x>
-      <y>232</y>
-      <w>40</w>
-      <h>48</h>
+      <x>390</x>
+      <y>280</y>
+      <w>50</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>30.0;10.0;10.0;40.0</additional_attributes>
@@ -846,10 +846,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>584</x>
-      <y>232</y>
-      <w>40</w>
-      <h>48</h>
+      <x>720</x>
+      <y>280</y>
+      <w>50</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>30.0;10.0;10.0;40.0</additional_attributes>
@@ -857,10 +857,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>856</x>
-      <y>232</y>
-      <w>40</w>
-      <h>48</h>
+      <x>1060</x>
+      <y>280</y>
+      <w>50</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>30.0;10.0;10.0;40.0</additional_attributes>
@@ -868,10 +868,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>56</x>
-      <y>520</y>
-      <w>256</w>
-      <h>64</h>
+      <x>60</x>
+      <y>640</y>
+      <w>320</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>*WCRT'*
 --
@@ -882,10 +882,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>32</x>
-      <y>128</y>
-      <w>1024</w>
-      <h>472</h>
+      <x>30</x>
+      <y>150</y>
+      <w>1280</w>
+      <h>590</h>
     </coordinates>
     <panel_attributes>cstmd Taskuler
 /Execution order of exemplary task schedule/
@@ -897,12 +897,12 @@ fontsize=30</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>552</x>
-      <y>152</y>
-      <w>112</w>
-      <h>24</h>
+      <x>680</x>
+      <y>180</y>
+      <w>140</w>
+      <h>30</h>
     </coordinates>
-    <panel_attributes>*Not UML compliant*
+    <panel_attributes>Not UML compliant
 transparency=0
 layer=1</panel_attributes>
     <additional_attributes/>
