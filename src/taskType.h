@@ -16,7 +16,7 @@ typedef enum
 {
     en_act_ON, /**< \brief Task is enabled and will be run as scheduled */
     en_act_OFF /**< \brief Task is disabled and will not be run */
-}en_act_t;
+} en_act_t;
 
 /** \brief Defines parameters needed by scheduler for scheduled task execution */
 typedef struct
@@ -45,6 +45,6 @@ typedef struct
                                range for the offset *delta* is *]0, period[*. */
     void (*const p_fn_taskRunner)(void); /**< \brief Function pointer to task
                                               runner */
-}stc_tsk_t;
+} stc_tsk_t;
 
 #endif /* INCLUDE_TASKTYPE_H */
