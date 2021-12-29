@@ -24,7 +24,7 @@ void fn_tsklrTmr_init(void)
     TCCR0B |= ( (uint8_t)1U<<CS01 ) | ( (uint8_t)1U<<CS00 ); /* Set prescale
                                                                 value to 64 */
     TIMSK0 |= ( (uint8_t)1U<<TOIE0 ); /* Enable Timer0 overflow interrupt */
-    TCNT0 = U8_TASKULERTIMER_PRELOAD; /* Pre-load the timer */
+    TCNT0 = U8_TASKULERTIMER_PRELOAD; /* Preload the timer */
 
     return;
 }
