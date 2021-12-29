@@ -39,7 +39,7 @@ taskType
 typedef enum {
     ON,
     OFF
-}act_t;
+} act_t;
 
 typedef struct {
     act_t active;
@@ -47,7 +47,7 @@ typedef struct {
     uint32_t deadline;
     uint32_t lastRun;
     void (*taskRunner)(void);
-}tsk_t;</panel_attributes>
+} tsk_t;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
