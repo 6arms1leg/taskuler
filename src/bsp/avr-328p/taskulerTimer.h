@@ -7,7 +7,6 @@
 #include <avr/io.h> /* Provides easy AVR MCU register access */
 
 /* Include Taskuler BSP interfaces */
-#include "taskulerInterrupt.h"
 #include "timeTick.h"
 
 /**
