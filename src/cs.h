@@ -3,7 +3,7 @@
 
 /* libc
  *
- * `"` used intentionally.  This allows the user to override and provide its
+ * `"` used intentionally.  This allows the user to override and provide his
  * own type definitions before falling back to libc.
  */
 #include "stdint.h"
