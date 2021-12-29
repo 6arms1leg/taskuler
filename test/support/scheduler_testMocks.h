@@ -3,6 +3,10 @@
 #ifndef INCLUDE_SCHEDULER_TESTMOCKS_H
 #define INCLUDE_SCHEDULER_TESTMOCKS_H
 
+/* OPERATIONS
+ * ==========
+ */
+
 /**
  * \brief Function mock to simulate and manipulate the relative system time
  * tick source of the MCU
