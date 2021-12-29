@@ -13,8 +13,8 @@ The following loosely lists requirements, constraints, features and goals.
 * Cyclic executive, cooperative (non-preemptive/run-to-completion), monotonic
   (fixed priorities) scheduling of multiple tasks in embedded systems for
   real-time applications
-* Pre-emption can be achieved through hardware interrupts
-* Timing of tasks (via task lists) is pre-defined at compile time
+* Preemption can be achieved through hardware interrupts
+* Timing of tasks (via task lists) is predefined at compile time
 * Switch between multiple task lists at run time
 * Tasks within a task list can individually be enabled and disabled at run time
 * Each task can individually be scheduled by its period and its offset to other
@@ -49,6 +49,9 @@ The following loosely lists requirements, constraints, features and goals.
     * Modular
     * Re-usable
     * Portable
+    * No unused ("dead") code: optional functionality in seperate translation
+      units (so it can be excluded by the linker) or conditionally included via
+      preprocessor defines
     * Unit tested with 100 % coverage (LOC executed, branches taken, functions
       called)
     * MISRA-C:2012 compliant
