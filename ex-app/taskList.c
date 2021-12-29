@@ -41,5 +41,6 @@ stc_tsk_t* fn_tskLst_getTaskList(void)
 uint8_t fn_tskLst_getTaskCount(void)
 {
     /* Evaluated at compile time */
-    return( sizeof(a_stc_tsk_pv_taskList) / sizeof(*a_stc_tsk_pv_taskList) );
+    return( (uint8_t)( sizeof(a_stc_tsk_pv_taskList)
+                       / sizeof(*a_stc_tsk_pv_taskList) ) );
 }
