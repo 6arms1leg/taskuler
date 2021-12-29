@@ -13,7 +13,7 @@
  * `0`!), offset (last run), and the pointer to function to be executed
  * (i.e., task runner).
  */
-static stc_tsk_t a_stc_tsk_pv_TaskList[] =
+static stc_tsk_t a_stc_tsk_pv_taskList[] =
 {
     /* Task 0 */
     { en_act_ON,
@@ -35,11 +35,11 @@ static stc_tsk_t a_stc_tsk_pv_TaskList[] =
 
 stc_tsk_t* fn_tskLst_getTaskList(void)
 {
-    return(a_stc_tsk_pv_TaskList);
+    return(a_stc_tsk_pv_taskList);
 }
 
 uint8_t fn_tskLst_getTaskCount(void)
 {
     /* Evaluated at compile time */
-    return( sizeof(a_stc_tsk_pv_TaskList) / sizeof(*a_stc_tsk_pv_TaskList) );
+    return( sizeof(a_stc_tsk_pv_taskList) / sizeof(*a_stc_tsk_pv_taskList) );
 }

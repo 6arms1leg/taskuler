@@ -44,7 +44,7 @@ void tearDown(void)
  * algorithm.
  * For ease of understanding, `uint8_t` is used here.
  */
-void test_scheduler_verfiyUnsignedIntegerTickRolloverArithmetic(void)
+void test_sdlr_verfiyUnsignedIntegerTickRolloverArithmetic(void)
 {
     const uint8_t u8_varA = (uint8_t)5U;
     const uint8_t u8_varB = (uint8_t)250U;
@@ -59,7 +59,7 @@ void test_scheduler_verfiyUnsignedIntegerTickRolloverArithmetic(void)
 }
 
 /** \brief Test if relative system time tick count source is set correctly */
-void test_scheduler_tickCountSourceIsSet(void)
+void test_sdlr_tickCountSourceIsSet(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
@@ -76,7 +76,7 @@ void test_scheduler_tickCountSourceIsSet(void)
 }
 
 /** \brief Test that task list is initialized with `Null` pointer */
-void test_scheduler_taskListIsInitializedToNull(void)
+void test_sdlr_taskListIsInitializedToNull(void)
 {
     TEST_ASSERT_NULL( fn_sdlr_getTaskList() );
 
@@ -84,7 +84,7 @@ void test_scheduler_taskListIsInitializedToNull(void)
 }
 
 /** \brief Test if task list is set and returned correctly */
-void test_scheduler_taskListIsSetAndReturned(void)
+void test_sdlr_taskListIsSetAndReturned(void)
 {
     stc_tsk_t stc_tsk_taskListExpected = {en_act_OFF,
                                           (uint32_t)1U,
@@ -106,7 +106,7 @@ void test_scheduler_taskListIsSetAndReturned(void)
  * \brief Test that task count (number of task entries in the connected task
  * list) is initialized to `0`
  */
-void test_scheduler_taskCountIsInitializedTo0(void)
+void test_sdlr_taskCountIsInitializedTo0(void)
 {
     const uint8_t u8_taskCountExpected = (uint8_t)0U;
 
@@ -119,7 +119,7 @@ void test_scheduler_taskCountIsInitializedTo0(void)
  * \brief Test if task Count (number of task entries in the connected task
  * list) is set and returned correctly
  */
-void test_scheduler_taskCountIsSetAndReturned(void)
+void test_sdlr_taskCountIsSetAndReturned(void)
 {
     stc_tsk_t stc_tsk_taskList = {en_act_OFF,
                                   (uint32_t)1U,
@@ -138,7 +138,7 @@ void test_scheduler_taskCountIsSetAndReturned(void)
 }
 
 /** \brief Test that task deadline overrun is initialized to `0` */
-void test_scheduler_taskOverrunIsInitializedTo0(void)
+void test_sdlr_taskOverrunIsInitializedTo0(void)
 {
     const uint8_t u8_taskOverrunExpected = (uint8_t)0U;
 
@@ -153,7 +153,7 @@ void test_scheduler_taskOverrunIsInitializedTo0(void)
  * relative system time tick count before is not counted as a task deadline
  * overrun
  */
-void test_scheduler_firstLateSchedulerExecutionIsNoTaskOverrun(void)
+void test_sdlr_firstLateSchedulerExecutionIsNoTaskOverrun(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
@@ -180,7 +180,7 @@ void test_scheduler_firstLateSchedulerExecutionIsNoTaskOverrun(void)
  * \brief Test if single task deadline overrun is detected and count returned
  * correctly
  */
-void test_scheduler_singleTaskOverrunIsDetectedAndCountReturned(void)
+void test_sdlr_singleTaskOverrunIsDetectedAndCountReturned(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
@@ -207,7 +207,7 @@ void test_scheduler_singleTaskOverrunIsDetectedAndCountReturned(void)
  * \brief Test if multiple task deadline overruns are detected and counts
  * returned correctly
  */
-void test_scheduler_multipleTaskOverrunsAreDetectedAndCountsReturned(void)
+void test_sdlr_multipleTaskOverrunsAreDetectedAndCountsReturned(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
@@ -250,7 +250,7 @@ void test_scheduler_multipleTaskOverrunsAreDetectedAndCountsReturned(void)
  * returned correctly on relative system time tick count rollover
  */
 void
-test_scheduler_multiTaskOverrunsAreDetectedAndCountsReturnedOnTickRollover(void)
+test_sdlr_multiTaskOverrunsAreDetectedAndCountsReturnedOnTickRollover(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
@@ -297,7 +297,7 @@ test_scheduler_multiTaskOverrunsAreDetectedAndCountsReturnedOnTickRollover(void)
  * design solution fail.
  */
 void
-test_scheduler_singleTaskOverrunIsDetectedAndCountRetOnInconvTickRollover(void)
+test_sdlr_singleTaskOverrunIsDetectedAndCountRetOnInconvTickRollover(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
@@ -323,7 +323,7 @@ test_scheduler_singleTaskOverrunIsDetectedAndCountRetOnInconvTickRollover(void)
 }
 
 /** \brief Test if task deadline overrun count is reset correctly */
-void test_scheduler_taskOverrunCountIsReset(void)
+void test_sdlr_taskOverrunCountIsReset(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
@@ -355,7 +355,7 @@ void test_scheduler_taskOverrunCountIsReset(void)
 }
 
 /** \brief Test if single task is enabled correctly */
-void test_scheduler_singleTaskIsEnabled(void)
+void test_sdlr_singleTaskIsEnabled(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
@@ -373,7 +373,7 @@ void test_scheduler_singleTaskIsEnabled(void)
 }
 
 /** \brief Test if single task is disabled correctly */
-void test_scheduler_singleTaskIsDisabled(void)
+void test_sdlr_singleTaskIsDisabled(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
@@ -394,7 +394,7 @@ void test_scheduler_singleTaskIsDisabled(void)
  * \brief Test if multiple identical task runners are enabled and disabled
  * correctly
  */
-void test_scheduler_multipleSameTasksAreEnabledAndDisabled(void)
+void test_sdlr_multipleSameTasksAreEnabledAndDisabled(void)
 {
     unsigned int u_UNTOUCHED = (unsigned int)en_act_OFF + (unsigned int)1U;
     stc_tsk_t a_stc_tsk_taskList[] =
@@ -442,7 +442,7 @@ void test_scheduler_multipleSameTasksAreEnabledAndDisabled(void)
  * \brief Test correct execution of due-to-run task with 1 time tick period and
  * start at 0 time ticks
  */
-void test_scheduler_executeDueToRunTaskAt1TickPeriodOn0TickStart(void)
+void test_sdlr_executeDueToRunTaskAt1TickPeriodOn0TickStart(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
@@ -482,7 +482,7 @@ void test_scheduler_executeDueToRunTaskAt1TickPeriodOn0TickStart(void)
  * \brief Test correct execution of due-to-run task with 2 time ticks period
  * and start at non-0 time tick
  */
-void test_scheduler_executeDueToRunTaskAt2TicksPeriodOnNon0TickStart(void)
+void test_sdlr_executeDueToRunTaskAt2TicksPeriodOnNon0TickStart(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
@@ -523,7 +523,7 @@ void test_scheduler_executeDueToRunTaskAt2TicksPeriodOnNon0TickStart(void)
  * and start at non-0 time tick and skipped time ticks
  */
 void
-test_scheduler_execDueToRunTaskAt2TicksPeriodOnNon0TickStartAndTickLoss(void)
+test_sdlr_execDueToRunTaskAt2TicksPeriodOnNon0TickStartAndTickLoss(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
@@ -564,7 +564,7 @@ test_scheduler_execDueToRunTaskAt2TicksPeriodOnNon0TickStartAndTickLoss(void)
  * time tick periods and start at non-0 time tick and skipped time ticks
  */
 void
-test_scheduler_execDueToRunTasksAtDiffPeriodsOnNon0TickStartAndTickLoss(void)
+test_sdlr_execDueToRunTasksAtDiffPeriodsOnNon0TickStartAndTickLoss(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
@@ -635,7 +635,7 @@ test_scheduler_execDueToRunTasksAtDiffPeriodsOnNon0TickStartAndTickLoss(void)
  * \brief Test correct execution of multiple due-to-run tasks with different
  * time tick periods and offsets and start at 0 time ticks
  */
-void test_scheduler_execDueToRunTasksAtDiffPeriodsAndOffsetsOn0TickStart(void)
+void test_sdlr_execDueToRunTasksAtDiffPeriodsAndOffsetsOn0TickStart(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
@@ -732,7 +732,7 @@ void test_scheduler_execDueToRunTasksAtDiffPeriodsAndOffsetsOn0TickStart(void)
 }
 
 /** \brief Test that task runner of disabled task is not run */
-void test_scheduler_taskRunnerOfDisabledTaskIsNotRun(void)
+void test_sdlr_taskRunnerOfDisabledTaskIsNotRun(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
@@ -757,7 +757,7 @@ void test_scheduler_taskRunnerOfDisabledTaskIsNotRun(void)
 }
 
 /** \brief Test that `lastRun` value of disabled task is still updated */
-void test_scheduler_lastRunOfDisabledTaskIsStillUpdated(void)
+void test_sdlr_lastRunOfDisabledTaskIsStillUpdated(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
@@ -781,7 +781,7 @@ void test_scheduler_lastRunOfDisabledTaskIsStillUpdated(void)
  * \brief Test that `lastRun` value is always set to begin of period (time
  * slot)
  */
-void test_scheduler_lastRunIsAlwaysSetToBeginOfPeriod(void)
+void test_sdlr_lastRunIsAlwaysSetToBeginOfPeriod(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
@@ -808,7 +808,7 @@ void test_scheduler_lastRunIsAlwaysSetToBeginOfPeriod(void)
  * \brief Test correct execution of due-to-run task at 3 time ticks period with
  * relative system time tick count rollover
  */
-void test_scheduler_executeDueToRunTaskAt3TicksPeriodOnTickRollover(void)
+void test_sdlr_executeDueToRunTaskAt3TicksPeriodOnTickRollover(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {

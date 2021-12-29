@@ -38,4 +38,6 @@ ISR(TIMER0_OVF_vect)
 {
     TCNT0 = U8_TASKULERTIMER_PRELOAD; /* Preload the timer */
     fn_tmTck_incrementTickCount();
+
+    return;
 }
