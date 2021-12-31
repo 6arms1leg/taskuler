@@ -17,9 +17,9 @@
  */
 
 /** \brief Mark start of critical section */
-void csEntry(void);
+void cs_entry(void);
 
 /** \brief Mark end of critical section */
-void csExit(void);
+void cs_exit(void);
 
 #endif /* CS_H */
