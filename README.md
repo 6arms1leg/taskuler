@@ -14,6 +14,8 @@ The following loosely lists requirements, constraints, features and goals.
   (fixed priorities) scheduling of multiple tasks in embedded systems for
   real-time applications
 * Preemption can be achieved through hardware interrupts
+* Provides an optional facility (separate module) to handle nested critical
+  sections
 * Timing of tasks (via task lists) is predefined at compile time
 * Switch between multiple task lists at run time
 * Tasks within a task list can individually be enabled and disabled at run time
