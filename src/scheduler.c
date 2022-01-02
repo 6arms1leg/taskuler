@@ -22,7 +22,7 @@ static uint8_t u8_pv_taskOverrunCount = (uint8_t)0U; /**< \brief Task deadline
  * ==========
  */
 
-void fn_sdlr_setTickCountSource( uint32_t (*p_fn_getTickCount)(void) )
+void fn_sdlr_setTickCountSource( uint32_t (* const p_fn_getTickCount)(void) )
 {
     p_fn_pv_getTickCount = p_fn_getTickCount;
 
@@ -30,7 +30,7 @@ void fn_sdlr_setTickCountSource( uint32_t (*p_fn_getTickCount)(void) )
 }
 
 void fn_sdlr_setTaskAttributes(stc_tsk_t* const a_stc_tsk_taskList,
-                               uint8_t const u8_taskCount)
+                               const uint8_t u8_taskCount)
 {
     a_stc_tsk_pv_taskList = a_stc_tsk_taskList;
     u8_pv_taskCount = u8_taskCount;
@@ -60,13 +60,14 @@ void fn_sdlr_resetTaskOverrunCount(void)
     return;
 }
 
-void fn_sdlr_setTaskAct(void (*p_fn_taskRunner)(void), en_act_t en_act_active)
+void fn_sdlr_setTaskAct(void (* const p_fn_taskRunner)(void),
+                        const en_act_t en_act_active)
 {
     /* Set pointer to task list’s list */
-    stc_tsk_t* a_stc_tsk_taskList = a_stc_tsk_pv_taskList;
+    stc_tsk_t* const a_stc_tsk_taskList = a_stc_tsk_pv_taskList;
 
     /* Number of tasks in task list */
-    uint8_t u8_taskCount = u8_pv_taskCount;
+    const uint8_t u8_taskCount = u8_pv_taskCount;
 
     uint8_t u8_idx = (uint8_t)0U;
 
@@ -86,13 +87,13 @@ void fn_sdlr_setTaskAct(void (*p_fn_taskRunner)(void), en_act_t en_act_active)
 void fn_sdlr_execute(void)
 {
     /* Set pointer to task list’s list */
-    stc_tsk_t* a_stc_tsk_taskList = a_stc_tsk_pv_taskList;
+    stc_tsk_t* const a_stc_tsk_taskList = a_stc_tsk_pv_taskList;
 
     /* Number of tasks in task list */
-    uint8_t u8_taskCount = u8_pv_taskCount;
+    const uint8_t u8_taskCount = u8_pv_taskCount;
 
     /* Get current time tick count */
-    uint32_t u32_tickCount = (*p_fn_pv_getTickCount)();
+    const uint32_t u32_tickCount = (*p_fn_pv_getTickCount)();
 
     uint8_t u8_idx = (uint8_t)0U; /* Task list index */
 

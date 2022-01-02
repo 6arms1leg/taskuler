@@ -27,7 +27,7 @@ void fn_tmTck_init(void)
 uint32_t fn_tmTck_getTickCount(void)
 {
     TASKULERINTERRUPT_DISABLE /* Crit. region start (disable all ISRs) */
-    uint32_t u32_tickCount = u32_pv_tickCount;
+    const uint32_t u32_tickCount = u32_pv_tickCount;
     TASKULERINTERRUPT_ENABLE /* Crit. region end (enable all ISRs) */
 
     return(u32_tickCount);

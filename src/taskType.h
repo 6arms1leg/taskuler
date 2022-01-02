@@ -43,8 +43,8 @@ typedef struct
                                can be phase-shifted to the left by *delta* by
                                defining an offset *0 - delta*.  The useful
                                range for the offset *delta* is *]0, period[*. */
-    void (*const p_fn_taskRunner)(void); /**< \brief Function pointer to task
-                                              runner */
+    void (* const p_fn_taskRunner)(void); /**< \brief Function pointer to task
+                                               runner */
 } stc_tsk_t;
 
 #endif /* INCLUDE_TASKTYPE_H */

@@ -27,7 +27,7 @@
  * * the access of this variable is atomic, or
  * * this access function is implemented with a critical region pattern inside.
  */
-void fn_sdlr_setTickCountSource( uint32_t (*p_fn_getTickCount)(void) );
+void fn_sdlr_setTickCountSource( uint32_t (* const p_fn_getTickCount)(void) );
 
 /**
  * \brief Registers a task list with the scheduler
@@ -36,7 +36,7 @@ void fn_sdlr_setTickCountSource( uint32_t (*p_fn_getTickCount)(void) );
  * \param u8_taskCount Number of tasks within the provided task list
  */
 void fn_sdlr_setTaskAttributes(stc_tsk_t* const p_a_stc_tsk_taskList,
-                               uint8_t const u8_taskCount);
+                               const uint8_t u8_taskCount);
 
 /**
  * \brief Get task list that is registered with the scheduler
@@ -76,7 +76,8 @@ void fn_sdlr_resetTaskOverrunCount(void);
  * sequence to achieve task goal
  * \param en_act_active Desired task activation status
  */
-void fn_sdlr_setTaskAct(void (*p_fn_taskRunner)(void), en_act_t en_act_active);
+void fn_sdlr_setTaskAct(void (* const p_fn_taskRunner)(void),
+                        const en_act_t en_act_active);
 
 /**
  * \brief Scheduling algorithm execution cycle

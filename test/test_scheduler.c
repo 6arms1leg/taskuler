@@ -408,8 +408,8 @@ void test_sdlr_multipleSameTasksAreEnabledAndDisabled(void)
         { en_act_ON, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner0 },
         { en_act_OFF, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner1 }
     };
-    unsigned int u_activeExpectedA = (unsigned int)en_act_OFF;
-    unsigned int u_activeExpectedB = (unsigned int)en_act_ON;
+    const unsigned int u_activeExpectedA = (unsigned int)en_act_OFF;
+    const unsigned int u_activeExpectedB = (unsigned int)en_act_ON;
 
     fn_sdlr_setTaskAttributes(a_stc_tsk_taskList, (uint8_t)7U);
     fn_sdlr_setTaskAct(fn_taskRunner0, u_activeExpectedA);
