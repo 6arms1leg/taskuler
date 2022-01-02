@@ -45,5 +45,5 @@ int main(void)
         fn_sdlr_execute(); /* Taskuler scheduling algorithm execution cycle */
     }
 
-    return( (int)0 );
+    /*return( (int)1 );*/ /* Never reached */
 }
