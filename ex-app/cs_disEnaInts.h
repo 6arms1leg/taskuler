@@ -7,9 +7,9 @@
  * \{
  */
 #define CS_DISINTS /* Add code to disable relevant interrupts here, e.g.
-                      ( disableAllInterrupts(); ) */
+                      `( disableAllInterrupts(); )` */
 #define CS_ENAINTS /* Add code to enable relevant interrupts here, e.g.
-                      ( enableAllInterrupts(); ) */
+                      `( enableAllInterrupts(); )` */
 /** \} */
 
 #endif /* CS_DISENAINTS_H */
