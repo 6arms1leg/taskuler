@@ -361,13 +361,13 @@ void test_sdlr_singleTaskIsEnabled(void)
     {
         { en_act_OFF, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner }
     };
-    const unsigned int en_act_activeExpected = (unsigned int)en_act_ON;
+    const en_act_t en_act_activeExpected = en_act_ON;
 
     fn_sdlr_setTaskAttributes(a_stc_tsk_taskList, (uint8_t)1U);
     fn_sdlr_setTaskAct(fn_taskRunner, en_act_ON);
 
     TEST_ASSERT_EQUAL_UINT(en_act_activeExpected,
-                           (unsigned int)a_stc_tsk_taskList[0].en_act_active);
+                           a_stc_tsk_taskList[0].en_act_active);
 
     return;
 }
@@ -379,13 +379,13 @@ void test_sdlr_singleTaskIsDisabled(void)
     {
         { en_act_ON, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner }
     };
-    const unsigned int en_act_activeExpected = (unsigned int)en_act_OFF;
+    const en_act_t en_act_activeExpected = en_act_OFF;
 
     fn_sdlr_setTaskAttributes(a_stc_tsk_taskList, (uint8_t)1U);
     fn_sdlr_setTaskAct(fn_taskRunner, en_act_OFF);
 
     TEST_ASSERT_EQUAL_UINT(en_act_activeExpected,
-                           (unsigned int)a_stc_tsk_taskList[0].en_act_active);
+                           a_stc_tsk_taskList[0].en_act_active);
 
     return;
 }
@@ -396,44 +396,44 @@ void test_sdlr_singleTaskIsDisabled(void)
  */
 void test_sdlr_multipleSameTasksAreEnabledAndDisabled(void)
 {
-    unsigned int u_UNTOUCHED = (unsigned int)en_act_OFF + (unsigned int)1U;
+    en_act_t en_act_untouched = en_act_OFF + (unsigned int)1U;
     stc_tsk_t a_stc_tsk_taskList[] =
     {
         { en_act_ON, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner0 },
         { en_act_OFF, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner1 },
         { en_act_ON, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner0 },
-        { u_UNTOUCHED, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U,
+        { en_act_untouched, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U,
           fn_taskRunner2 },
         { en_act_OFF, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner1 },
         { en_act_ON, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner0 },
         { en_act_OFF, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner1 }
     };
-    const unsigned int u_activeExpectedA = (unsigned int)en_act_OFF;
-    const unsigned int u_activeExpectedB = (unsigned int)en_act_ON;
+    const en_act_t en_act_activeExpectedA = en_act_OFF;
+    const en_act_t en_act_activeExpectedB = en_act_ON;
 
     fn_sdlr_setTaskAttributes(a_stc_tsk_taskList, (uint8_t)7U);
-    fn_sdlr_setTaskAct(fn_taskRunner0, u_activeExpectedA);
-    fn_sdlr_setTaskAct(fn_taskRunner1, u_activeExpectedB);
+    fn_sdlr_setTaskAct(fn_taskRunner0, en_act_activeExpectedA);
+    fn_sdlr_setTaskAct(fn_taskRunner1, en_act_activeExpectedB);
 
     /* Should have become disabled */
-    TEST_ASSERT_EQUAL_UINT(u_activeExpectedA,
-                           (unsigned int)a_stc_tsk_taskList[0].en_act_active);
-    TEST_ASSERT_EQUAL_UINT(u_activeExpectedA,
-                           (unsigned int)a_stc_tsk_taskList[2].en_act_active);
-    TEST_ASSERT_EQUAL_UINT(u_activeExpectedA,
-                           (unsigned int)a_stc_tsk_taskList[5].en_act_active);
+    TEST_ASSERT_EQUAL_UINT(en_act_activeExpectedA,
+                           a_stc_tsk_taskList[0].en_act_active);
+    TEST_ASSERT_EQUAL_UINT(en_act_activeExpectedA,
+                           a_stc_tsk_taskList[2].en_act_active);
+    TEST_ASSERT_EQUAL_UINT(en_act_activeExpectedA,
+                           a_stc_tsk_taskList[5].en_act_active);
 
     /* Should have become enabled */
-    TEST_ASSERT_EQUAL_UINT(u_activeExpectedB,
-                           (unsigned int)a_stc_tsk_taskList[1].en_act_active);
-    TEST_ASSERT_EQUAL_UINT(u_activeExpectedB,
-                           (unsigned int)a_stc_tsk_taskList[4].en_act_active);
-    TEST_ASSERT_EQUAL_UINT(u_activeExpectedB,
-                           (unsigned int)a_stc_tsk_taskList[6].en_act_active);
+    TEST_ASSERT_EQUAL_UINT(en_act_activeExpectedB,
+                           a_stc_tsk_taskList[1].en_act_active);
+    TEST_ASSERT_EQUAL_UINT(en_act_activeExpectedB,
+                           a_stc_tsk_taskList[4].en_act_active);
+    TEST_ASSERT_EQUAL_UINT(en_act_activeExpectedB,
+                           a_stc_tsk_taskList[6].en_act_active);
 
     /* Should have stayed untouched */
-    TEST_ASSERT_EQUAL_UINT(u_UNTOUCHED,
-                           (unsigned int)a_stc_tsk_taskList[3].en_act_active);
+    TEST_ASSERT_EQUAL_UINT(en_act_untouched,
+                           a_stc_tsk_taskList[3].en_act_active);
 
     return;
 }
