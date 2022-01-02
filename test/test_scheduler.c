@@ -787,8 +787,10 @@ void test_sdlr_lastRunIsAlwaysSetToBeginOfPeriod(void)
     {
         { en_act_ON, (uint32_t)10U, (uint32_t)10U, (uint32_t)0U, fn_taskRunner }
     };
-    /* Begin of period for this test’s use case scenario (see comment below) */
-    const uint32_t u32_lastRunExpected = (uint32_t)320U;
+    const uint32_t u32_lastRunExpected = (uint32_t)320U; /* Begin of period for
+                                                            this test’s use
+                                                            case scenario (see
+                                                            comment below) */
 
     fn_getTickCount_ExpectAndReturn( (uint32_t)327U ); /* Begin of period: 320 */
     fn_taskRunner_Expect();
@@ -814,7 +816,6 @@ void test_sdlr_executeDueToRunTaskAt3TicksPeriodOnTickRollover(void)
     {
         { en_act_ON, (uint32_t)3U, (uint32_t)3U, (uint32_t)0U, fn_taskRunner }
     };
-
     uint8_t u8_idx = (uint8_t)0U;
 
     /* Run */
