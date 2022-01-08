@@ -34,12 +34,16 @@ The following loosely lists requirements, constraints, features and goals.
 * Works flawlessly on rollover of its relative system time tick source with
   type `unsigned integer` that it is connected to
 
+<!-- Separator -->
+
 * Framework design
 * Deployment in embedded systems
 * Code implementation in the C programming language ("C99", ISO/IEC 9899:1999)
 * Interfaces with the application software through task lists and with the MCU
   hardware (for the relative system time tick) through a pointer to
   function--both user-provided
+
+<!-- Separator -->
 
 * Low impact on technical budgets
     * Low CPU utilization
