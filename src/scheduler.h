@@ -75,14 +75,14 @@ void fn_sdlr_resetTaskOverrunCount(void);
  *
  * \param p_fn_taskRunner Task runner that orchestrates module(s) interaction
  * sequence to achieve task goal
- * \param en_act_active Desired task activation status
+ * \param b_active Desired task activation status
  * \param b_updateLastRun Directive to update the time stamp of last task run
  * to the current relative system time tick count.
  * This is useful to start a timer (i.e., a one-shot task that deactives itself
  * at the end of its execution).
  */
 void fn_sdlr_setTaskAct(void (* const p_fn_taskRunner)(void),
-                        const en_act_t en_act_active,
+                        const bool b_active,
                         const bool b_updateLastRun);
 
 /**

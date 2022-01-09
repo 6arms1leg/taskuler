@@ -9,20 +9,20 @@
 /**
  * \brief Task (configuration) list, see \ref stc_tsk_t
  *
- * Holds the task’s active status (on/off), period (not `0`!), deadline (not
- * `0`!), offset (last run), and the pointer to function to be executed
+ * Holds the task’s active status (`true`/`false`), period (not `0`!), deadline
+ * (not `0`!), offset (last run), and the pointer to function to be executed
  * (i.e., task runner).
  */
 static stc_tsk_t a_stc_tsk_pv_taskList[] =
 {
     /* Task 0 */
-    { en_act_ON,
+    { true,
       (uint32_t)( (uint32_t)2U * U32_TASKULERTIMER_1S ),
       U32_TASKULERTIMER_250MS,
       (uint32_t)( U32_TASKULERTIMER_0S - U32_TASKULERTIMER_1S ),
       fn_ledBlkTsk_taskRunner },
     /* Task 1 */
-    { en_act_ON,
+    { true,
       (uint32_t)( (uint32_t)2U * U32_TASKULERTIMER_1S ),
       U32_TASKULERTIMER_250MS,
       U32_TASKULERTIMER_0S,

@@ -14,6 +14,7 @@
  */
 #include "stdint.h"
 #include "stddef.h"
+#include "stdbool.h"
 
 /** \brief Run before every test */
 void setUp(void)
@@ -64,7 +65,7 @@ void test_sdlr_tickCountSourceIsSet(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
-        { en_act_OFF, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner }
+        { false, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner }
     };
 
     fn_getTickCount_ExpectAndReturn( (uint32_t)0U );
@@ -87,7 +88,7 @@ void test_sdlr_taskListIsInitializedToNull(void)
 /** \brief Test if task list is set and returned correctly */
 void test_sdlr_taskListIsSetAndReturned(void)
 {
-    stc_tsk_t stc_tsk_taskListExpected = {en_act_OFF,
+    stc_tsk_t stc_tsk_taskListExpected = {false,
                                           (uint32_t)1U,
                                           (uint32_t)1U,
                                           (uint32_t)0U,
@@ -122,7 +123,7 @@ void test_sdlr_taskCountIsInitializedTo0(void)
  */
 void test_sdlr_taskCountIsSetAndReturned(void)
 {
-    stc_tsk_t stc_tsk_taskList = {en_act_OFF,
+    stc_tsk_t stc_tsk_taskList = {false,
                                   (uint32_t)1U,
                                   (uint32_t)1U,
                                   (uint32_t)0U,
@@ -158,7 +159,7 @@ void test_sdlr_firstLateSchedulerExecutionIsNoTaskOverrun(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
-        { en_act_ON, (uint32_t)100U, (uint32_t)100U, (uint32_t)0U,
+        { true, (uint32_t)100U, (uint32_t)100U, (uint32_t)0U,
           fn_taskRunner }
     };
     const uint8_t u8_taskOverrunExpected = (uint8_t)0U;
@@ -185,7 +186,7 @@ void test_sdlr_singleTaskOverrunIsDetectedAndCountReturned(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
-        { en_act_ON, (uint32_t)100U, (uint32_t)50U, (uint32_t)0U,
+        { true, (uint32_t)100U, (uint32_t)50U, (uint32_t)0U,
           fn_taskRunner }
     };
     const uint8_t u8_taskOverrunExpected = (uint8_t)1U;
@@ -212,7 +213,7 @@ void test_sdlr_multipleTaskOverrunsAreDetectedAndCountsReturned(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
-        { en_act_ON, (uint32_t)100U, (uint32_t)100U, (uint32_t)0U,
+        { true, (uint32_t)100U, (uint32_t)100U, (uint32_t)0U,
           fn_taskRunner }
     };
     uint8_t u8_idx = (uint8_t)0U;
@@ -255,7 +256,7 @@ test_sdlr_multiTaskOverrunsAreDetectedAndCountsReturnedOnTickRollover(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
-        { en_act_ON, (uint32_t)100U, (uint32_t)100U, (uint32_t)0U,
+        { true, (uint32_t)100U, (uint32_t)100U, (uint32_t)0U,
           fn_taskRunner }
     };
     uint8_t u8_idx = (uint8_t)0U;
@@ -303,7 +304,7 @@ test_sdlr_singleTaskOverrunIsDetectedAndCountRetOnInconvTickRollover(void)
     stc_tsk_t a_stc_tsk_taskList[] =
     {
         /* Last run (offset) is 4294967095 */
-        { en_act_ON, (uint32_t)100U, (uint32_t)100U,
+        { true, (uint32_t)100U, (uint32_t)100U,
           UINT32_MAX - (uint32_t)200U, fn_taskRunner }
     };
     const uint8_t u8_taskOverrunExpected = (uint8_t)1U;
@@ -328,7 +329,7 @@ void test_sdlr_taskOverrunCountIsReset(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
-        { en_act_ON, (uint32_t)10U, (uint32_t)10U, (uint32_t)0U, fn_taskRunner }
+        { true, (uint32_t)10U, (uint32_t)10U, (uint32_t)0U, fn_taskRunner }
     };
     const uint8_t u8_taskOverrunExpectedA = (uint8_t)1U;
     const uint8_t u8_taskOverrunExpectedB = (uint8_t)0U;
@@ -360,15 +361,14 @@ void test_sdlr_singleTaskIsEnabled(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
-        { en_act_OFF, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner }
+        { false, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner }
     };
-    const en_act_t en_act_activeExpected = en_act_ON;
+    const bool b_activeExpected = true;
 
     fn_sdlr_setTaskAttributes(a_stc_tsk_taskList, (uint8_t)1U);
-    fn_sdlr_setTaskAct(fn_taskRunner, en_act_ON, false);
+    fn_sdlr_setTaskAct(fn_taskRunner, true, false);
 
-    TEST_ASSERT_EQUAL_UINT(en_act_activeExpected,
-                           a_stc_tsk_taskList[0].en_act_active);
+    TEST_ASSERT_EQUAL_UINT(b_activeExpected, a_stc_tsk_taskList[0].b_active);
 
     return;
 }
@@ -378,15 +378,14 @@ void test_sdlr_singleTaskIsDisabled(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
-        { en_act_ON, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner }
+        { true, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner }
     };
-    const en_act_t en_act_activeExpected = en_act_OFF;
+    const bool b_activeExpected = false;
 
     fn_sdlr_setTaskAttributes(a_stc_tsk_taskList, (uint8_t)1U);
-    fn_sdlr_setTaskAct(fn_taskRunner, en_act_OFF, false);
+    fn_sdlr_setTaskAct(fn_taskRunner, false, false);
 
-    TEST_ASSERT_EQUAL_UINT(en_act_activeExpected,
-                           a_stc_tsk_taskList[0].en_act_active);
+    TEST_ASSERT_EQUAL_UINT(b_activeExpected, a_stc_tsk_taskList[0].b_active);
 
     return;
 }
@@ -397,44 +396,36 @@ void test_sdlr_singleTaskIsDisabled(void)
  */
 void test_sdlr_multipleSameTasksAreEnabledAndDisabled(void)
 {
-    en_act_t en_act_untouched = en_act_OFF + (unsigned int)1U;
+    const bool b_untouched = false;
     stc_tsk_t a_stc_tsk_taskList[] =
     {
-        { en_act_ON, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner0 },
-        { en_act_OFF, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner1 },
-        { en_act_ON, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner0 },
-        { en_act_untouched, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U,
-          fn_taskRunner2 },
-        { en_act_OFF, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner1 },
-        { en_act_ON, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner0 },
-        { en_act_OFF, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner1 }
+        { true, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner0 },
+        { false, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner1 },
+        { true, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner0 },
+        { b_untouched, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner2 },
+        { false, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner1 },
+        { true, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner0 },
+        { false, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner1 }
     };
-    const en_act_t en_act_activeExpectedA = en_act_OFF;
-    const en_act_t en_act_activeExpectedB = en_act_ON;
+    const bool b_activeExpectedA = false;
+    const bool b_activeExpectedB = true;
 
     fn_sdlr_setTaskAttributes(a_stc_tsk_taskList, (uint8_t)7U);
-    fn_sdlr_setTaskAct(fn_taskRunner0, en_act_activeExpectedA, false);
-    fn_sdlr_setTaskAct(fn_taskRunner1, en_act_activeExpectedB, false);
+    fn_sdlr_setTaskAct(fn_taskRunner0, b_activeExpectedA, false);
+    fn_sdlr_setTaskAct(fn_taskRunner1, b_activeExpectedB, false);
 
     /* Should have become disabled */
-    TEST_ASSERT_EQUAL_UINT(en_act_activeExpectedA,
-                           a_stc_tsk_taskList[0].en_act_active);
-    TEST_ASSERT_EQUAL_UINT(en_act_activeExpectedA,
-                           a_stc_tsk_taskList[2].en_act_active);
-    TEST_ASSERT_EQUAL_UINT(en_act_activeExpectedA,
-                           a_stc_tsk_taskList[5].en_act_active);
+    TEST_ASSERT_EQUAL_UINT(b_activeExpectedA, a_stc_tsk_taskList[0].b_active);
+    TEST_ASSERT_EQUAL_UINT(b_activeExpectedA, a_stc_tsk_taskList[2].b_active);
+    TEST_ASSERT_EQUAL_UINT(b_activeExpectedA, a_stc_tsk_taskList[5].b_active);
 
     /* Should have become enabled */
-    TEST_ASSERT_EQUAL_UINT(en_act_activeExpectedB,
-                           a_stc_tsk_taskList[1].en_act_active);
-    TEST_ASSERT_EQUAL_UINT(en_act_activeExpectedB,
-                           a_stc_tsk_taskList[4].en_act_active);
-    TEST_ASSERT_EQUAL_UINT(en_act_activeExpectedB,
-                           a_stc_tsk_taskList[6].en_act_active);
+    TEST_ASSERT_EQUAL_UINT(b_activeExpectedB, a_stc_tsk_taskList[1].b_active);
+    TEST_ASSERT_EQUAL_UINT(b_activeExpectedB, a_stc_tsk_taskList[4].b_active);
+    TEST_ASSERT_EQUAL_UINT(b_activeExpectedB, a_stc_tsk_taskList[6].b_active);
 
     /* Should have stayed untouched */
-    TEST_ASSERT_EQUAL_UINT(en_act_untouched,
-                           a_stc_tsk_taskList[3].en_act_active);
+    TEST_ASSERT_EQUAL_UINT(b_untouched, a_stc_tsk_taskList[3].b_active);
 
     return;
 }
@@ -444,7 +435,7 @@ void test_sdlr_lastRunOfsingleTaskIsUpdated(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
-        { en_act_OFF, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner }
+        { false, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner }
     };
     const uint32_t u32_lastRunExpected = (uint32_t)111;
 
@@ -452,7 +443,7 @@ void test_sdlr_lastRunOfsingleTaskIsUpdated(void)
 
     fn_sdlr_setTickCountSource(fn_getTickCount);
     fn_sdlr_setTaskAttributes(a_stc_tsk_taskList, (uint8_t)1U);
-    fn_sdlr_setTaskAct(fn_taskRunner, en_act_ON, true);
+    fn_sdlr_setTaskAct(fn_taskRunner, true, true);
 
     TEST_ASSERT_EQUAL_UINT32(u32_lastRunExpected,
                              a_stc_tsk_taskList[0].u32_lastRun);
@@ -468,7 +459,7 @@ void test_sdlr_executeDueToRunTaskAt1TickPeriodOn0TickStart(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
-        { en_act_ON, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner }
+        { true, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner }
     };
     uint8_t u8_idx = (uint8_t)0U;
 
@@ -508,7 +499,7 @@ void test_sdlr_executeDueToRunTaskAt2TicksPeriodOnNon0TickStart(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
-        { en_act_ON, (uint32_t)2U, (uint32_t)2U, (uint32_t)0U, fn_taskRunner }
+        { true, (uint32_t)2U, (uint32_t)2U, (uint32_t)0U, fn_taskRunner }
     };
     uint8_t u8_idx = (uint8_t)0U;
 
@@ -549,7 +540,7 @@ test_sdlr_execDueToRunTaskAt2TicksPeriodOnNon0TickStartAndTickLoss(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
-        { en_act_ON, (uint32_t)2U, (uint32_t)2U, (uint32_t)0U, fn_taskRunner }
+        { true, (uint32_t)2U, (uint32_t)2U, (uint32_t)0U, fn_taskRunner }
     };
     uint8_t u8_idx = (uint8_t)0U;
 
@@ -590,9 +581,9 @@ test_sdlr_execDueToRunTasksAtDiffPeriodsOnNon0TickStartAndTickLoss(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
-        { en_act_ON, (uint32_t)3U, (uint32_t)3U, (uint32_t)0U, fn_taskRunner0 },
-        { en_act_ON, (uint32_t)4U, (uint32_t)4U, (uint32_t)0U, fn_taskRunner1 },
-        { en_act_ON, (uint32_t)9U, (uint32_t)9U, (uint32_t)0U, fn_taskRunner2 }
+        { true, (uint32_t)3U, (uint32_t)3U, (uint32_t)0U, fn_taskRunner0 },
+        { true, (uint32_t)4U, (uint32_t)4U, (uint32_t)0U, fn_taskRunner1 },
+        { true, (uint32_t)9U, (uint32_t)9U, (uint32_t)0U, fn_taskRunner2 }
     };
     uint8_t u8_idx = (uint8_t)0U;
 
@@ -662,19 +653,19 @@ void test_sdlr_execDueToRunTasksAtDiffPeriodsAndOffsetsOn0TickStart(void)
     stc_tsk_t a_stc_tsk_taskList[] =
     {
         /* Run at: 10, 40, 70, 100, ... */
-        { en_act_ON,
+        { true,
           (uint32_t)30U,
           (uint32_t)30U,
           (uint32_t)( (uint32_t)0U - (uint32_t)20U ), /* Offset 20 */
           fn_taskRunner0 },
         /* Run at: 30, 70, 110, ... */
-        { en_act_ON,
+        { true,
           (uint32_t)40U,
           (uint32_t)40U,
           (uint32_t)( (uint32_t)0U - (uint32_t)10U ), /* Offset 10 */
           fn_taskRunner1 },
         /* Run at: 90, 180, ... */
-        { en_act_ON,
+        { true,
           (uint32_t)90U,
           (uint32_t)90U,
           (uint32_t)0U, /* No offset (0) */
@@ -761,7 +752,7 @@ void test_sdlr_taskRunnerOfDisabledTaskIsNotRun(void)
         /* If task runner is run, test will fail (as it should), complaining
          * that function `fn_taskRunner` is called more times than expected
          */
-        { en_act_OFF, (uint32_t)10U, (uint32_t)10U, (uint32_t)0U, fn_taskRunner }
+        { false, (uint32_t)10U, (uint32_t)10U, (uint32_t)0U, fn_taskRunner }
     };
 
     /* Expect only one call to `getTickCount` as no task runner is supposed to
@@ -783,7 +774,7 @@ void test_sdlr_lastRunOfDisabledTaskIsStillUpdated(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
-        { en_act_OFF, (uint32_t)10U, (uint32_t)10U, (uint32_t)0U, fn_taskRunner }
+        { false, (uint32_t)10U, (uint32_t)10U, (uint32_t)0U, fn_taskRunner }
     };
     const uint32_t u32_lastRunExpected = (uint32_t)320U;
 
@@ -807,7 +798,7 @@ void test_sdlr_lastRunIsAlwaysSetToBeginOfPeriod(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
-        { en_act_ON, (uint32_t)10U, (uint32_t)10U, (uint32_t)0U, fn_taskRunner }
+        { true, (uint32_t)10U, (uint32_t)10U, (uint32_t)0U, fn_taskRunner }
     };
     const uint32_t u32_lastRunExpected = (uint32_t)320U; /* Begin of period for
                                                             this test’s use
@@ -836,7 +827,7 @@ void test_sdlr_executeDueToRunTaskAt3TicksPeriodOnTickRollover(void)
 {
     stc_tsk_t a_stc_tsk_taskList[] =
     {
-        { en_act_ON, (uint32_t)3U, (uint32_t)3U, (uint32_t)0U, fn_taskRunner }
+        { true, (uint32_t)3U, (uint32_t)3U, (uint32_t)0U, fn_taskRunner }
     };
     uint8_t u8_idx = (uint8_t)0U;
 

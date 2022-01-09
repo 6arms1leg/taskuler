@@ -61,7 +61,7 @@ void fn_sdlr_resetTaskOverrunCount(void)
 }
 
 void fn_sdlr_setTaskAct(void (* const p_fn_taskRunner)(void),
-                        const en_act_t en_act_active,
+                        const bool b_active,
                         const bool b_updateLastRun)
 {
     /* Set pointer to task list’s list */
@@ -72,13 +72,15 @@ void fn_sdlr_setTaskAct(void (* const p_fn_taskRunner)(void),
 
     uint8_t u8_idx = (uint8_t)0U;
 
-    /* Find all tasks (matching function pointer) and set them to `ON`/`OFF` */
+    /* Find all tasks (matching function pointer) and set them to on/off
+     * (`true`/`false`)
+     */
     for(u8_idx = (uint8_t)0U; u8_taskCount > u8_idx; u8_idx++)
     {
         if( *p_fn_taskRunner
             == (*a_stc_tsk_taskList[u8_idx].p_fn_taskRunner) )
         {
-            a_stc_tsk_taskList[u8_idx].en_act_active = en_act_active;
+            a_stc_tsk_taskList[u8_idx].b_active = b_active;
 
             /* Update time stamp of last task run, if requested */
             if(true == b_updateLastRun)
@@ -128,7 +130,7 @@ void fn_sdlr_execute(void)
                 % a_stc_tsk_taskList[u8_idx].u32_period );
 
             /* Check if task is enabled */
-            if(en_act_ON == a_stc_tsk_taskList[u8_idx].en_act_active)
+            if(true == a_stc_tsk_taskList[u8_idx].b_active)
             {
                 /* Run periodic task */
                 (*a_stc_tsk_taskList[u8_idx].p_fn_taskRunner)();

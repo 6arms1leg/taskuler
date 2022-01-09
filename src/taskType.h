@@ -7,21 +7,16 @@
  * own type definitions before falling back to libc.
  */
 #include "stdint.h"
-
-/**
- * \brief Defines the "active" member of \ref stc_tsk_t (that is \ref
- * stc_tsk_t.en_act_active)
- */
-typedef enum
-{
-    en_act_ON, /**< \brief Task is enabled and will be run as scheduled */
-    en_act_OFF /**< \brief Task is disabled and will not be run */
-} en_act_t;
+#include "stdbool.h"
 
 /** \brief Defines parameters needed by scheduler for scheduled task execution */
 typedef struct
 {
-    en_act_t en_act_active; /**< \brief Task activation */
+    bool b_active; /**< \brief Task activation status
+
+                        If `true`, task is enabled and will be run as
+                        scheduled.
+                        If `false`, task is disabled and will not be run. */
     const uint32_t u32_period; /**< \brief Time (since previous task run) after
                                     which task will be run again
 

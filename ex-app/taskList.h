@@ -4,6 +4,7 @@
 #define INCLUDE_TASKLIST_H
 
 #include <stdint.h>
+#include <stdbool.h>
 
 /* Include the Taskuler task interface */
 #include "taskType.h"
