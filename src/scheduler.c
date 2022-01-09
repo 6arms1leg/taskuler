@@ -135,16 +135,13 @@ void fn_sdlr_execute(void)
                     /* Increment task deadline overrun counter */
                     u8_pv_taskOverrunCount++;
                 }
-                else {} /* Do nothing; no task deadline overrun */
 
                 /* End cycle to allow starting a new one as soon as possible.
                  * This gives better schedulability.
                  */
                 break;
             } /* if(...) */
-            else {} /* Do nothing; task disabled */
         } /* if(...) */
-        else {} /* Do nothing; no new task execution period */
     } /* for(...) */
 
     return;

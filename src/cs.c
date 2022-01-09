@@ -29,7 +29,6 @@ void cs_exit(void)
     {
         CS_ENAINTS
     }
-    else {}; /* Do nothing */
 
     return;
 }
