@@ -11,12 +11,14 @@ static uint32_t (*p_fn_pv_getTickCount)(void) = NULL; /**< \brief Pointer to
                                                            provides the current
                                                            relative system time
                                                            tick count */
-static stc_tsk_t* a_stc_tsk_pv_taskList = NULL; /**< \brief Registered task
-                                                     list */
-static uint8_t u8_pv_taskCount = (uint8_t)0U; /**< \brief Number of tasks within
-                                                   registered task list */
-static uint8_t u8_pv_taskOverrunCount = (uint8_t)0U; /**< \brief Task deadline
-                                                          overrun counter */
+static stc_tsk_t* volatile a_stc_tsk_pv_taskList = NULL; /**< \brief Registered
+                                                              task list */
+static volatile uint8_t u8_pv_taskCount = (uint8_t)0U; /**< \brief Number of
+                                                            tasks within
+                                                            registered task
+                                                            list */
+static volatile uint8_t u8_pv_taskOverrunCount = (uint8_t)0U;
+    /**< \brief Task deadline overrun counter */
 
 /* OPERATIONS
  * ==========

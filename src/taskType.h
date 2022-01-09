@@ -12,11 +12,12 @@
 /** \brief Defines parameters needed by scheduler for scheduled task execution */
 typedef struct
 {
-    bool b_active; /**< \brief Task activation status
+    volatile bool b_active; /**< \brief Task activation status
 
-                        If `true`, task is enabled and will be run as
-                        scheduled.
-                        If `false`, task is disabled and will not be run. */
+                                 If `true`, task is enabled and will be run as
+                                 scheduled.
+                                 If `false`, task is disabled and will not be
+                                 run. */
     const uint32_t u32_period; /**< \brief Time (since previous task run) after
                                     which task will be run again
 
@@ -27,17 +28,20 @@ typedef struct
                                       This should be equal to task’s WCET +
                                       some buffer time.  Must not be `0`!  The
                                       allowed range is *[WCET, period]*. */
-    uint32_t u32_lastRun; /**< \brief Time stamp of last task run
+    volatile uint32_t u32_lastRun; /**< \brief Time stamp of last task run
 
-                               Helper variable necessary for scheduling
-                               algorithm.  Normally, initialized to `0`.  Can
-                               also be used to define an offset (from 0) to
-                               other tasks, when initially defined in task
-                               list.  To off-set a task define the offset as a
-                               substraction from 0.  That is, a periodic task
-                               can be phase-shifted to the left by *delta* by
-                               defining an offset *0 - delta*.  The useful
-                               range for the offset *delta* is *]0, period[*. */
+                                        Helper variable necessary for
+                                        scheduling algorithm.  Normally,
+                                        initialized to `0`.  Can also be used
+                                        to define an offset (from 0) to other
+                                        tasks, when initially defined in task
+                                        list.  To off-set a task define the
+                                        offset as a substraction from 0.  That
+                                        is, a periodic task can be
+                                        phase-shifted to the left by *delta* by
+                                        defining an offset *0 - delta*.  The
+                                        useful range for the offset *delta* is
+                                        *]0, period[*. */
     void (* const p_fn_taskRunner)(void); /**< \brief Function pointer to task
                                                runner */
 } stc_tsk_t;
