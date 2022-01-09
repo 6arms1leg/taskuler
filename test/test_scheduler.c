@@ -13,6 +13,7 @@
  * own type definitions before falling back to libc.
  */
 #include "stdint.h"
+#include "stddef.h"
 
 /** \brief Run before every test */
 void setUp(void)
