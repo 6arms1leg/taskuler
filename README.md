@@ -1,4 +1,4 @@
-# Taskuler - Simple "Bare-Metal" Task Scheduling Framework
+# Taskuler - Simple "bare-metal" task scheduling framework
 
 This framework employs a simple and tiny
 
@@ -19,6 +19,8 @@ The following loosely lists requirements, constraints, features and goals.
 * Timing of tasks (via task lists) is predefined at compile time
 * Switch between multiple task lists at run time
 * Tasks within a task list can individually be enabled and disabled at run time
+* Timers can be created with one-shot tasks whos time stamp of last task run is
+  updated when enbling (starting) them
 * Each task can individually be scheduled by its period and its offset to other
   tasks
 * Task deadline overrun detection/indication with (single) counter
@@ -80,6 +82,14 @@ Quality metrics:
 | Cyclomatic complexity number (per func.)     | \<= 10   |
 | Comment rate (per file)                      | \>= 20 % |
 | Unit test (decision) coverage                | = 100 %  |
+
+## Using timers
+
+Timers can be created by using a one-shot task that deactives itself at the end
+of its execution).
+Its period then defines the timer’s timing.
+When enabling such a task (i.e., starting the timer), its time stamp of last
+task run must be updated.
 
 ## Architecture
 
