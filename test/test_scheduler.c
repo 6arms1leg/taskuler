@@ -364,7 +364,7 @@ void test_sdlr_singleTaskIsEnabled(void)
     const en_act_t en_act_activeExpected = en_act_ON;
 
     fn_sdlr_setTaskAttributes(a_stc_tsk_taskList, (uint8_t)1U);
-    fn_sdlr_setTaskAct(fn_taskRunner, en_act_ON);
+    fn_sdlr_setTaskAct(fn_taskRunner, en_act_ON, false);
 
     TEST_ASSERT_EQUAL_UINT(en_act_activeExpected,
                            a_stc_tsk_taskList[0].en_act_active);
@@ -382,7 +382,7 @@ void test_sdlr_singleTaskIsDisabled(void)
     const en_act_t en_act_activeExpected = en_act_OFF;
 
     fn_sdlr_setTaskAttributes(a_stc_tsk_taskList, (uint8_t)1U);
-    fn_sdlr_setTaskAct(fn_taskRunner, en_act_OFF);
+    fn_sdlr_setTaskAct(fn_taskRunner, en_act_OFF, false);
 
     TEST_ASSERT_EQUAL_UINT(en_act_activeExpected,
                            a_stc_tsk_taskList[0].en_act_active);
@@ -412,8 +412,8 @@ void test_sdlr_multipleSameTasksAreEnabledAndDisabled(void)
     const en_act_t en_act_activeExpectedB = en_act_ON;
 
     fn_sdlr_setTaskAttributes(a_stc_tsk_taskList, (uint8_t)7U);
-    fn_sdlr_setTaskAct(fn_taskRunner0, en_act_activeExpectedA);
-    fn_sdlr_setTaskAct(fn_taskRunner1, en_act_activeExpectedB);
+    fn_sdlr_setTaskAct(fn_taskRunner0, en_act_activeExpectedA, false);
+    fn_sdlr_setTaskAct(fn_taskRunner1, en_act_activeExpectedB, false);
 
     /* Should have become disabled */
     TEST_ASSERT_EQUAL_UINT(en_act_activeExpectedA,
@@ -434,6 +434,27 @@ void test_sdlr_multipleSameTasksAreEnabledAndDisabled(void)
     /* Should have stayed untouched */
     TEST_ASSERT_EQUAL_UINT(en_act_untouched,
                            a_stc_tsk_taskList[3].en_act_active);
+
+    return;
+}
+
+/** \brief Test if time stamp of last task run is updated correctly */
+void test_sdlr_lastRunOfsingleTaskIsUpdated(void)
+{
+    stc_tsk_t a_stc_tsk_taskList[] =
+    {
+        { en_act_OFF, (uint32_t)1U, (uint32_t)1U, (uint32_t)0U, fn_taskRunner }
+    };
+    const uint32_t u32_lastRunExpected = (uint32_t)111;
+
+    fn_getTickCount_ExpectAndReturn(u32_lastRunExpected);
+
+    fn_sdlr_setTickCountSource(fn_getTickCount);
+    fn_sdlr_setTaskAttributes(a_stc_tsk_taskList, (uint8_t)1U);
+    fn_sdlr_setTaskAct(fn_taskRunner, en_act_ON, true);
+
+    TEST_ASSERT_EQUAL_UINT32(u32_lastRunExpected,
+                             a_stc_tsk_taskList[0].u32_lastRun);
 
     return;
 }

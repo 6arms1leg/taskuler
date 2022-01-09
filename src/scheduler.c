@@ -61,7 +61,8 @@ void fn_sdlr_resetTaskOverrunCount(void)
 }
 
 void fn_sdlr_setTaskAct(void (* const p_fn_taskRunner)(void),
-                        const en_act_t en_act_active)
+                        const en_act_t en_act_active,
+                        const bool b_updateLastRun)
 {
     /* Set pointer to task list’s list */
     stc_tsk_t* const a_stc_tsk_taskList = a_stc_tsk_pv_taskList;
@@ -78,8 +79,15 @@ void fn_sdlr_setTaskAct(void (* const p_fn_taskRunner)(void),
             == (*a_stc_tsk_taskList[u8_idx].p_fn_taskRunner) )
         {
             a_stc_tsk_taskList[u8_idx].en_act_active = en_act_active;
-        }
-    } /* for() */
+
+            /* Update time stamp of last task run, if requested */
+            if(true == b_updateLastRun)
+            {
+                a_stc_tsk_taskList[u8_idx].u32_lastRun =
+                    (*p_fn_pv_getTickCount)();
+            }
+        } /* if(...) */
+    } /* for(...) */
 
     return;
 }
