@@ -1,3 +1,10 @@
+<!--
+Keywords:
+cooperative, cyclic-executive, embedded, embedded-systems, framework,
+microkernel, nested-critical-regions, nested-critical-sections, non-preemptive,
+real-time, scheduler, timers
+-->
+
 # Taskuler - Simple "bare-metal" task scheduling framework
 
 This framework employs a simple and tiny
