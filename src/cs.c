@@ -14,7 +14,7 @@ void cs_entry(void)
 {
     pv_u8_lockCnt++; /* Atomic operation (no concurrency issues); must be first
                       */
-    CS_DISINTS
+    CS_DISINTS();
     assert(0U != pv_u8_lockCnt); /* No rollover must occur */
 
     return;
@@ -27,7 +27,7 @@ void cs_exit(void)
     pv_u8_lockCnt--;
     if(0U == pv_u8_lockCnt)
     {
-        CS_ENAINTS
+        CS_ENAINTS();
     }
 
     return;

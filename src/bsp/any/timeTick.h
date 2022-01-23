@@ -3,6 +3,7 @@
 #ifndef INCLUDE_TIMETICK_H
 #define INCLUDE_TIMETICK_H
 
+/* libc */
 #include <stdint.h>
 
 /* Include Taskuler BSP interfaces */

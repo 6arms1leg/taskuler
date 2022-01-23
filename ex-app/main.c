@@ -1,5 +1,6 @@
 /** \file */
 
+/* libc */
 #include <stdbool.h>
 
 /* Include the Taskuler scheduler interface */
@@ -18,7 +19,7 @@
 /** \brief Entry point of Taskuler scheduling example */
 int main(void)
 {
-    TASKULERINTERRUPT_DISABLE /* Crit. region start (disable all ISRs) */
+    TASKULERINTERRUPT_DISABLE(); /* Crit. region start (disable all ISRs) */
 
     /* Initialize application LED */
     fn_ledL_init();
@@ -31,7 +32,7 @@ int main(void)
     fn_sdlr_setTaskAttributes( fn_tskLst_getTaskList(),
                                fn_tskLst_getTaskCount() );
 
-    TASKULERINTERRUPT_ENABLE /* Crit. region end (enable all ISRs) */
+    TASKULERINTERRUPT_ENABLE(); /* Crit. region end (enable all ISRs) */
 
     /* Reset time tick count *directly* before starting the scheduler,
      * otherwise first execution might run all tasks (e.g., if all offsets are
