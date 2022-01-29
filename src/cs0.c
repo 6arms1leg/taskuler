@@ -10,7 +10,7 @@ static volatile uint8_t pv_u8_lockCnt = 0U;
  * ==========
  */
 
-void cs0_entry(void)
+void cs0_enter(void)
 {
     pv_u8_lockCnt++; /* Atomic operation (no concurrency issues); must be first
                       */
@@ -22,7 +22,7 @@ void cs0_entry(void)
 
 void cs0_exit(void)
 {
-    assert(0U != pv_u8_lockCnt); /* `cs0_entry()` must have been called
+    assert(0U != pv_u8_lockCnt); /* `cs0_enter()` must have been called
                                     previously */
     pv_u8_lockCnt--;
     if(0U == pv_u8_lockCnt)

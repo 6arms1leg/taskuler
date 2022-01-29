@@ -17,7 +17,7 @@
  */
 
 /** \brief Mark start of critical section */
-void cs0_entry(void);
+void cs0_enter(void);
 
 /** \brief Mark end of critical section */
 void cs0_exit(void);
