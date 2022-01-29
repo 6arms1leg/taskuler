@@ -1,5 +1,5 @@
-#ifndef CS_DISENAINTS_H
-#define CS_DISENAINTS_H
+#ifndef CS0_CONF_H
+#define CS0_CONF_H
 
 /* libc */
 #include <stdbool.h>
@@ -12,7 +12,7 @@
  *
  * \{
  */
-#define CS_DISINTS()                               \
+#define CS0_DISINTS()                              \
 do                                                 \
 { /* Add code to disable relevant interrupts here, \
    * e.g. `disableAllInterrupts();`                \
@@ -21,7 +21,7 @@ do                                                 \
 }                                                  \
 while(false)
 
-#define CS_ENAINTS()                              \
+#define CS0_ENAINTS()                             \
 do                                                \
 { /* Add code to enable relevant interrupts here, \
    * e.g. `enableAllInterrupts();`                \
@@ -31,4 +31,4 @@ do                                                \
 while(false)
 /** \} */
 
-#endif /* CS_DISENAINTS_H */
+#endif /* CS0_CONF_H */

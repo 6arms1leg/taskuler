@@ -1,4 +1,4 @@
-#include "cs.h"
+#include "cs0.h"
 
 /* ATTRIBUTES
  * ==========
@@ -10,24 +10,24 @@ static volatile uint8_t pv_u8_lockCnt = 0U;
  * ==========
  */
 
-void cs_entry(void)
+void cs0_entry(void)
 {
     pv_u8_lockCnt++; /* Atomic operation (no concurrency issues); must be first
                       */
-    CS_DISINTS();
+    CS0_DISINTS();
     assert(0U != pv_u8_lockCnt); /* No rollover must occur */
 
     return;
 }
 
-void cs_exit(void)
+void cs0_exit(void)
 {
-    assert(0U != pv_u8_lockCnt); /* `cs_entry()` must have been called
+    assert(0U != pv_u8_lockCnt); /* `cs0_entry()` must have been called
                                     previously */
     pv_u8_lockCnt--;
     if(0U == pv_u8_lockCnt)
     {
-        CS_ENAINTS();
+        CS0_ENAINTS();
     }
 
     return;

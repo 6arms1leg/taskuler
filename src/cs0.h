@@ -1,5 +1,5 @@
-#ifndef CS_H
-#define CS_H
+#ifndef CS0_H
+#define CS0_H
 
 /* libc
  *
@@ -10,16 +10,16 @@
 #include "assert.h"
 
 /** \brief User-provided macros to dis-/enable all relevant interrupts */
-#include "cs_disEnaInts.h"
+#include "cs0_conf.h"
 
 /* OPERATIONS
  * ==========
  */
 
 /** \brief Mark start of critical section */
-void cs_entry(void);
+void cs0_entry(void);
 
 /** \brief Mark end of critical section */
-void cs_exit(void);
+void cs0_exit(void);
 
-#endif /* CS_H */
+#endif /* CS0_H */
