@@ -675,9 +675,9 @@ style=wordwrap</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>970</x>
-      <y>130</y>
-      <w>220</w>
-      <h>190</h>
+      <y>120</y>
+      <w>200</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>*Pseudo code*
 --
@@ -686,7 +686,8 @@ schedule() {
         updateLastRun();
         exec.();
         if(deadlineOverrun) {
-            incr.TaskOverrunCount();
+            incr.OverrunCount();
+            exec.OverrunHook();
         }
     }
 }</panel_attributes>
@@ -885,9 +886,9 @@ style=wordwrap</panel_attributes>
     <id>UMLFrame</id>
     <coordinates>
       <x>230</x>
-      <y>110</y>
-      <w>980</w>
-      <h>630</h>
+      <y>100</y>
+      <w>970</w>
+      <h>640</h>
     </coordinates>
     <panel_attributes>cstmd Taskuler
 /Exemplary task schedule/
@@ -900,7 +901,7 @@ fontsize=30</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>590</x>
-      <y>150</y>
+      <y>140</y>
       <w>140</w>
       <h>30</h>
     </coordinates>

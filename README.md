@@ -31,6 +31,7 @@ The following loosely lists requirements, constraints, features and goals.
 * Each task can individually be scheduled by its period and its offset to other
   tasks
 * Task deadline overrun detection/indication with (single) counter
+* Optional task deadline overrun (recovery) action with custom hook
 * Deadline of each task can individually be defined at compile time
 * Disabled tasks are not run but their last run indication is still updated to
   maintain schedulability
