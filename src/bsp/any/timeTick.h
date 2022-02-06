@@ -1,7 +1,7 @@
 /** \file */
 
-#ifndef INCLUDE_TIMETICK_H
-#define INCLUDE_TIMETICK_H
+#ifndef TIMETICK_H
+#define TIMETICK_H
 
 /* libc */
 #include <stdint.h>
@@ -38,4 +38,4 @@ void fn_tmTck_incrementTickCount(void);
  */
 void fn_tmTck_resetTickCount(void);
 
-#endif /* INCLUDE_TIMETICK_H */
+#endif /* TIMETICK_H */

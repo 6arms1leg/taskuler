@@ -1,7 +1,7 @@
 /** \file */
 
-#ifndef INCLUDE_TASKULERTIMER_H
-#define INCLUDE_TASKULERTIMER_H
+#ifndef TASKULERTIMER_H
+#define TASKULERTIMER_H
 
 /* libc */
 #include <stdint.h>
@@ -34,4 +34,4 @@
 /** \brief Initialize Arduino Uno’s Timer0 */
 void fn_tsklrTmr_init(void);
 
-#endif /* INCLUDE_TASKULERTIMER_H */
+#endif /* TASKULERTIMER_H */

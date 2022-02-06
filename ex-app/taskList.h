@@ -1,7 +1,7 @@
 /** \file */
 
-#ifndef INCLUDE_TASKLIST_H
-#define INCLUDE_TASKLIST_H
+#ifndef TASKLIST_H
+#define TASKLIST_H
 
 /* libc */
 #include <stdint.h>
@@ -40,4 +40,4 @@ stc_tsk_t* fn_tskLst_getTaskList(void);
  */
 uint8_t fn_tskLst_getTaskCount(void);
 
-#endif /* INCLUDE_TASKLIST_H */
+#endif /* TASKLIST_H */

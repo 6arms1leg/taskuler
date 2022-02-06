@@ -1,7 +1,7 @@
 /** \file */
 
-#ifndef INCLUDE_SCHEDULER_TESTMOCKS_H
-#define INCLUDE_SCHEDULER_TESTMOCKS_H
+#ifndef SCHEDULER_TESTMOCKS_H
+#define SCHEDULER_TESTMOCKS_H
 
 /* `"` used intentionally.  This allows the user to override and provide his
  * own type definitions before falling back to libc.
@@ -31,4 +31,4 @@ void fn_taskRunner1(void);
 void fn_taskRunner2(void);
 /** \} */
 
-#endif /* INCLUDE_SCHEDULER_TESTMOCKS_H */
+#endif /* SCHEDULER_TESTMOCKS_H */

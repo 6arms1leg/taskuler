@@ -1,7 +1,7 @@
 /** \file */
 
-#ifndef INCLUDE_LEDBLINKTASK_H
-#define INCLUDE_LEDBLINKTASK_H
+#ifndef LEDBLINKTASK_H
+#define LEDBLINKTASK_H
 
 /* Include the LED Blink module interface */
 #include "ledBlink.h"
@@ -13,4 +13,4 @@
 /** \brief Task runner that executes the LED Blink module */
 void fn_ledBlkTsk_taskRunner(void);
 
-#endif /* INCLUDE_LEDBLINKTASK_H */
+#endif /* LEDBLINKTASK_H */

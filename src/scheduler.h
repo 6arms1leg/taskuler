@@ -1,7 +1,7 @@
 /** \file */
 
-#ifndef INCLUDE_SCHEDULER_H
-#define INCLUDE_SCHEDULER_H
+#ifndef SCHEDULER_H
+#define SCHEDULER_H
 
 /* `"` used intentionally.  This allows the user to override and provide his
  * own type definitions before falling back to libc.
@@ -93,4 +93,4 @@ void fn_sdlr_setTaskAct(void (* const p_fn_taskRunner)(void),
  */
 void fn_sdlr_execute(void);
 
-#endif /* INCLUDE_SCHEDULER_H */
+#endif /* SCHEDULER_H */
