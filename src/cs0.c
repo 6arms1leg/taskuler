@@ -1,3 +1,5 @@
+/** \file */
+
 #include "cs0.h"
 
 /* ATTRIBUTES

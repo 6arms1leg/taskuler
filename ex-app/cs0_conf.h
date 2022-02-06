@@ -1,3 +1,5 @@
+/** \file */
+
 #ifndef CS0_CONF_H
 #define CS0_CONF_H
 

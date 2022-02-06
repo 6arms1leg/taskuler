@@ -1,3 +1,5 @@
+/** \file */
+
 #ifndef CS1_H
 #define CS1_H
 
