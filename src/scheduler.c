@@ -146,6 +146,10 @@ void fn_sdlr_execute(void)
                 {
                     /* Increment task deadline overrun counter */
                     u8_pv_taskOverrunCount++;
+
+                    /* Run custom task deadline overrun hook, if defined */
+                    TASKULER_TASKOVERRUNHOOK(
+                        a_stc_tsk_taskList[u8_idx].p_fn_taskRunner);
                 }
 
                 /* End cycle to allow starting a new one as soon as possible.

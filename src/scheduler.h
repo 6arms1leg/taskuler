@@ -11,6 +11,7 @@
 #include "stdbool.h"
 
 #include "taskType.h"
+#include "scheduler_conf.h"
 
 /* OPERATIONS
  * ==========
