@@ -216,7 +216,6 @@ void test_sdlr_multipleTaskOverrunsAreDetectedAndCountsReturned(void)
         { true, (uint32_t)100u, (uint32_t)100u, (uint32_t)0u,
           fn_taskRunner }
     };
-    uint8_t u8_idx = (uint8_t)0u;
     const uint8_t u8_taskOverrunExpected = (uint8_t)2u;
 
     /* Task overrun */
@@ -236,7 +235,7 @@ void test_sdlr_multipleTaskOverrunsAreDetectedAndCountsReturned(void)
 
     fn_sdlr_setTickCountSource(fn_getTickCount);
     fn_sdlr_setTaskAttributes(a_stc_tsk_taskList, (uint8_t)1u);
-    for(u8_idx = (uint8_t)0u; u8_idx < 3; u8_idx++)
+    for(uint8_t u8_idx = (uint8_t)0u; u8_idx < 3; u8_idx++)
     {
         fn_sdlr_execute();
     }
@@ -259,7 +258,6 @@ test_sdlr_multiTaskOverrunsAreDetectedAndCountsReturnedOnTickRollover(void)
         { true, (uint32_t)100u, (uint32_t)100u, (uint32_t)0u,
           fn_taskRunner }
     };
-    uint8_t u8_idx = (uint8_t)0u;
     const uint8_t u8_taskOverrunExpected = (uint8_t)2u;
 
     /* Task overrun (at rollover) */
@@ -279,7 +277,7 @@ test_sdlr_multiTaskOverrunsAreDetectedAndCountsReturnedOnTickRollover(void)
 
     fn_sdlr_setTickCountSource(fn_getTickCount);
     fn_sdlr_setTaskAttributes(a_stc_tsk_taskList, (uint8_t)1u);
-    for(u8_idx = (uint8_t)0u; u8_idx < 3; u8_idx++)
+    for(uint8_t u8_idx = (uint8_t)0u; u8_idx < 3; u8_idx++)
     {
         fn_sdlr_execute();
     }
@@ -461,7 +459,6 @@ void test_sdlr_executeDueToRunTaskAt1TickPeriodOn0TickStart(void)
     {
         { true, (uint32_t)1u, (uint32_t)1u, (uint32_t)0u, fn_taskRunner }
     };
-    uint8_t u8_idx = (uint8_t)0u;
 
     /* No run */
     fn_getTickCount_ExpectAndReturn( (uint32_t)0u );
@@ -483,7 +480,7 @@ void test_sdlr_executeDueToRunTaskAt1TickPeriodOn0TickStart(void)
 
     fn_sdlr_setTickCountSource(fn_getTickCount);
     fn_sdlr_setTaskAttributes(a_stc_tsk_taskList, (uint8_t)1u);
-    for(u8_idx = (uint8_t)0u; u8_idx < 4; u8_idx++)
+    for(uint8_t u8_idx = (uint8_t)0u; u8_idx < 4; u8_idx++)
     {
         fn_sdlr_execute();
     }
@@ -501,7 +498,6 @@ void test_sdlr_executeDueToRunTaskAt2TicksPeriodOnNon0TickStart(void)
     {
         { true, (uint32_t)2u, (uint32_t)2u, (uint32_t)0u, fn_taskRunner }
     };
-    uint8_t u8_idx = (uint8_t)0u;
 
     /* Run */
     fn_getTickCount_ExpectAndReturn( (uint32_t)201u );
@@ -523,7 +519,7 @@ void test_sdlr_executeDueToRunTaskAt2TicksPeriodOnNon0TickStart(void)
 
     fn_sdlr_setTickCountSource(fn_getTickCount);
     fn_sdlr_setTaskAttributes(a_stc_tsk_taskList, (uint8_t)1u);
-    for(u8_idx = (uint8_t)0u; u8_idx < 4; u8_idx++)
+    for(uint8_t u8_idx = (uint8_t)0u; u8_idx < 4; u8_idx++)
     {
         fn_sdlr_execute();
     }
@@ -542,7 +538,6 @@ test_sdlr_execDueToRunTaskAt2TicksPeriodOnNon0TickStartAndTickLoss(void)
     {
         { true, (uint32_t)2u, (uint32_t)2u, (uint32_t)0u, fn_taskRunner }
     };
-    uint8_t u8_idx = (uint8_t)0u;
 
     /* Run */
     fn_getTickCount_ExpectAndReturn( (uint32_t)201u );
@@ -564,7 +559,7 @@ test_sdlr_execDueToRunTaskAt2TicksPeriodOnNon0TickStartAndTickLoss(void)
 
     fn_sdlr_setTickCountSource(fn_getTickCount);
     fn_sdlr_setTaskAttributes(a_stc_tsk_taskList, (uint8_t)1u);
-    for(u8_idx = (uint8_t)0u; u8_idx < 4; u8_idx++)
+    for(uint8_t u8_idx = (uint8_t)0u; u8_idx < 4; u8_idx++)
     {
         fn_sdlr_execute();
     }
@@ -585,7 +580,6 @@ test_sdlr_execDueToRunTasksAtDiffPeriodsOnNon0TickStartAndTickLoss(void)
         { true, (uint32_t)4u, (uint32_t)4u, (uint32_t)0u, fn_taskRunner1 },
         { true, (uint32_t)9u, (uint32_t)9u, (uint32_t)0u, fn_taskRunner2 }
     };
-    uint8_t u8_idx = (uint8_t)0u;
 
     /* Run task runner 0, 1, 2 */
     fn_getTickCount_ExpectAndReturn( (uint32_t)201u );
@@ -636,7 +630,7 @@ test_sdlr_execDueToRunTasksAtDiffPeriodsOnNon0TickStartAndTickLoss(void)
 
     fn_sdlr_setTickCountSource(fn_getTickCount);
     fn_sdlr_setTaskAttributes(a_stc_tsk_taskList, (uint8_t)3u);
-    for(u8_idx = (uint8_t)0u; u8_idx < 13; u8_idx++)
+    for(uint8_t u8_idx = (uint8_t)0u; u8_idx < 13; u8_idx++)
     {
         fn_sdlr_execute();
     }
@@ -671,7 +665,6 @@ void test_sdlr_execDueToRunTasksAtDiffPeriodsAndOffsetsOn0TickStart(void)
           (uint32_t)0u, /* No offset (0) */
           fn_taskRunner2 }
     };
-    uint8_t u8_idx = (uint8_t)0u;
 
     /* Run no task runner */
     fn_getTickCount_ExpectAndReturn( (uint32_t)0u );
@@ -736,7 +729,7 @@ void test_sdlr_execDueToRunTasksAtDiffPeriodsAndOffsetsOn0TickStart(void)
 
     fn_sdlr_setTickCountSource(fn_getTickCount);
     fn_sdlr_setTaskAttributes(a_stc_tsk_taskList, (uint8_t)3u);
-    for(u8_idx = (uint8_t)0u; u8_idx < 17; u8_idx++)
+    for(uint8_t u8_idx = (uint8_t)0u; u8_idx < 17; u8_idx++)
     {
         fn_sdlr_execute();
     }
@@ -829,7 +822,6 @@ void test_sdlr_executeDueToRunTaskAt3TicksPeriodOnTickRollover(void)
     {
         { true, (uint32_t)3u, (uint32_t)3u, (uint32_t)0u, fn_taskRunner }
     };
-    uint8_t u8_idx = (uint8_t)0u;
 
     /* Run */
     fn_getTickCount_ExpectAndReturn(UINT32_MAX - (uint32_t)3u); /* 4294967292 */
@@ -868,7 +860,7 @@ void test_sdlr_executeDueToRunTaskAt3TicksPeriodOnTickRollover(void)
 
     fn_sdlr_setTickCountSource(fn_getTickCount);
     fn_sdlr_setTaskAttributes(a_stc_tsk_taskList, (uint8_t)1u);
-    for(u8_idx = (uint8_t)0u; u8_idx < 11; u8_idx++)
+    for(uint8_t u8_idx = (uint8_t)0u; u8_idx < 11; u8_idx++)
     {
         fn_sdlr_execute();
     }
