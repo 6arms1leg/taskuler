@@ -14,7 +14,7 @@
 #include "taskList.h"
 #include "ledL.h"
 
-#define F_CPU 16000000L /**< \brief CPU frequency is 16 MHz */
+#define F_CPU 16000000l /**< \brief CPU frequency is 16 MHz */
 
 /** \brief Entry point of Taskuler scheduling example */
 int main(void)

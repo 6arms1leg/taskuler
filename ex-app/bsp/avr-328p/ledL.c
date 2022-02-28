@@ -8,7 +8,7 @@
 
 void fn_ledL_init(void)
 {
-    DDRB |= (uint8_t)( (uint8_t)1U<<DDB5 ); /* Set PORTB5 as output (Arduino
+    DDRB |= (uint8_t)( (uint8_t)1u<<DDB5 ); /* Set PORTB5 as output (Arduino
                                                Uno LED "L") */
 
     return;
@@ -16,21 +16,21 @@ void fn_ledL_init(void)
 
 void fn_ledL_on(void)
 {
-    PORTB |= (uint8_t)( (uint8_t)1U<<PB5 ); /* PORTB5 on */
+    PORTB |= (uint8_t)( (uint8_t)1u<<PB5 ); /* PORTB5 on */
 
     return;
 }
 
 void fn_ledL_off(void)
 {
-    PORTB &= (uint8_t)~( (uint8_t)1U<<PB5 ); /* PORTB5 off */
+    PORTB &= (uint8_t)~( (uint8_t)1u<<PB5 ); /* PORTB5 off */
 
     return;
 }
 
 void fn_ledL_toggle(void)
 {
-    PORTB ^= (uint8_t)( (uint8_t)1U<<PB5 ); /* PORTB5 toggle */
+    PORTB ^= (uint8_t)( (uint8_t)1u<<PB5 ); /* PORTB5 toggle */
 
     return;
 }

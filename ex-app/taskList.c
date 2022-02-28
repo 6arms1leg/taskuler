@@ -17,13 +17,13 @@ static stc_tsk_t a_stc_tsk_pv_taskList[] =
 {
     /* Task 0 */
     { true,
-      (uint32_t)( (uint32_t)2U * U32_TASKULERTIMER_1S ),
+      (uint32_t)( (uint32_t)2u * U32_TASKULERTIMER_1S ),
       U32_TASKULERTIMER_250MS,
       (uint32_t)( U32_TASKULERTIMER_0S - U32_TASKULERTIMER_1S ),
       fn_ledBlkTsk_taskRunner },
     /* Task 1 */
     { true,
-      (uint32_t)( (uint32_t)2U * U32_TASKULERTIMER_1S ),
+      (uint32_t)( (uint32_t)2u * U32_TASKULERTIMER_1S ),
       U32_TASKULERTIMER_250MS,
       U32_TASKULERTIMER_0S,
       fn_ledBlkTsk_taskRunner }

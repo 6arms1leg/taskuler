@@ -42,7 +42,7 @@ The following loosely lists requirements, constraints, features and goals.
   run "normally" within its next period (without impact on the schedule of
   other tasks)
 * Works flawlessly on rollover of its relative system time tick source with
-  type `unsigned integer` that it is connected to
+  unsigned integer type that it is connected to
 
 <!-- Separator -->
 

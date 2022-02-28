@@ -11,7 +11,7 @@
  *
  * Attribute is accessed from an ISR *and* "normal" code, hence `volatile`.
  */
-static volatile uint32_t u32_pv_tickCount = (uint32_t)0U;
+static volatile uint32_t u32_pv_tickCount = (uint32_t)0u;
 
 /* OPERATIONS
  * ==========
@@ -44,7 +44,7 @@ void fn_tmTck_incrementTickCount(void)
 void fn_tmTck_resetTickCount(void)
 {
     TASKULERINTERRUPT_DISABLE(); /* Crit. region start (disable all ISRs) */
-    u32_pv_tickCount = (uint32_t)0U;
+    u32_pv_tickCount = (uint32_t)0u;
     TASKULERINTERRUPT_ENABLE(); /* Crit. region end (enable all ISRs) */
 
     return;

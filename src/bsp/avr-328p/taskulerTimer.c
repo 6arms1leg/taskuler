@@ -12,7 +12,7 @@
  * *= timer0PreloadValue*  
  * *= 2^8 - (16e^6 Hz / 64 / 1e^3 Hz) = 6*
  */
-#define U8_TASKULERTIMER_PRELOAD ( (uint8_t)6U )
+#define U8_TASKULERTIMER_PRELOAD ( (uint8_t)6u )
 
 /* OPERATIONS
  * ==========
@@ -21,9 +21,9 @@
 void fn_tsklrTmr_init(void)
 {
     /* Time resolution ("time tick") shall be 1 ms (= 1e^3 Hz) */
-    TCCR0B |= ( (uint8_t)1U<<CS01 ) | ( (uint8_t)1U<<CS00 ); /* Set prescale
+    TCCR0B |= ( (uint8_t)1u<<CS01 ) | ( (uint8_t)1u<<CS00 ); /* Set prescale
                                                                 value to 64 */
-    TIMSK0 |= ( (uint8_t)1U<<TOIE0 ); /* Enable Timer0 overflow interrupt */
+    TIMSK0 |= ( (uint8_t)1u<<TOIE0 ); /* Enable Timer0 overflow interrupt */
     TCNT0 = U8_TASKULERTIMER_PRELOAD; /* Preload the timer */
 
     return;
