@@ -1,23 +1,12 @@
 /** \file */
 
-/* libc */
-#include <stdbool.h>
+#include "main.h"
 
-/* Include the Taskuler scheduler interface */
-#include "scheduler.h"
-
-/* Include Taskuler BSP interfaces */
-#include "taskulerInterrupt.h"
-#include "timeTick.h"
-
-/* Include application interfaces */
+/* Application interfaces */
 #include "taskList.h"
 #include "ledL.h"
 
-#define F_CPU 16000000l /**< \brief CPU frequency is 16 MHz */
-
-/** \brief Entry point of Taskuler scheduling example */
-int main(void)
+int MAIN(void)
 {
     TASKULERINTERRUPT_DISABLE(); /* Crit. region start (disable all ISRs) */
 
