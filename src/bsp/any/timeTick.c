@@ -11,7 +11,7 @@
  *
  * Attribute is accessed from an ISR *and* "normal" code, hence `volatile`.
  */
-static volatile uint32_t u32_pv_tickCount = (uint32_t)0u;
+static volatile uint32_t u32_pv_tickCount;
 
 /* OPERATIONS
  * ==========

@@ -6,7 +6,7 @@
  * ==========
  */
 
-static volatile uint8_t pv_u8_lockCnt = 0u;
+static volatile uint8_t pv_u8_lockCnt;
 
 /* OPERATIONS
  * ==========
