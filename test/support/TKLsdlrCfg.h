@@ -11,6 +11,6 @@
  *
  * Empty if unused (but must be defined).
  */
-#define TASKULER_TASKOVERRUNHOOK(overrunTask) /* Add custom code here */
+#define TKLSDLRCFG_OVERRUN_HOOK(tsk_) /* Add custom code here */
 
 #endif /* TKLSDLRCFG_H */

@@ -19,7 +19,7 @@ typedef /* Add data type here */ cs1_intReg_t;
  * This is the global memory mapped register that holds the current interrupt
  * status.
  */
-#define CS1_GETINTSTATUS /* Add register name here */
+#define TKLCS1CFG_GET_INT_STATUS /* Add register name here */
 
 /**
  * \brief Deactivate (disable/mask/block) interrupts
@@ -29,13 +29,13 @@ typedef /* Add data type here */ cs1_intReg_t;
  * If some interrupts should stay untouched, they can be skipped (using a logic
  * operator and a bit mask) in the assignment.
  */
-#define CS1_DEACTINT /* Add function call/assignment here */
+#define TKLCS1CFG_DIS_INT /* Add function call/assignment here */
 
 /**
  * \brief Interrupt activation (enable/unmask/unblock) register
  *
  * This is the global memory mapped register that activates interrupts.
  */
-#define CS1_ACTINTREG /* Add register name here */
+#define TKLCS1CFG_ENA_INT_REG /* Add register name here */
 
 #endif /* TKLCS1CFG_H */

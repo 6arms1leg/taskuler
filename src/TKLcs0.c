@@ -16,7 +16,7 @@ void TKLcs0_enter(void)
 {
     pv_u8_lockCnt++; /* Atomic operation (no concurrency issues); must be first
                       */
-    CS0_DISINTS();
+    TKLCS0CFG_DIS_INT();
     assert(0u != pv_u8_lockCnt); /* No rollover must occur */
 
     return;
@@ -29,7 +29,7 @@ void TKLcs0_exit(void)
     pv_u8_lockCnt--;
     if(0u == pv_u8_lockCnt)
     {
-        CS0_ENAINTS();
+        TKLCS0CFG_ENA_INT();
     }
 
     return;

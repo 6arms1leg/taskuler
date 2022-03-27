@@ -13,18 +13,18 @@
  * \{
  * \brief Wrapper to abstract from MCU-/compiler-specific statements
  */
-#define TASKULERINTERRUPT_ENABLE() \
-do                                 \
-{                                  \
-    sei();                         \
-}                                  \
+#define TKLINT_ENA() \
+do                   \
+{                    \
+    sei();           \
+}                    \
 while(false)
 
-#define TASKULERINTERRUPT_DISABLE() \
-do                                  \
-{                                   \
-    cli();                          \
-}                                   \
+#define TKLINT_DIS() \
+do                   \
+{                    \
+    cli();           \
+}                    \
 while(false)
 /** \} */
 

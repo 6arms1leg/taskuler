@@ -14,7 +14,7 @@
  *
  * \{
  */
-#define CS0_DISINTS()                              \
+#define TKLCS0CFG_DIS_INT()                        \
 do                                                 \
 { /* Add code to disable relevant interrupts here, \
    * e.g. `disableAllInterrupts();`                \
@@ -23,7 +23,7 @@ do                                                 \
 }                                                  \
 while(false)
 
-#define CS0_ENAINTS()                             \
+#define TKLCS0CFG_ENA_INT()                       \
 do                                                \
 { /* Add code to enable relevant interrupts here, \
    * e.g. `enableAllInterrupts();`                \

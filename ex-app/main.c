@@ -8,7 +8,7 @@
 
 int MAIN(void)
 {
-    TASKULERINTERRUPT_DISABLE(); /* Crit. region start (disable all ISRs) */
+    TKLINT_DIS(); /* Crit. region start (disable all ISRs) */
 
     /* Initialize application LED */
     led_init();
@@ -20,7 +20,7 @@ int MAIN(void)
     TKLsdlr_setTickSrc(TKLtick_getTick);
     TKLsdlr_setTskLst( TKLtskLst_getTskLst(), TKLtskLst_cntTsk() );
 
-    TASKULERINTERRUPT_ENABLE(); /* Crit. region end (enable all ISRs) */
+    TKLINT_ENA(); /* Crit. region end (enable all ISRs) */
 
     /* Reset time tick count *directly* before starting the scheduler,
      * otherwise first execution might run all tasks (e.g., if all offsets are

@@ -17,14 +17,14 @@
  * *1 timeTick = 1e-3 s (= 1 ms) => 1e3 = 1 s*  
  * Mind max. value of data type!
  */
-#define U32_TASKULERTIMER_0S (0u)
-#define U32_TASKULERTIMER_1MS (1u)
-#define U32_TASKULERTIMER_2MS (2u)
-#define U32_TASKULERTIMER_10MS (10u)
-#define U32_TASKULERTIMER_25MS (25u)
-#define U32_TASKULERTIMER_100MS (100u)
-#define U32_TASKULERTIMER_250MS (250u)
-#define U32_TASKULERTIMER_1S (1000u)
+#define TKLTIMER_0S (0u)
+#define TKLTIMER_1MS (1u)
+#define TKLTIMER_2MS (2u)
+#define TKLTIMER_10MS (10u)
+#define TKLTIMER_25MS (25u)
+#define TKLTIMER_100MS (100u)
+#define TKLTIMER_250MS (250u)
+#define TKLTIMER_1S (1000u)
 /** \} */
 
 /* OPERATIONS

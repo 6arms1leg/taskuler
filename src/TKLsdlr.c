@@ -140,7 +140,7 @@ void TKLsdlr_exec(void)
                     u8_pv_taskOverrunCount++;
 
                     /* Run custom task deadline overrun hook, if defined */
-                    TASKULER_TASKOVERRUNHOOK(
+                    TKLSDLRCFG_OVERRUN_HOOK(
                         a_stc_tsk_taskList[u8_idx].p_fn_taskRunner);
                 }
 

@@ -17,15 +17,15 @@ static stc_tsk_t a_stc_tsk_pv_taskList[] =
 {
     /* Task 0 */
     { true,
-      2u * U32_TASKULERTIMER_1S,
-      U32_TASKULERTIMER_250MS,
-      U32_TASKULERTIMER_0S - U32_TASKULERTIMER_1S,
+      2u * TKLTIMER_1S,
+      TKLTIMER_250MS,
+      TKLTIMER_0S - TKLTIMER_1S,
       TKLtsk_blinkRunner },
     /* Task 1 */
     { true,
-      2u * U32_TASKULERTIMER_1S,
-      U32_TASKULERTIMER_250MS,
-      U32_TASKULERTIMER_0S,
+      2u * TKLTIMER_1S,
+      TKLTIMER_250MS,
+      TKLTIMER_0S,
       TKLtsk_blinkRunner }
 };
 

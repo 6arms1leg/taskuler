@@ -26,9 +26,9 @@ void TKLtick_init(void)
 
 uint32_t TKLtick_getTick(void)
 {
-    TASKULERINTERRUPT_DISABLE(); /* Crit. region start (disable all ISRs) */
+    TKLINT_DIS(); /* Crit. region start (disable all ISRs) */
     const uint32_t u32_tickCount = u32_pv_tickCount;
-    TASKULERINTERRUPT_ENABLE(); /* Crit. region end (enable all ISRs) */
+    TKLINT_ENA(); /* Crit. region end (enable all ISRs) */
 
     return(u32_tickCount);
 }
@@ -43,9 +43,9 @@ void TKLtick_incrTick(void)
 
 void TKLtick_clrTick(void)
 {
-    TASKULERINTERRUPT_DISABLE(); /* Crit. region start (disable all ISRs) */
+    TKLINT_DIS(); /* Crit. region start (disable all ISRs) */
     u32_pv_tickCount = 0u;
-    TASKULERINTERRUPT_ENABLE(); /* Crit. region end (enable all ISRs) */
+    TKLINT_ENA(); /* Crit. region end (enable all ISRs) */
 
     return;
 }
