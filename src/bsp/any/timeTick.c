@@ -44,7 +44,7 @@ void fn_tmTck_incrementTickCount(void)
 void fn_tmTck_resetTickCount(void)
 {
     TASKULERINTERRUPT_DISABLE(); /* Crit. region start (disable all ISRs) */
-    u32_pv_tickCount = (uint32_t)0u;
+    u32_pv_tickCount = 0u;
     TASKULERINTERRUPT_ENABLE(); /* Crit. region end (enable all ISRs) */
 
     return;

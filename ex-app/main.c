@@ -35,5 +35,5 @@ int MAIN(void)
         fn_sdlr_execute(); /* Taskuler scheduling algorithm execution cycle */
     }
 
-    /*return( (int)1 );*/ /* Never reached */
+    /*return(1);*/ /* Never reached */
 }

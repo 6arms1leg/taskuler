@@ -53,7 +53,7 @@ uint8_t fn_sdlr_getTaskOverrunCount(void)
 
 void fn_sdlr_resetTaskOverrunCount(void)
 {
-    u8_pv_taskOverrunCount = (uint8_t)0u;
+    u8_pv_taskOverrunCount = 0u;
 
     return;
 }
@@ -71,7 +71,7 @@ void fn_sdlr_setTaskAct(void (* const p_fn_taskRunner)(void),
     /* Find all tasks (matching function pointer) and set them to on/off
      * (`true`/`false`)
      */
-    for(uint8_t u8_idx = (uint8_t)0u; u8_taskCount > u8_idx; u8_idx++)
+    for(uint8_t u8_idx = 0u; u8_taskCount > u8_idx; u8_idx++)
     {
         if( *p_fn_taskRunner
             == (*a_stc_tsk_taskList[u8_idx].p_fn_taskRunner) )
@@ -109,7 +109,7 @@ void fn_sdlr_execute(void)
      * * check for task deadline overrun and keep count,
      * * if a task was run, end the cycle.
      */
-    for(uint8_t u8_idx = (uint8_t)0u; u8_idx < u8_taskCount; u8_idx++)
+    for(uint8_t u8_idx = 0u; u8_idx < u8_taskCount; u8_idx++)
     {
         /* Check if new execution period for task has started
          * (this is still correct on time tick rollover)
