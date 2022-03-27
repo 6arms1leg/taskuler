@@ -7,11 +7,11 @@
 #include <stdbool.h>
 
 /* Taskuler scheduler interface */
-#include "scheduler.h"
+#include "TKLsdlr.h"
 
 /* Taskuler BSP interfaces */
-#include "taskulerInterrupt.h"
-#include "timeTick.h"
+#include "TKLint.h"
+#include "TKLtick.h"
 
 /* Make `main()` unit testable */
 #ifndef TEST

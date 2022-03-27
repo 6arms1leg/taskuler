@@ -4,10 +4,11 @@
 
 #include "unity.h"
 
-#include "mock_scheduler_testMocks.h"
+#include "mock_TKLtick.h"
+#include "mock_TKLtsk.h"
 
-#include "scheduler.h"
-#include "taskType.h"
+#include "TKLsdlr.h"
+#include "TKLtyp.h"
 
 /* `"` used intentionally.  This allows the user to override and provide his
  * own type definitions before falling back to libc.

@@ -1,7 +1,7 @@
 /** \file */
 
-#ifndef SCHEDULER_H
-#define SCHEDULER_H
+#ifndef TKLSDLR_H
+#define TKLSDLR_H
 
 /* `"` used intentionally.  This allows the user to override and provide his
  * own type definitions before falling back to libc.
@@ -10,8 +10,8 @@
 #include "stddef.h"
 #include "stdbool.h"
 
-#include "taskType.h"
-#include "scheduler_conf.h"
+#include "TKLtyp.h"
+#include "TKLsdlrCfg.h"
 
 /* OPERATIONS
  * ==========
@@ -94,4 +94,4 @@ void fn_sdlr_setTaskAct(void (* const p_fn_taskRunner)(void),
  */
 void fn_sdlr_execute(void);
 
-#endif /* SCHEDULER_H */
+#endif /* TKLSDLR_H */

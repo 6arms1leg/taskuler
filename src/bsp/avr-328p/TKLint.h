@@ -1,7 +1,7 @@
 /** \file */
 
-#ifndef TASKULERINTERRUPT_H
-#define TASKULERINTERRUPT_H
+#ifndef TKLINT_H
+#define TKLINT_H
 
 /* libc */
 #include <stdbool.h>
@@ -28,4 +28,4 @@ do                                  \
 while(false)
 /** \} */
 
-#endif /* TASKULERINTERRUPT_H */
+#endif /* TKLINT_H */

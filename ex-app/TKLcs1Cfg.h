@@ -1,7 +1,7 @@
 /** \file */
 
-#ifndef CS1_CONF_H
-#define CS1_CONF_H
+#ifndef TKLCS1CFG_H
+#define TKLCS1CFG_H
 
 /* libc */
 #include <stdint.h>
@@ -38,4 +38,4 @@ typedef /* Add data type here */ cs1_intReg_t;
  */
 #define CS1_ACTINTREG /* Add register name here */
 
-#endif /* CS1_CONF_H */
+#endif /* TKLCS1CFG_H */

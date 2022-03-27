@@ -1,7 +1,7 @@
 /** \file */
 
-#ifndef CS0_CONF_H
-#define CS0_CONF_H
+#ifndef TKLCS0CFG_H
+#define TKLCS0CFG_H
 
 /* libc */
 #include <stdbool.h>
@@ -33,4 +33,4 @@ do                                                \
 while(false)
 /** \} */
 
-#endif /* CS0_CONF_H */
+#endif /* TKLCS0CFG_H */

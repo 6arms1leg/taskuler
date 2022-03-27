@@ -1,7 +1,7 @@
 /** \file */
 
-#ifndef CS1_H
-#define CS1_H
+#ifndef TKLCS1_H
+#define TKLCS1_H
 
 /* libc
  *
@@ -50,4 +50,4 @@ while(false)
  */
 #define CS1_EXIT() CS1_ACTINTREG = intReg_intStatus_
 
-#endif /* CS1_H */
+#endif /* TKLCS1_H */

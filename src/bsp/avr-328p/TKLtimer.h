@@ -1,14 +1,14 @@
 /** \file */
 
-#ifndef TASKULERTIMER_H
-#define TASKULERTIMER_H
+#ifndef TKLTIMER_H
+#define TKLTIMER_H
 
 /* libc */
 #include <stdint.h>
 #include <avr/io.h> /* Provides easy AVR MCU register access */
 
 /* Include Taskuler BSP interfaces */
-#include "timeTick.h"
+#include "TKLtick.h"
 
 /**
  * \{
@@ -34,4 +34,4 @@
 /** \brief Initialize Arduino Uno’s Timer0 */
 void fn_tsklrTmr_init(void);
 
-#endif /* TASKULERTIMER_H */
+#endif /* TKLTIMER_H */

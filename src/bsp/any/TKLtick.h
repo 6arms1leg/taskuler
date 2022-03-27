@@ -1,14 +1,14 @@
 /** \file */
 
-#ifndef TIMETICK_H
-#define TIMETICK_H
+#ifndef TKLTICK_H
+#define TKLTICK_H
 
 /* libc */
 #include <stdint.h>
 
 /* Include Taskuler BSP interfaces */
-#include "taskulerInterrupt.h"
-#include "taskulerTimer.h"
+#include "TKLint.h"
+#include "TKLtimer.h"
 
 /* OPERATIONS
  * ==========
@@ -38,4 +38,4 @@ void fn_tmTck_incrementTickCount(void);
  */
 void fn_tmTck_resetTickCount(void);
 
-#endif /* TIMETICK_H */
+#endif /* TKLTICK_H */

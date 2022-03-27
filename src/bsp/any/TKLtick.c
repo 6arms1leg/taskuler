@@ -1,6 +1,6 @@
 /** \file */
 
-#include "timeTick.h"
+#include "TKLtick.h"
 
 /* ATTRIBUTES
  * ==========

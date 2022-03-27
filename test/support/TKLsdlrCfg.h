@@ -1,7 +1,7 @@
 /** \file */
 
-#ifndef SCHEDULER_CONF_H
-#define SCHEDULER_CONF_H
+#ifndef TKLSDLRCFG_H
+#define TKLSDLRCFG_H
 
 /* Include interfaces */
 /* Add `#include`s here */
@@ -13,4 +13,4 @@
  */
 #define TASKULER_TASKOVERRUNHOOK(overrunTask) /* Add custom code here */
 
-#endif /* SCHEDULER_CONF_H */
+#endif /* TKLSDLRCFG_H */

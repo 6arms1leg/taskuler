@@ -1,6 +1,6 @@
 /** \file */
 
-#include "ledBlink.h"
+#include "blink.h"
 
 /* OPERATIONS
  * ==========

@@ -1,20 +1,20 @@
 /** \file */
 
-#ifndef TASKLIST_H
-#define TASKLIST_H
+#ifndef TKLTSKLST_H
+#define TKLTSKLST_H
 
 /* libc */
 #include <stdint.h>
 #include <stdbool.h>
 
 /* Include the Taskuler task interface */
-#include "taskType.h"
+#include "TKLtyp.h"
 
 /* Include Taskuler BSP interfaces */
-#include "taskulerTimer.h"
+#include "TKLtimer.h"
 
 /* Include application interfaces */
-#include "ledBlinkTask.h"
+#include "TKLtsk.h"
 
 /* OPERATIONS
  * ==========
@@ -40,4 +40,4 @@ stc_tsk_t* fn_tskLst_getTaskList(void);
  */
 uint8_t fn_tskLst_getTaskCount(void);
 
-#endif /* TASKLIST_H */
+#endif /* TKLTSKLST_H */

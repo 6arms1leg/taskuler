@@ -1,10 +1,10 @@
 /** \file */
 
-#ifndef LEDBLINK_H
-#define LEDBLINK_H
+#ifndef BLINK_H
+#define BLINK_H
 
 /* Include the LED driver interface */
-#include "ledL.h"
+#include "led.h"
 
 /* OPERATIONS
  * ==========
@@ -18,4 +18,4 @@
  */
 void fn_ledBlk_blinkLedL(void);
 
-#endif /* LEDBLINK_H */
+#endif /* BLINK_H */

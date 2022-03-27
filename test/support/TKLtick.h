@@ -1,7 +1,7 @@
 /** \file */
 
-#ifndef SCHEDULER_TESTMOCKS_H
-#define SCHEDULER_TESTMOCKS_H
+#ifndef TKLTICK_H
+#define TKLTICK_H
 
 /* `"` used intentionally.  This allows the user to override and provide his
  * own type definitions before falling back to libc.
@@ -20,15 +20,4 @@
  */
 uint32_t fn_getTickCount(void);
 
-/**
- * \{
- * \brief Function mock to assert expected function calls through pointers to
- * function
- */
-void fn_taskRunner(void);
-void fn_taskRunner0(void);
-void fn_taskRunner1(void);
-void fn_taskRunner2(void);
-/** \} */
-
-#endif /* SCHEDULER_TESTMOCKS_H */
+#endif /* TKLTICK_H */

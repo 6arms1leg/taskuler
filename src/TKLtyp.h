@@ -1,7 +1,7 @@
 /** \file */
 
-#ifndef TASKTYPE_H
-#define TASKTYPE_H
+#ifndef TKLTYP_H
+#define TKLTYP_H
 
 /* `"` used intentionally.  This allows the user to override and provide his
  * own type definitions before falling back to libc.
@@ -46,4 +46,4 @@ typedef struct
                                                runner */
 } stc_tsk_t;
 
-#endif /* TASKTYPE_H */
+#endif /* TKLTYP_H */

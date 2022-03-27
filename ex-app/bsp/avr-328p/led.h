@@ -1,7 +1,7 @@
 /** \file */
 
-#ifndef LEDL_H
-#define LEDL_H
+#ifndef LED_H
+#define LED_H
 
 #include <stdint.h>
 #include <avr/io.h> /* Provides easy AVR MCU register access */
@@ -22,4 +22,4 @@ void fn_ledL_off(void);
 /** \brief Toggle LED status from "off" to "on" and vice versa */
 void fn_ledL_toggle(void);
 
-#endif /* LEDL_H */
+#endif /* LED_H */

@@ -1,7 +1,7 @@
 /** \file */
 
-#ifndef CS0_H
-#define CS0_H
+#ifndef TKLCS0_H
+#define TKLCS0_H
 
 /* libc
  *
@@ -24,4 +24,4 @@ void cs0_enter(void);
 /** \brief Mark end of critical section */
 void cs0_exit(void);
 
-#endif /* CS0_H */
+#endif /* TKLCS0_H */
