@@ -11,15 +11,15 @@
  */
 
 /** \brief Initialize the Arduino Uno LED "L" */
-void fn_ledL_init(void);
+void led_init(void);
 
 /** \brief Turn the LED on */
-void fn_ledL_on(void);
+void led_on(void);
 
 /** \brief Turn the LED off */
-void fn_ledL_off(void);
+void led_off(void);
 
 /** \brief Toggle LED status from "off" to "on" and vice versa */
-void fn_ledL_toggle(void);
+void led_toggle(void);
 
 #endif /* LED_H */

@@ -20,15 +20,15 @@ static volatile uint8_t u8_pv_taskOverrunCount; /**< \brief Task deadline
  * ==========
  */
 
-void fn_sdlr_setTickCountSource( uint32_t (* const p_fn_getTickCount)(void) )
+void TKLsdlr_setTickSrc( uint32_t (* const p_fn_getTickCount)(void) )
 {
     p_fn_pv_getTickCount = p_fn_getTickCount;
 
     return;
 }
 
-void fn_sdlr_setTaskAttributes(stc_tsk_t* const a_stc_tsk_taskList,
-                               const uint8_t u8_taskCount)
+void TKLsdlr_setTskLst(stc_tsk_t* const a_stc_tsk_taskList,
+                       const uint8_t u8_taskCount)
 {
     a_stc_tsk_pv_taskList = a_stc_tsk_taskList;
     u8_pv_taskCount = u8_taskCount;
@@ -36,31 +36,31 @@ void fn_sdlr_setTaskAttributes(stc_tsk_t* const a_stc_tsk_taskList,
     return;
 }
 
-stc_tsk_t* fn_sdlr_getTaskList(void)
+stc_tsk_t* TKLsdlr_getTskLst(void)
 {
     return(a_stc_tsk_pv_taskList);
 }
 
-uint8_t fn_sdlr_getTaskCount(void)
+uint8_t TKLsdlr_cntTsk(void)
 {
     return(u8_pv_taskCount);
 }
 
-uint8_t fn_sdlr_getTaskOverrunCount(void)
+uint8_t TKLsdlr_cntTskOverrun(void)
 {
     return(u8_pv_taskOverrunCount);
 }
 
-void fn_sdlr_resetTaskOverrunCount(void)
+void TKLsdlr_clrTskOverrun(void)
 {
     u8_pv_taskOverrunCount = 0u;
 
     return;
 }
 
-void fn_sdlr_setTaskAct(void (* const p_fn_taskRunner)(void),
-                        const bool b_active,
-                        const bool b_updateLastRun)
+void TKLsdlr_setTskAct(void (* const p_fn_taskRunner)(void),
+                       const bool b_active,
+                       const bool b_updateLastRun)
 {
     /* Set pointer to task list’s list */
     stc_tsk_t* const a_stc_tsk_taskList = a_stc_tsk_pv_taskList;
@@ -90,7 +90,7 @@ void fn_sdlr_setTaskAct(void (* const p_fn_taskRunner)(void),
     return;
 }
 
-void fn_sdlr_execute(void)
+void TKLsdlr_exec(void)
 {
     /* Set pointer to task list’s list */
     stc_tsk_t* const a_stc_tsk_taskList = a_stc_tsk_pv_taskList;

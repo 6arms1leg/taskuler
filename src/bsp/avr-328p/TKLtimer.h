@@ -32,6 +32,6 @@
  */
 
 /** \brief Initialize Arduino Uno’s Timer0 */
-void fn_tsklrTmr_init(void);
+void TKLtimer_init(void);
 
 #endif /* TKLTIMER_H */

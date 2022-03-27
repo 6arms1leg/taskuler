@@ -20,25 +20,25 @@ static stc_tsk_t a_stc_tsk_pv_taskList[] =
       2u * U32_TASKULERTIMER_1S,
       U32_TASKULERTIMER_250MS,
       U32_TASKULERTIMER_0S - U32_TASKULERTIMER_1S,
-      fn_ledBlkTsk_taskRunner },
+      TKLtsk_blinkRunner },
     /* Task 1 */
     { true,
       2u * U32_TASKULERTIMER_1S,
       U32_TASKULERTIMER_250MS,
       U32_TASKULERTIMER_0S,
-      fn_ledBlkTsk_taskRunner }
+      TKLtsk_blinkRunner }
 };
 
 /* OPERATIONS
  * ==========
  */
 
-stc_tsk_t* fn_tskLst_getTaskList(void)
+stc_tsk_t* TKLtskLst_getTskLst(void)
 {
     return(a_stc_tsk_pv_taskList);
 }
 
-uint8_t fn_tskLst_getTaskCount(void)
+uint8_t TKLtskLst_cntTsk(void)
 {
     /* Evaluated at compile time */
     return( (uint8_t)( sizeof(a_stc_tsk_pv_taskList)

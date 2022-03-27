@@ -18,6 +18,6 @@
  *
  * \return Relative system time tick count
  */
-uint32_t fn_getTickCount(void);
+uint32_t TKLtick_getTick(void);
 
 #endif /* TKLTICK_H */

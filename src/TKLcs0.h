@@ -19,9 +19,9 @@
  */
 
 /** \brief Mark start of critical section */
-void cs0_enter(void);
+void TKLcs0_enter(void);
 
 /** \brief Mark end of critical section */
-void cs0_exit(void);
+void TKLcs0_exit(void);
 
 #endif /* TKLCS0_H */

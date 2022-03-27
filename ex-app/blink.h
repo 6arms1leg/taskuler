@@ -16,6 +16,6 @@
  * Essentially, this toggles the LED status from "off" to "on" and vice versa.
  * Calling it twice gives the blink effect.
  */
-void fn_ledBlk_blinkLedL(void);
+void blink_toggleLed(void);
 
 #endif /* BLINK_H */

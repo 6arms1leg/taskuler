@@ -11,15 +11,14 @@ int MAIN(void)
     TASKULERINTERRUPT_DISABLE(); /* Crit. region start (disable all ISRs) */
 
     /* Initialize application LED */
-    fn_ledL_init();
+    led_init();
 
     /* Initialize Taskuler BSP’s relative system time tick */
-    fn_tmTck_init();
+    TKLtick_init();
 
     /* Initialize Taskuler */
-    fn_sdlr_setTickCountSource(fn_tmTck_getTickCount);
-    fn_sdlr_setTaskAttributes( fn_tskLst_getTaskList(),
-                               fn_tskLst_getTaskCount() );
+    TKLsdlr_setTickSrc(TKLtick_getTick);
+    TKLsdlr_setTskLst( TKLtskLst_getTskLst(), TKLtskLst_cntTsk() );
 
     TASKULERINTERRUPT_ENABLE(); /* Crit. region end (enable all ISRs) */
 
@@ -28,11 +27,11 @@ int MAIN(void)
      * 0 and current tick count is already larger than biggest period in
      * tasklist), potentially messing up the schedulability
      */
-    fn_tmTck_resetTickCount();
+    TKLtick_clrTick();
 
     while(true) /* Main endless loop */
     {
-        fn_sdlr_execute(); /* Taskuler scheduling algorithm execution cycle */
+        TKLsdlr_exec(); /* Taskuler scheduling algorithm execution cycle */
     }
 
     /*return(1);*/ /* Never reached */

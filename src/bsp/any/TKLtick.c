@@ -17,14 +17,14 @@ static volatile uint32_t u32_pv_tickCount;
  * ==========
  */
 
-void fn_tmTck_init(void)
+void TKLtick_init(void)
 {
-    fn_tsklrTmr_init(); /* Call initialization of the MCU timer */
+    TKLtimer_init(); /* Call initialization of the MCU timer */
 
     return;
 }
 
-uint32_t fn_tmTck_getTickCount(void)
+uint32_t TKLtick_getTick(void)
 {
     TASKULERINTERRUPT_DISABLE(); /* Crit. region start (disable all ISRs) */
     const uint32_t u32_tickCount = u32_pv_tickCount;
@@ -33,7 +33,7 @@ uint32_t fn_tmTck_getTickCount(void)
     return(u32_tickCount);
 }
 
-void fn_tmTck_incrementTickCount(void)
+void TKLtick_incrTick(void)
 {
     /* No crit. region needed, only called from rel. system time tick ISR */
     u32_pv_tickCount++;
@@ -41,7 +41,7 @@ void fn_tmTck_incrementTickCount(void)
     return;
 }
 
-void fn_tmTck_resetTickCount(void)
+void TKLtick_clrTick(void)
 {
     TASKULERINTERRUPT_DISABLE(); /* Crit. region start (disable all ISRs) */
     u32_pv_tickCount = 0u;

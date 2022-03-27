@@ -6,9 +6,9 @@
  * ==========
  */
 
-void fn_ledBlk_blinkLedL(void)
+void blink_toggleLed(void)
 {
-    fn_ledL_toggle(); /* Call the "toggle" LED driver function */
+    led_toggle(); /* Call the "toggle" LED driver function */
 
     return;
 }

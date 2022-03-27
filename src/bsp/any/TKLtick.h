@@ -15,17 +15,17 @@
  */
 
 /** \brief Initialize the Time Tick module */
-void fn_tmTck_init(void);
+void TKLtick_init(void);
 
 /**
  * \brief Initialize the Time Tick module
  *
  * \return Current relative system time tick count
  */
-uint32_t fn_tmTck_getTickCount(void);
+uint32_t TKLtick_getTick(void);
 
 /** \brief Increment the Time Tick module’s relative system time tick count */
-void fn_tmTck_incrementTickCount(void);
+void TKLtick_incrTick(void);
 
 /**
  * \brief Reset the Time Tick module’s relative system time tick count
@@ -36,6 +36,6 @@ void fn_tmTck_incrementTickCount(void);
  * the time tick count has progressed far enough), as this can cause
  * schedulability issues.
  */
-void fn_tmTck_resetTickCount(void);
+void TKLtick_clrTick(void);
 
 #endif /* TKLTICK_H */

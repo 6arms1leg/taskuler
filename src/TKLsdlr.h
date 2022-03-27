@@ -29,7 +29,7 @@
  * * the access of this variable is atomic, or
  * * this access function is implemented with a critical region pattern inside.
  */
-void fn_sdlr_setTickCountSource( uint32_t (* const p_fn_getTickCount)(void) );
+void TKLsdlr_setTickSrc( uint32_t (* const p_fn_getTickCount)(void) );
 
 /**
  * \brief Registers a task list with the scheduler
@@ -37,17 +37,17 @@ void fn_sdlr_setTickCountSource( uint32_t (* const p_fn_getTickCount)(void) );
  * \param p_a_stc_tsk_taskList Task list
  * \param u8_taskCount Number of tasks within the provided task list
  */
-void fn_sdlr_setTaskAttributes(stc_tsk_t* const p_a_stc_tsk_taskList,
-                               const uint8_t u8_taskCount);
+void TKLsdlr_setTskLst(stc_tsk_t* const p_a_stc_tsk_taskList,
+                       const uint8_t u8_taskCount);
 
 /**
  * \brief Get task list that is registered with the scheduler
  *
  * \return Task list that is registered with the scheduler
  *
- * \see fn_sdlr_setTaskAttributes()
+ * \see TKLsdlr_setTaskAttributes()
  */
-stc_tsk_t* fn_sdlr_getTaskList(void);
+stc_tsk_t* TKLsdlr_getTskLst(void);
 
 /**
  * \brief Get number of tasks within the task list that is registered with the
@@ -56,19 +56,19 @@ stc_tsk_t* fn_sdlr_getTaskList(void);
  * \return Number of tasks within task the list that is registered with the
  * scheduler
  *
- * \see fn_sdlr_setTaskAttributes()
+ * \see TKLsdlr_setTaskAttributes()
  */
-uint8_t fn_sdlr_getTaskCount(void);
+uint8_t TKLsdlr_cntTsk(void);
 
 /**
  * \brief Get number of task deadline overruns
  *
  * \return Number of task deadline overruns
  */
-uint8_t fn_sdlr_getTaskOverrunCount(void);
+uint8_t TKLsdlr_cntTskOverrun(void);
 
 /** \brief Reset Task deadline overrun counter */
-void fn_sdlr_resetTaskOverrunCount(void);
+void TKLsdlr_clrTskOverrun(void);
 
 /**
  * \brief Activate/deactivate a task within the task list that is registered
@@ -82,9 +82,9 @@ void fn_sdlr_resetTaskOverrunCount(void);
  * This is useful to start a timer (i.e., a one-shot task that deactives itself
  * at the end of its execution).
  */
-void fn_sdlr_setTaskAct(void (* const p_fn_taskRunner)(void),
-                        const bool b_active,
-                        const bool b_updateLastRun);
+void TKLsdlr_setTskAct(void (* const p_fn_taskRunner)(void),
+                       const bool b_active,
+                       const bool b_updateLastRun);
 
 /**
  * \brief Scheduling algorithm execution cycle
@@ -92,6 +92,6 @@ void fn_sdlr_setTaskAct(void (* const p_fn_taskRunner)(void),
  * This function needs to be called from within the main `while(true)` endless
  * loop.
  */
-void fn_sdlr_execute(void);
+void TKLsdlr_exec(void);
 
 #endif /* TKLSDLR_H */

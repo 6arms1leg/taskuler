@@ -12,10 +12,10 @@
  * \brief Function mock to assert expected function calls through pointers to
  * function
  */
-void fn_taskRunner(void);
-void fn_taskRunner0(void);
-void fn_taskRunner1(void);
-void fn_taskRunner2(void);
+void TKLtsk_runner(void);
+void TKLtsk_runner0(void);
+void TKLtsk_runner1(void);
+void TKLtsk_runner2(void);
 /** \} */
 
 #endif /* TKLTSK_H */

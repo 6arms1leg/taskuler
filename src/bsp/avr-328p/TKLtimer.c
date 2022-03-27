@@ -18,7 +18,7 @@
  * ==========
  */
 
-void fn_tsklrTmr_init(void)
+void TKLtimer_init(void)
 {
     /* Time resolution ("time tick") shall be 1 ms (= 1e^3 Hz) */
     TCCR0B |= (1u<<CS01) | (1u<<CS00); /* Set prescale value to 64 */
@@ -36,7 +36,7 @@ void fn_tsklrTmr_init(void)
 ISR(TIMER0_OVF_vect)
 {
     TCNT0 = U8_TASKULERTIMER_PRELOAD; /* Preload the timer */
-    fn_tmTck_incrementTickCount();
+    TKLtick_incrTick();
 
     return;
 }

@@ -28,7 +28,7 @@
  *
  * \return Pointer to task list
  */
-stc_tsk_t* fn_tskLst_getTaskList(void);
+stc_tsk_t* TKLtskLst_getTskLst(void);
 
 /**
  * \brief Retrieve number of tasks in task list
@@ -38,6 +38,6 @@ stc_tsk_t* fn_tskLst_getTaskList(void);
  *
  * \return Number of tasks in task list
  */
-uint8_t fn_tskLst_getTaskCount(void);
+uint8_t TKLtskLst_cntTsk(void);
 
 #endif /* TKLTSKLST_H */

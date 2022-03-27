@@ -6,9 +6,9 @@
  * ==========
  */
 
-void fn_ledBlkTsk_taskRunner(void)
+void TKLtsk_blinkRunner(void)
 {
-    fn_ledBlk_blinkLedL(); /* Call blink function of the LED Blink module */
+    blink_toggleLed(); /* Call blink function of the LED Blink module */
 
     return;
 }

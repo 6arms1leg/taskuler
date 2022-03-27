@@ -11,6 +11,6 @@
  */
 
 /** \brief Task runner that executes the LED Blink module */
-void fn_ledBlkTsk_taskRunner(void);
+void TKLtsk_blinkRunner(void);
 
 #endif /* TKLTSK_H */
