@@ -24,7 +24,7 @@
  * This must be called exactly once in each local (function) scope before the
  * start of the first critical section.
  */
-#define TKLCS1_INIT() cs1_intReg_t intReg_intStatus_
+#define TKLCS1_INIT() TKLcs1Cfg_intReg_t intReg_intStatus_
 
 /**
  * \brief Mark start of critical section

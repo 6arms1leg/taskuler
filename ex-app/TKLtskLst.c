@@ -13,7 +13,7 @@
  * (not `0`!), offset (last run), and the pointer to function to be executed
  * (i.e., task runner).
  */
-static stc_tsk_t a_stc_tsk_pv_taskList[] =
+static TKLtyp_tsk_t a_stc_tsk_pv_taskList[] =
 {
     /* Task 0 */
     { true,
@@ -33,7 +33,7 @@ static stc_tsk_t a_stc_tsk_pv_taskList[] =
  * ==========
  */
 
-stc_tsk_t* TKLtskLst_getTskLst(void)
+TKLtyp_tsk_t* TKLtskLst_getTskLst(void)
 {
     return(a_stc_tsk_pv_taskList);
 }

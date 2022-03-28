@@ -44,6 +44,6 @@ typedef struct
                                         *]0, period[*. */
     void (* const p_fn_taskRunner)(void); /**< \brief Function pointer to task
                                                runner */
-} stc_tsk_t;
+} TKLtyp_tsk_t;
 
 #endif /* TKLTYP_H */

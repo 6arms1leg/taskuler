@@ -9,8 +9,8 @@
 static uint32_t (*p_fn_pv_getTickCount)(void);
     /**< \brief Pointer to access function that provides the current relative
          system time tick count */
-static stc_tsk_t* volatile a_stc_tsk_pv_taskList; /**< \brief Registered task
-                                                       list */
+static TKLtyp_tsk_t* volatile a_stc_tsk_pv_taskList; /**< \brief Registered
+                                                          task list */
 static volatile uint8_t u8_pv_taskCount; /**< \brief Number of tasks within
                                               registered task list */
 static volatile uint8_t u8_pv_taskOverrunCount; /**< \brief Task deadline
@@ -27,7 +27,7 @@ void TKLsdlr_setTickSrc( uint32_t (* const p_fn_getTickCount)(void) )
     return;
 }
 
-void TKLsdlr_setTskLst(stc_tsk_t* const a_stc_tsk_taskList,
+void TKLsdlr_setTskLst(TKLtyp_tsk_t* const a_stc_tsk_taskList,
                        const uint8_t u8_taskCount)
 {
     a_stc_tsk_pv_taskList = a_stc_tsk_taskList;
@@ -36,7 +36,7 @@ void TKLsdlr_setTskLst(stc_tsk_t* const a_stc_tsk_taskList,
     return;
 }
 
-stc_tsk_t* TKLsdlr_getTskLst(void)
+TKLtyp_tsk_t* TKLsdlr_getTskLst(void)
 {
     return(a_stc_tsk_pv_taskList);
 }
@@ -63,7 +63,7 @@ void TKLsdlr_setTskAct(void (* const p_fn_taskRunner)(void),
                        const bool b_updateLastRun)
 {
     /* Set pointer to task list’s list */
-    stc_tsk_t* const a_stc_tsk_taskList = a_stc_tsk_pv_taskList;
+    TKLtyp_tsk_t* const a_stc_tsk_taskList = a_stc_tsk_pv_taskList;
 
     /* Number of tasks in task list */
     const uint8_t u8_taskCount = u8_pv_taskCount;
@@ -93,7 +93,7 @@ void TKLsdlr_setTskAct(void (* const p_fn_taskRunner)(void),
 void TKLsdlr_exec(void)
 {
     /* Set pointer to task list’s list */
-    stc_tsk_t* const a_stc_tsk_taskList = a_stc_tsk_pv_taskList;
+    TKLtyp_tsk_t* const a_stc_tsk_taskList = a_stc_tsk_pv_taskList;
 
     /* Number of tasks in task list */
     const uint8_t u8_taskCount = u8_pv_taskCount;

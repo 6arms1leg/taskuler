@@ -64,7 +64,7 @@ void test_TKLsdlr_checkUintTickRolloverArith(void)
 /** \brief Test if relative system time tick count source is set correctly */
 void test_TKLsdlr_setTickSrc(void)
 {
-    stc_tsk_t a_stc_tsk_taskList[] =
+    TKLtyp_tsk_t a_stc_tsk_taskList[] =
     {
         { false, 1u, 1u, 0u, TKLtsk_runner }
     };
@@ -89,9 +89,9 @@ void test_TKLsdlr_initTskLstToNull(void)
 /** \brief Test if task list is set and returned correctly */
 void test_TKLsdlr_setAndReturnTskLst(void)
 {
-    stc_tsk_t stc_tsk_taskListExpected = {false, 1u, 1u, 0u, TKLtsk_runner};
-    stc_tsk_t* const p_stc_tsk_taskListExpected = &stc_tsk_taskListExpected;
-    stc_tsk_t* p_stc_tsk_taskListActual = NULL;
+    TKLtyp_tsk_t stc_tsk_taskListExpected = {false, 1u, 1u, 0u, TKLtsk_runner};
+    TKLtyp_tsk_t* const p_stc_tsk_taskListExpected = &stc_tsk_taskListExpected;
+    TKLtyp_tsk_t* p_stc_tsk_taskListActual = NULL;
 
     TKLsdlr_setTskLst(p_stc_tsk_taskListExpected, 1u);
     p_stc_tsk_taskListActual = TKLsdlr_getTskLst();
@@ -120,7 +120,7 @@ void test_TKLsdlr_initTskCntTo0(void)
  */
 void test_TKLsdlr_setAndReturnTskCnt(void)
 {
-    stc_tsk_t stc_tsk_taskList = {false, 1u, 1u, 0u, TKLtsk_runner};
+    TKLtyp_tsk_t stc_tsk_taskList = {false, 1u, 1u, 0u, TKLtsk_runner};
     const uint8_t u8_taskCountExpected = 1u;
     uint8_t u8_taskCountActual = 0u;
 
@@ -149,7 +149,7 @@ void test_TKLsdlr_initTskOverrunCntTo0(void)
  */
 void test_TKLsdlr_checkFirstLateSdlrExecIsNoTskOverrun(void)
 {
-    stc_tsk_t a_stc_tsk_taskList[] =
+    TKLtyp_tsk_t a_stc_tsk_taskList[] =
     {
         { true, 100u, 100u, 0u, TKLtsk_runner }
     };
@@ -174,7 +174,7 @@ void test_TKLsdlr_checkFirstLateSdlrExecIsNoTskOverrun(void)
  */
 void test_TKLsdlr_detectAndCntSingleTskOverrun(void)
 {
-    stc_tsk_t a_stc_tsk_taskList[] =
+    TKLtyp_tsk_t a_stc_tsk_taskList[] =
     {
         { true, 100u, 50u, 0u, TKLtsk_runner }
     };
@@ -199,7 +199,7 @@ void test_TKLsdlr_detectAndCntSingleTskOverrun(void)
  */
 void test_TKLsdlr_detectAndCntMultiTskOverrun(void)
 {
-    stc_tsk_t a_stc_tsk_taskList[] =
+    TKLtyp_tsk_t a_stc_tsk_taskList[] =
     {
         { true, 100u, 100u, 0u, TKLtsk_runner }
     };
@@ -238,7 +238,7 @@ void test_TKLsdlr_detectAndCntMultiTskOverrun(void)
  */
 void test_TKLsdlr_detectAndCntMultiTskOverrunOnTickRollover(void)
 {
-    stc_tsk_t a_stc_tsk_taskList[] =
+    TKLtyp_tsk_t a_stc_tsk_taskList[] =
     {
         { true, 100u, 100u, 0u, TKLtsk_runner }
     };
@@ -281,7 +281,7 @@ void test_TKLsdlr_detectAndCntMultiTskOverrunOnTickRollover(void)
  */
 void test_TKLsdlr_detectAndCntSingleTskOverrunOnInconvTickRollover(void)
 {
-    stc_tsk_t a_stc_tsk_taskList[] =
+    TKLtyp_tsk_t a_stc_tsk_taskList[] =
     {
         /* Last run (offset) is 4294967095 */
         { true, 100u, 100u,
@@ -306,7 +306,7 @@ void test_TKLsdlr_detectAndCntSingleTskOverrunOnInconvTickRollover(void)
 /** \brief Test if task deadline overrun count is reset correctly */
 void test_TKLsdlr_clearTskOverrun(void)
 {
-    stc_tsk_t a_stc_tsk_taskList[] =
+    TKLtyp_tsk_t a_stc_tsk_taskList[] =
     {
         { true, 10u, 10u, 0u, TKLtsk_runner }
     };
@@ -336,7 +336,7 @@ void test_TKLsdlr_clearTskOverrun(void)
 /** \brief Test if single task is enabled correctly */
 void test_TKLsdlr_enaSingleTsk(void)
 {
-    stc_tsk_t a_stc_tsk_taskList[] =
+    TKLtyp_tsk_t a_stc_tsk_taskList[] =
     {
         { false, 1u, 1u, 0u, TKLtsk_runner }
     };
@@ -353,7 +353,7 @@ void test_TKLsdlr_enaSingleTsk(void)
 /** \brief Test if single task is disabled correctly */
 void test_TKLsdlr_disSingleTsk(void)
 {
-    stc_tsk_t a_stc_tsk_taskList[] =
+    TKLtyp_tsk_t a_stc_tsk_taskList[] =
     {
         { true, 1u, 1u, 0u, TKLtsk_runner }
     };
@@ -374,7 +374,7 @@ void test_TKLsdlr_disSingleTsk(void)
 void test_TKLsdlr_enaAndDisMultiSameTsk(void)
 {
     const bool b_untouched = false;
-    stc_tsk_t a_stc_tsk_taskList[] =
+    TKLtyp_tsk_t a_stc_tsk_taskList[] =
     {
         { true, 1u, 1u, 0u, TKLtsk_runner0 },
         { false, 1u, 1u, 0u, TKLtsk_runner1 },
@@ -410,7 +410,7 @@ void test_TKLsdlr_enaAndDisMultiSameTsk(void)
 /** \brief Test if time stamp of last task run is updated correctly */
 void test_TKLsdlr_updateSingleTskLastRun(void)
 {
-    stc_tsk_t a_stc_tsk_taskList[] =
+    TKLtyp_tsk_t a_stc_tsk_taskList[] =
     {
         { false, 1u, 1u, 0u, TKLtsk_runner }
     };
@@ -434,7 +434,7 @@ void test_TKLsdlr_updateSingleTskLastRun(void)
  */
 void test_TKLsdlr_execDueToRunTskAt1TickPeriodOn0TickStart(void)
 {
-    stc_tsk_t a_stc_tsk_taskList[] =
+    TKLtyp_tsk_t a_stc_tsk_taskList[] =
     {
         { true, 1u, 1u, 0u, TKLtsk_runner }
     };
@@ -473,7 +473,7 @@ void test_TKLsdlr_execDueToRunTskAt1TickPeriodOn0TickStart(void)
  */
 void test_TKLsdlr_execDueToRunTskAt2TicksPeriodOnNon0TickStart(void)
 {
-    stc_tsk_t a_stc_tsk_taskList[] =
+    TKLtyp_tsk_t a_stc_tsk_taskList[] =
     {
         { true, 2u, 2u, 0u, TKLtsk_runner }
     };
@@ -512,7 +512,7 @@ void test_TKLsdlr_execDueToRunTskAt2TicksPeriodOnNon0TickStart(void)
  */
 void test_TKLsdlr_execDueToRunTskAt2TicksPeriodOnNon0TickStartAndTickLoss(void)
 {
-    stc_tsk_t a_stc_tsk_taskList[] =
+    TKLtyp_tsk_t a_stc_tsk_taskList[] =
     {
         { true, 2u, 2u, 0u, TKLtsk_runner }
     };
@@ -551,7 +551,7 @@ void test_TKLsdlr_execDueToRunTskAt2TicksPeriodOnNon0TickStartAndTickLoss(void)
  */
 void test_TKLsdlr_execDueToRunTskAtDiffPeriodOnNon0TickStartAndTickLoss(void)
 {
-    stc_tsk_t a_stc_tsk_taskList[] =
+    TKLtyp_tsk_t a_stc_tsk_taskList[] =
     {
         { true, 3u, 3u, 0u, TKLtsk_runner0 },
         { true, 4u, 4u, 0u, TKLtsk_runner1 },
@@ -621,7 +621,7 @@ void test_TKLsdlr_execDueToRunTskAtDiffPeriodOnNon0TickStartAndTickLoss(void)
  */
 void test_TKLsdlr_execDueToRunTskAtDiffPeriodAndOffsetOn0TickStart(void)
 {
-    stc_tsk_t a_stc_tsk_taskList[] =
+    TKLtyp_tsk_t a_stc_tsk_taskList[] =
     {
         /* Run at: 10, 40, 70, 100, ... */
         { true,
@@ -717,7 +717,7 @@ void test_TKLsdlr_execDueToRunTskAtDiffPeriodAndOffsetOn0TickStart(void)
 /** \brief Test that task runner of disabled task is not run */
 void test_TKLsdlr_checkRunnerOfDisTskIsNotRun(void)
 {
-    stc_tsk_t a_stc_tsk_taskList[] =
+    TKLtyp_tsk_t a_stc_tsk_taskList[] =
     {
         /* If task runner is run, test will fail (as it should), complaining
          * that function `TKLtsk_runner` is called more times than expected
@@ -742,7 +742,7 @@ void test_TKLsdlr_checkRunnerOfDisTskIsNotRun(void)
 /** \brief Test that `lastRun` value of disabled task is still updated */
 void test_TKLsdlr_checkLastRunOfDisTskIsStillUpdated(void)
 {
-    stc_tsk_t a_stc_tsk_taskList[] =
+    TKLtyp_tsk_t a_stc_tsk_taskList[] =
     {
         { false, 10u, 10u, 0u, TKLtsk_runner }
     };
@@ -766,7 +766,7 @@ void test_TKLsdlr_checkLastRunOfDisTskIsStillUpdated(void)
  */
 void test_TKLsdlr_checkLastRunIsAlwaysSetToBeginOfPeriod(void)
 {
-    stc_tsk_t a_stc_tsk_taskList[] =
+    TKLtyp_tsk_t a_stc_tsk_taskList[] =
     {
         { true, 10u, 10u, 0u, TKLtsk_runner }
     };
@@ -794,7 +794,7 @@ void test_TKLsdlr_checkLastRunIsAlwaysSetToBeginOfPeriod(void)
  */
 void test_TKLsdlr_execDueToRunTskAt3TickPeriodOnTickRollover(void)
 {
-    stc_tsk_t a_stc_tsk_taskList[] =
+    TKLtyp_tsk_t a_stc_tsk_taskList[] =
     {
         { true, 3u, 3u, 0u, TKLtsk_runner }
     };

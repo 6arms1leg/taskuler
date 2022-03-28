@@ -11,7 +11,7 @@
             interrupt driver interface */
 
 /** \brief Interrupt register type/size of target MCU */
-typedef /* Add data type here */ cs1_intReg_t;
+typedef /* Add data type here */ TKLcs1Cfg_intReg_t;
 
 /**
  * \brief Current interrupt status register

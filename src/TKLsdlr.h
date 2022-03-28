@@ -37,7 +37,7 @@ void TKLsdlr_setTickSrc( uint32_t (* const p_fn_getTickCount)(void) );
  * \param p_a_stc_tsk_taskList Task list
  * \param u8_taskCount Number of tasks within the provided task list
  */
-void TKLsdlr_setTskLst(stc_tsk_t* const p_a_stc_tsk_taskList,
+void TKLsdlr_setTskLst(TKLtyp_tsk_t* const p_a_stc_tsk_taskList,
                        const uint8_t u8_taskCount);
 
 /**
@@ -47,7 +47,7 @@ void TKLsdlr_setTskLst(stc_tsk_t* const p_a_stc_tsk_taskList,
  *
  * \see TKLsdlr_setTaskAttributes()
  */
-stc_tsk_t* TKLsdlr_getTskLst(void);
+TKLtyp_tsk_t* TKLsdlr_getTskLst(void);
 
 /**
  * \brief Get number of tasks within the task list that is registered with the
