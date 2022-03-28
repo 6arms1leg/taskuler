@@ -9,6 +9,9 @@
 #include "stdint.h"
 #include "stdbool.h"
 
+/** \brief Task runner function signature */
+typedef void (* TKLtyp_p_tskRunner_t)(void);
+
 /** \brief Defines parameters needed by scheduler for scheduled task execution */
 typedef struct
 {
@@ -39,8 +42,8 @@ typedef struct
                                     left by *delta* by defining an offset *0 -
                                     delta*.  The useful range for the offset
                                     *delta* is *]0, period[*. */
-    void (* const p_fn_taskRunner)(void); /**< \brief Function pointer to task
-                                               runner */
+    const TKLtyp_p_tskRunner_t p_tskRunner; /**< \brief Function pointer to task
+                                                 runner */
 } TKLtyp_tsk_t;
 
 #endif /* TKLTYP_H */

@@ -6,7 +6,7 @@
  * ==========
  */
 
-static uint32_t (*p_fn_pv_getTickCount)(void);
+static TKLtyp_p_getTick_t pv_p_getTick;
     /**< \brief Pointer to access function that provides the current relative
          system time tick count */
 static TKLtyp_tsk_t* volatile a_stc_tsk_pv_taskList; /**< \brief Registered
@@ -20,9 +20,9 @@ static volatile uint8_t u8_pv_taskOverrunCount; /**< \brief Task deadline
  * ==========
  */
 
-void TKLsdlr_setTickSrc( uint32_t (* const p_fn_getTickCount)(void) )
+void TKLsdlr_setTickSrc(const TKLtyp_p_getTick_t p_getTick)
 {
-    p_fn_pv_getTickCount = p_fn_getTickCount;
+    pv_p_getTick = p_getTick;
 
     return;
 }
@@ -58,7 +58,7 @@ void TKLsdlr_clrTskOverrun(void)
     return;
 }
 
-void TKLsdlr_setTskAct(void (* const p_fn_taskRunner)(void),
+void TKLsdlr_setTskAct(const TKLtyp_p_tskRunner_t p_tskRunner,
                        const bool b_active,
                        const bool b_updateLastRun)
 {
@@ -73,16 +73,14 @@ void TKLsdlr_setTskAct(void (* const p_fn_taskRunner)(void),
      */
     for(uint8_t u8_idx = 0u; u8_taskCount > u8_idx; u8_idx++)
     {
-        if( *p_fn_taskRunner
-            == (*a_stc_tsk_taskList[u8_idx].p_fn_taskRunner) )
+        if( *p_tskRunner == (*a_stc_tsk_taskList[u8_idx].p_tskRunner) )
         {
             a_stc_tsk_taskList[u8_idx].active = b_active;
 
             /* Update time stamp of last task run, if requested */
             if(true == b_updateLastRun)
             {
-                a_stc_tsk_taskList[u8_idx].lastRun =
-                    (*p_fn_pv_getTickCount)();
+                a_stc_tsk_taskList[u8_idx].lastRun = (*pv_p_getTick)();
             }
         } /* if(...) */
     } /* for(...) */
@@ -99,7 +97,7 @@ void TKLsdlr_exec(void)
     const uint8_t u8_taskCount = u8_pv_taskCount;
 
     /* Get current time tick count */
-    const uint32_t u32_tickCount = (*p_fn_pv_getTickCount)();
+    const uint32_t u32_tickCount = (*pv_p_getTick)();
 
     /* Loop through all tasks in task list.
      * During one full loop ("cycle")
@@ -127,12 +125,12 @@ void TKLsdlr_exec(void)
             if(true == a_stc_tsk_taskList[u8_idx].active)
             {
                 /* Run periodic task */
-                (*a_stc_tsk_taskList[u8_idx].p_fn_taskRunner)();
+                (*a_stc_tsk_taskList[u8_idx].p_tskRunner)();
 
                 /* Check for task deadline overrun
                  * (this is still correct on time tick rollover)
                  */
-                if( ( (*p_fn_pv_getTickCount)()
+                if( ( (*pv_p_getTick)()
                       - a_stc_tsk_taskList[u8_idx].lastRun )
                     > a_stc_tsk_taskList[u8_idx].deadline )
                 {
@@ -141,7 +139,7 @@ void TKLsdlr_exec(void)
 
                     /* Run custom task deadline overrun hook, if defined */
                     TKLSDLRCFG_OVERRUN_HOOK(
-                        a_stc_tsk_taskList[u8_idx].p_fn_taskRunner);
+                        a_stc_tsk_taskList[u8_idx].p_tskRunner);
                 }
 
                 /* End cycle to allow starting a new one as soon as possible.
