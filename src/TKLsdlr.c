@@ -9,12 +9,11 @@
 static TKLtyp_p_getTick_t pv_p_getTick;
     /**< \brief Pointer to access function that provides the current relative
          system time tick count */
-static TKLtyp_tsk_t* volatile a_stc_tsk_pv_taskList; /**< \brief Registered
-                                                          task list */
-static volatile uint8_t u8_pv_taskCount; /**< \brief Number of tasks within
-                                              registered task list */
-static volatile uint8_t u8_pv_taskOverrunCount; /**< \brief Task deadline
-                                                     overrun counter */
+static TKLtyp_tsk_t* volatile pv_p_tskLst; /**< \brief Registered task list */
+static volatile uint8_t pv_tskCnt; /**< \brief Number of tasks within
+                                        registered task list */
+static volatile uint8_t pv_tskOverrunCnt; /**< \brief Task deadline overrun
+                                               counter */
 
 /* OPERATIONS
  * ==========
@@ -27,60 +26,59 @@ void TKLsdlr_setTickSrc(const TKLtyp_p_getTick_t p_getTick)
     return;
 }
 
-void TKLsdlr_setTskLst(TKLtyp_tsk_t* const a_stc_tsk_taskList,
-                       const uint8_t u8_taskCount)
+void TKLsdlr_setTskLst(TKLtyp_tsk_t* const p_tskLst, const uint8_t tskCnt)
 {
-    a_stc_tsk_pv_taskList = a_stc_tsk_taskList;
-    u8_pv_taskCount = u8_taskCount;
+    pv_p_tskLst = p_tskLst;
+    pv_tskCnt = tskCnt;
 
     return;
 }
 
 TKLtyp_tsk_t* TKLsdlr_getTskLst(void)
 {
-    return(a_stc_tsk_pv_taskList);
+    return(pv_p_tskLst);
 }
 
 uint8_t TKLsdlr_cntTsk(void)
 {
-    return(u8_pv_taskCount);
+    return(pv_tskCnt);
 }
 
 uint8_t TKLsdlr_cntTskOverrun(void)
 {
-    return(u8_pv_taskOverrunCount);
+    return(pv_tskOverrunCnt);
 }
 
 void TKLsdlr_clrTskOverrun(void)
 {
-    u8_pv_taskOverrunCount = 0u;
+    pv_tskOverrunCnt = 0u;
 
     return;
 }
 
 void TKLsdlr_setTskAct(const TKLtyp_p_tskRunner_t p_tskRunner,
-                       const bool b_active,
-                       const bool b_updateLastRun)
+                       const bool active,
+                       const bool updLastRun)
 {
     /* Set pointer to task list’s list */
-    TKLtyp_tsk_t* const a_stc_tsk_taskList = a_stc_tsk_pv_taskList;
+    TKLtyp_tsk_t* const p_tskLst = pv_p_tskLst;
 
     /* Number of tasks in task list */
-    const uint8_t u8_taskCount = u8_pv_taskCount;
+    const uint8_t tskCnt = pv_tskCnt;
 
     /* Find all tasks (matching function pointer) and set them to on/off
      * (`true`/`false`)
      */
-    for(uint8_t u8_idx = 0u; u8_taskCount > u8_idx; u8_idx++)
+    for(uint8_t i = 0u; tskCnt > i; i++)
     {
-        if( *p_tskRunner == (*a_stc_tsk_taskList[u8_idx].p_tskRunner) )
+        if( *p_tskRunner == (*p_tskLst[i].p_tskRunner) )
         {
-            a_stc_tsk_taskList[u8_idx].active = b_active;
+            p_tskLst[i].active = active;
 
             /* Update time stamp of last task run, if requested */
-            if(true == b_updateLastRun)
+            if(true == updLastRun)
             {
-                a_stc_tsk_taskList[u8_idx].lastRun = (*pv_p_getTick)();
+                p_tskLst[i].lastRun = (*pv_p_getTick)();
             }
         } /* if(...) */
     } /* for(...) */
@@ -91,13 +89,13 @@ void TKLsdlr_setTskAct(const TKLtyp_p_tskRunner_t p_tskRunner,
 void TKLsdlr_exec(void)
 {
     /* Set pointer to task list’s list */
-    TKLtyp_tsk_t* const a_stc_tsk_taskList = a_stc_tsk_pv_taskList;
+    TKLtyp_tsk_t* const p_tskLst = pv_p_tskLst;
 
     /* Number of tasks in task list */
-    const uint8_t u8_taskCount = u8_pv_taskCount;
+    const uint8_t tskCnt = pv_tskCnt;
 
     /* Get current time tick count */
-    const uint32_t u32_tickCount = (*pv_p_getTick)();
+    const uint32_t tickCnt = (*pv_p_getTick)();
 
     /* Loop through all tasks in task list.
      * During one full loop ("cycle")
@@ -107,39 +105,34 @@ void TKLsdlr_exec(void)
      * * check for task deadline overrun and keep count,
      * * if a task was run, end the cycle.
      */
-    for(uint8_t u8_idx = 0u; u8_idx < u8_taskCount; u8_idx++)
+    for(uint8_t i = 0u; i < tskCnt; i++)
     {
         /* Check if new execution period for task has started
          * (this is still correct on time tick rollover)
          */
-        if( (u32_tickCount - a_stc_tsk_taskList[u8_idx].lastRun)
-            >= a_stc_tsk_taskList[u8_idx].period )
+        if( (tickCnt - p_tskLst[i].lastRun) >= p_tskLst[i].period )
         {
             /* Save (ideal) time of when task was "ready-to-run" */
-            a_stc_tsk_taskList[u8_idx].lastRun
-            = u32_tickCount
-            - ( (u32_tickCount - a_stc_tsk_taskList[u8_idx].lastRun)
-                % a_stc_tsk_taskList[u8_idx].period );
+            p_tskLst[i].lastRun =
+                tickCnt - ( (tickCnt - p_tskLst[i].lastRun) % p_tskLst[i].period );
 
             /* Check if task is enabled */
-            if(true == a_stc_tsk_taskList[u8_idx].active)
+            if(true == p_tskLst[i].active)
             {
                 /* Run periodic task */
-                (*a_stc_tsk_taskList[u8_idx].p_tskRunner)();
+                (*p_tskLst[i].p_tskRunner)();
 
                 /* Check for task deadline overrun
                  * (this is still correct on time tick rollover)
                  */
-                if( ( (*pv_p_getTick)()
-                      - a_stc_tsk_taskList[u8_idx].lastRun )
-                    > a_stc_tsk_taskList[u8_idx].deadline )
+                if( ( (*pv_p_getTick)() - p_tskLst[i].lastRun )
+                    > p_tskLst[i].deadline )
                 {
                     /* Increment task deadline overrun counter */
-                    u8_pv_taskOverrunCount++;
+                    pv_tskOverrunCnt++;
 
                     /* Run custom task deadline overrun hook, if defined */
-                    TKLSDLRCFG_OVERRUN_HOOK(
-                        a_stc_tsk_taskList[u8_idx].p_tskRunner);
+                    TKLSDLRCFG_OVERRUN_HOOK( p_tskLst[i].p_tskRunner);
                 }
 
                 /* End cycle to allow starting a new one as soon as possible.

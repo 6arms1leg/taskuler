@@ -13,7 +13,7 @@
  * (not `0`!), offset (last run), and the pointer to function to be executed
  * (i.e., task runner).
  */
-static TKLtyp_tsk_t a_stc_tsk_pv_taskList[] =
+static TKLtyp_tsk_t pv_tskLst[] =
 {
     /* Task 0 */
     { true,
@@ -35,12 +35,11 @@ static TKLtyp_tsk_t a_stc_tsk_pv_taskList[] =
 
 TKLtyp_tsk_t* TKLtskLst_getTskLst(void)
 {
-    return(a_stc_tsk_pv_taskList);
+    return(pv_tskLst);
 }
 
 uint8_t TKLtskLst_cntTsk(void)
 {
     /* Evaluated at compile time */
-    return( (uint8_t)( sizeof(a_stc_tsk_pv_taskList)
-                       / sizeof(*a_stc_tsk_pv_taskList) ) );
+    return( (uint8_t)( sizeof(pv_tskLst) / sizeof(*pv_tskLst) ) );
 }

@@ -37,11 +37,10 @@ void TKLsdlr_setTickSrc(const TKLtyp_p_getTick_t p_getTick);
 /**
  * \brief Registers a task list with the scheduler
  *
- * \param p_a_stc_tsk_taskList Task list
- * \param u8_taskCount Number of tasks within the provided task list
+ * \param p_tskLst Task list
+ * \param tskCnt Number of tasks within the provided task list
  */
-void TKLsdlr_setTskLst(TKLtyp_tsk_t* const p_a_stc_tsk_taskList,
-                       const uint8_t u8_taskCount);
+void TKLsdlr_setTskLst(TKLtyp_tsk_t* const p_tskLst, const uint8_t tskCnt);
 
 /**
  * \brief Get task list that is registered with the scheduler
@@ -86,8 +85,8 @@ void TKLsdlr_clrTskOverrun(void);
  * at the end of its execution).
  */
 void TKLsdlr_setTskAct(const TKLtyp_p_tskRunner_t p_tskRunner,
-                       const bool b_active,
-                       const bool b_updateLastRun);
+                       const bool active,
+                       const bool updLastRun);
 
 /**
  * \brief Scheduling algorithm execution cycle

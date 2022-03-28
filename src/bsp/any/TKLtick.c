@@ -11,7 +11,7 @@
  *
  * Attribute is accessed from an ISR *and* "normal" code, hence `volatile`.
  */
-static volatile uint32_t u32_pv_tickCount;
+static volatile uint32_t pv_tickCnt;
 
 /* OPERATIONS
  * ==========
@@ -27,16 +27,16 @@ void TKLtick_init(void)
 uint32_t TKLtick_getTick(void)
 {
     TKLINT_DIS(); /* Crit. region start (disable all ISRs) */
-    const uint32_t u32_tickCount = u32_pv_tickCount;
+    const uint32_t tickCnt = pv_tickCnt;
     TKLINT_ENA(); /* Crit. region end (enable all ISRs) */
 
-    return(u32_tickCount);
+    return(tickCnt);
 }
 
 void TKLtick_incrTick(void)
 {
     /* No crit. region needed, only called from rel. system time tick ISR */
-    u32_pv_tickCount++;
+    pv_tickCnt++;
 
     return;
 }
@@ -44,7 +44,7 @@ void TKLtick_incrTick(void)
 void TKLtick_clrTick(void)
 {
     TKLINT_DIS(); /* Crit. region start (disable all ISRs) */
-    u32_pv_tickCount = 0u;
+    pv_tickCnt = 0u;
     TKLINT_ENA(); /* Crit. region end (enable all ISRs) */
 
     return;
