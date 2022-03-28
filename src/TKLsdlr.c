@@ -76,12 +76,12 @@ void TKLsdlr_setTskAct(void (* const p_fn_taskRunner)(void),
         if( *p_fn_taskRunner
             == (*a_stc_tsk_taskList[u8_idx].p_fn_taskRunner) )
         {
-            a_stc_tsk_taskList[u8_idx].b_active = b_active;
+            a_stc_tsk_taskList[u8_idx].active = b_active;
 
             /* Update time stamp of last task run, if requested */
             if(true == b_updateLastRun)
             {
-                a_stc_tsk_taskList[u8_idx].u32_lastRun =
+                a_stc_tsk_taskList[u8_idx].lastRun =
                     (*p_fn_pv_getTickCount)();
             }
         } /* if(...) */
@@ -114,17 +114,17 @@ void TKLsdlr_exec(void)
         /* Check if new execution period for task has started
          * (this is still correct on time tick rollover)
          */
-        if( (u32_tickCount - a_stc_tsk_taskList[u8_idx].u32_lastRun)
-            >= a_stc_tsk_taskList[u8_idx].u32_period )
+        if( (u32_tickCount - a_stc_tsk_taskList[u8_idx].lastRun)
+            >= a_stc_tsk_taskList[u8_idx].period )
         {
             /* Save (ideal) time of when task was "ready-to-run" */
-            a_stc_tsk_taskList[u8_idx].u32_lastRun
+            a_stc_tsk_taskList[u8_idx].lastRun
             = u32_tickCount
-            - ( (u32_tickCount - a_stc_tsk_taskList[u8_idx].u32_lastRun)
-                % a_stc_tsk_taskList[u8_idx].u32_period );
+            - ( (u32_tickCount - a_stc_tsk_taskList[u8_idx].lastRun)
+                % a_stc_tsk_taskList[u8_idx].period );
 
             /* Check if task is enabled */
-            if(true == a_stc_tsk_taskList[u8_idx].b_active)
+            if(true == a_stc_tsk_taskList[u8_idx].active)
             {
                 /* Run periodic task */
                 (*a_stc_tsk_taskList[u8_idx].p_fn_taskRunner)();
@@ -133,8 +133,8 @@ void TKLsdlr_exec(void)
                  * (this is still correct on time tick rollover)
                  */
                 if( ( (*p_fn_pv_getTickCount)()
-                      - a_stc_tsk_taskList[u8_idx].u32_lastRun )
-                    > a_stc_tsk_taskList[u8_idx].u32_deadline )
+                      - a_stc_tsk_taskList[u8_idx].lastRun )
+                    > a_stc_tsk_taskList[u8_idx].deadline )
                 {
                     /* Increment task deadline overrun counter */
                     u8_pv_taskOverrunCount++;

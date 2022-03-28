@@ -345,7 +345,7 @@ void test_TKLsdlr_enaSingleTsk(void)
     TKLsdlr_setTskLst(a_stc_tsk_taskList, 1u);
     TKLsdlr_setTskAct(TKLtsk_runner, true, false);
 
-    TEST_ASSERT_EQUAL_UINT(b_activeExpected, a_stc_tsk_taskList[0].b_active);
+    TEST_ASSERT_EQUAL_UINT(b_activeExpected, a_stc_tsk_taskList[0].active);
 
     return;
 }
@@ -362,7 +362,7 @@ void test_TKLsdlr_disSingleTsk(void)
     TKLsdlr_setTskLst(a_stc_tsk_taskList, 1u);
     TKLsdlr_setTskAct(TKLtsk_runner, false, false);
 
-    TEST_ASSERT_EQUAL_UINT(b_activeExpected, a_stc_tsk_taskList[0].b_active);
+    TEST_ASSERT_EQUAL_UINT(b_activeExpected, a_stc_tsk_taskList[0].active);
 
     return;
 }
@@ -392,17 +392,17 @@ void test_TKLsdlr_enaAndDisMultiSameTsk(void)
     TKLsdlr_setTskAct(TKLtsk_runner1, b_activeExpectedB, false);
 
     /* Should have become disabled */
-    TEST_ASSERT_EQUAL_UINT(b_activeExpectedA, a_stc_tsk_taskList[0].b_active);
-    TEST_ASSERT_EQUAL_UINT(b_activeExpectedA, a_stc_tsk_taskList[2].b_active);
-    TEST_ASSERT_EQUAL_UINT(b_activeExpectedA, a_stc_tsk_taskList[5].b_active);
+    TEST_ASSERT_EQUAL_UINT(b_activeExpectedA, a_stc_tsk_taskList[0].active);
+    TEST_ASSERT_EQUAL_UINT(b_activeExpectedA, a_stc_tsk_taskList[2].active);
+    TEST_ASSERT_EQUAL_UINT(b_activeExpectedA, a_stc_tsk_taskList[5].active);
 
     /* Should have become enabled */
-    TEST_ASSERT_EQUAL_UINT(b_activeExpectedB, a_stc_tsk_taskList[1].b_active);
-    TEST_ASSERT_EQUAL_UINT(b_activeExpectedB, a_stc_tsk_taskList[4].b_active);
-    TEST_ASSERT_EQUAL_UINT(b_activeExpectedB, a_stc_tsk_taskList[6].b_active);
+    TEST_ASSERT_EQUAL_UINT(b_activeExpectedB, a_stc_tsk_taskList[1].active);
+    TEST_ASSERT_EQUAL_UINT(b_activeExpectedB, a_stc_tsk_taskList[4].active);
+    TEST_ASSERT_EQUAL_UINT(b_activeExpectedB, a_stc_tsk_taskList[6].active);
 
     /* Should have stayed untouched */
-    TEST_ASSERT_EQUAL_UINT(b_untouched, a_stc_tsk_taskList[3].b_active);
+    TEST_ASSERT_EQUAL_UINT(b_untouched, a_stc_tsk_taskList[3].active);
 
     return;
 }
@@ -423,7 +423,7 @@ void test_TKLsdlr_updateSingleTskLastRun(void)
     TKLsdlr_setTskAct(TKLtsk_runner, true, true);
 
     TEST_ASSERT_EQUAL_UINT32(u32_lastRunExpected,
-                             a_stc_tsk_taskList[0].u32_lastRun);
+                             a_stc_tsk_taskList[0].lastRun);
 
     return;
 }
@@ -755,7 +755,7 @@ void test_TKLsdlr_checkLastRunOfDisTskIsStillUpdated(void)
     TKLsdlr_exec();
 
     TEST_ASSERT_EQUAL_UINT32(u32_lastRunExpected,
-                             a_stc_tsk_taskList[0].u32_lastRun);
+                             a_stc_tsk_taskList[0].lastRun);
 
     return;
 }
@@ -783,7 +783,7 @@ void test_TKLsdlr_checkLastRunIsAlwaysSetToBeginOfPeriod(void)
     TKLsdlr_exec();
 
     TEST_ASSERT_EQUAL_UINT32(u32_lastRunExpected,
-                             a_stc_tsk_taskList[0].u32_lastRun);
+                             a_stc_tsk_taskList[0].lastRun);
 
     return;
 }
