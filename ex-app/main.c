@@ -2,37 +2,37 @@
 
 #include "main.h"
 
-/* Application interfaces */
 #include "TKLtskLst.h"
 #include "led.h"
 
-int MAIN(void)
-{
-    TKLINT_DIS(); /* Crit. region start (disable all ISRs) */
+/* OPERATIONS
+ * ==========
+ */
 
-    /* Initialize application LED */
-    led_init();
+int MAIN(void) {
+    TKLINT_DIS(); /* Crit. region start (disable ISRs) */
 
-    /* Initialize Taskuler BSP’s relative system time tick */
-    TKLtick_init();
+    led_init(); /* Init. LED */
 
-    /* Initialize Taskuler */
-    TKLsdlr_setTickSrc(TKLtick_getTick);
-    TKLsdlr_setTskLst( TKLtskLst_getTskLst(), TKLtskLst_cntTsk() );
+    TKLtick_init(); /* Init. BSP’s rel. sys. time tick */
 
-    TKLINT_ENA(); /* Crit. region end (enable all ISRs) */
+    /* Init. scheduler */
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
+    TKLsdlr_setTskLst(TKLtskLst_getTskLst(), TKLtskLst_cntTsk());
 
-    /* Reset time tick count *directly* before starting the scheduler,
-     * otherwise first execution might run all tasks (e.g., if all offsets are
-     * 0 and current tick count is already larger than biggest period in
-     * tasklist), potentially messing up the schedulability
-     */
+    TKLINT_ENA(); /* Crit. region end (enable ISRs) */
+
+    /* Reset time tick count *directly* before starting scheduler,
+       otherwise first execution might run all tasks (e.g., if all offsets are
+       0 and current tick count is already larger than biggest period in
+       task list), potentially messing up schedulability */
     TKLtick_clrTick();
 
-    while(true) /* Main endless loop */
-    {
-        TKLsdlr_exec(); /* Taskuler scheduling algorithm execution cycle */
-    }
+    do { /* Endless "super loop" */
+        TKLsdlr_exec(); /* Scheduling algorithm exec. cycle */
+    } while (TESTABLE_ENDLESSLOOP_CONDITION);
 
-    /*return(1);*/ /* Never reached */
+#ifdef TEST
+    return (0); /* Never reached (except in unit tests) */
+#endif /* TEST */
 }

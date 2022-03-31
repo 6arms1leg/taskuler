@@ -9,7 +9,7 @@
 /**
  * \brief Relative system time tick count
  *
- * Attribute is accessed from an ISR *and* "normal" code, hence `volatile`.
+ * Attribute is accessed from ISR *and* "normal" code, hence `volatile`.
  */
 static volatile uint32_t pv_tickCnt;
 
@@ -17,35 +17,24 @@ static volatile uint32_t pv_tickCnt;
  * ==========
  */
 
-void TKLtick_init(void)
-{
-    TKLtimer_init(); /* Call initialization of the MCU timer */
-
-    return;
+void TKLtick_init(void) {
+    TKLtimer_init(); /* Call init. of MCU timer */
 }
 
-uint32_t TKLtick_getTick(void)
-{
-    TKLINT_DIS(); /* Crit. region start (disable all ISRs) */
+uint32_t TKLtick_getTick(void) {
+    TKLINT_DIS();
     const uint32_t tickCnt = pv_tickCnt;
-    TKLINT_ENA(); /* Crit. region end (enable all ISRs) */
+    TKLINT_ENA();
 
     return(tickCnt);
 }
 
-void TKLtick_incrTick(void)
-{
-    /* No crit. region needed, only called from rel. system time tick ISR */
-    pv_tickCnt++;
-
-    return;
+void TKLtick_incrTick(void) {
+    pv_tickCnt++; /* No crit. region needed, only called from ISR */
 }
 
-void TKLtick_clrTick(void)
-{
-    TKLINT_DIS(); /* Crit. region start (disable all ISRs) */
+void TKLtick_clrTick(void) {
+    TKLINT_DIS();
     pv_tickCnt = 0u;
-    TKLINT_ENA(); /* Crit. region end (enable all ISRs) */
-
-    return;
+    TKLINT_ENA();
 }

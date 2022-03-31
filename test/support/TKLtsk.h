@@ -9,8 +9,7 @@
 
 /**
  * \{
- * \brief Function mock to assert expected function calls through pointers to
- * function
+ * \brief Function mocks to assert expected calls through function pointers
  */
 void TKLtsk_runner(void);
 void TKLtsk_runner0(void);

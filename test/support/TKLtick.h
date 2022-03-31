@@ -3,18 +3,15 @@
 #ifndef TKLTICK_H
 #define TKLTICK_H
 
-/* `"` used intentionally.  This allows the user to override and provide his
- * own type definitions before falling back to libc.
- */
-#include "stdint.h"
+#include <stdint.h>
 
 /* OPERATIONS
  * ==========
  */
 
 /**
- * \brief Function mock to simulate and manipulate the relative system time
- * tick source of the MCU
+ * \brief Function mock to simulate and manipulate MCU’s relative system time
+ * tick source
  *
  * \return Relative system time tick count
  */

@@ -2,38 +2,34 @@
 
 #ifdef TEST
 
+#include <stdint.h>
+#include <stddef.h>
+#include <stdbool.h>
+
 #include "unity.h"
 
+#include "TKLsdlr.h"
+
+#include "TKLtyp.h"
 #include "mock_TKLtick.h"
+
 #include "mock_TKLtsk.h"
 
-#include "TKLsdlr.h"
-#include "TKLtyp.h"
-
-/* `"` used intentionally.  This allows the user to override and provide his
- * own type definitions before falling back to libc.
+/* OPERATIONS
+ * ==========
  */
-#include "stdint.h"
-#include "stddef.h"
-#include "stdbool.h"
 
 /** \brief Run before every test */
-void setUp(void)
-{
-    return; /* Do nothing */
+void setUp(void) {
+    /* Do nothing */
 }
 
 /** \brief Run after every test */
-void tearDown(void)
-{
-    /* Reset all private variables (i.e., `static` globals) of module under
-     * test back to their initial values.
-     */
+void tearDown(void) {
+    /* Reset all private variables of module under test back to init. values */
     TKLsdlr_setTickSrc(NULL);
     TKLsdlr_setTskLst(NULL, 0u);
     TKLsdlr_clrTskOverrun();
-
-    return;
 }
 
 /**
@@ -47,26 +43,24 @@ void tearDown(void)
  * algorithm.
  * For ease of understanding, `uint8_t` is used here.
  */
-void test_TKLsdlr_checkUintTickRolloverArith(void)
-{
+void test_TKLsdlr_checkUintTickRolloverArith(void) {
     const uint8_t a = 5u;
     const uint8_t b = 250u;
-
     const uint8_t resExpBMinusA = 245u;
-    const uint8_t resExpAMinusB = 11u; /* -245 with signed int. */
+    const uint8_t resExpAMinusB = 11u; /* `-245` with signed int. */
 
-    TEST_ASSERT_EQUAL_UINT8( resExpBMinusA, (b - a) );
-    TEST_ASSERT_EQUAL_UINT8( resExpAMinusB, (a - b) );
-
-    return;
+    TEST_ASSERT_EQUAL_UINT8(resExpBMinusA, (b - a));
+    TEST_ASSERT_EQUAL_UINT8(resExpAMinusB, (a - b));
 }
 
 /** \brief Test if relative system time tick count source is set correctly */
-void test_TKLsdlr_setTickSrc(void)
-{
-    TKLtyp_tsk_t tskLst[] =
-    {
-        { false, 1u, 1u, 0u, TKLtsk_runner }
+void test_TKLsdlr_setTickSrc(void) {
+    TKLtyp_tsk_t tskLst[] = {
+        {.active = false,
+         .period = 1u,
+         .deadline = 1u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner}
     };
 
     TKLtick_getTick_ExpectAndReturn(0u);
@@ -74,22 +68,16 @@ void test_TKLsdlr_setTickSrc(void)
     TKLsdlr_setTickSrc(TKLtick_getTick); /* Set tick count source ... */
     TKLsdlr_setTskLst(tskLst, 1u);
     TKLsdlr_exec(); /* ... and test if it gets called (exactly once) */
-
-    return;
 }
 
 /** \brief Test that task list is initialized with `Null` pointer */
-void test_TKLsdlr_initTskLstToNull(void)
-{
-    TEST_ASSERT_NULL( TKLsdlr_getTskLst() );
-
-    return;
+void test_TKLsdlr_initTskLstToNull(void) {
+    TEST_ASSERT_NULL(TKLsdlr_getTskLst());
 }
 
 /** \brief Test if task list is set and returned correctly */
-void test_TKLsdlr_setAndReturnTskLst(void)
-{
-    TKLtyp_tsk_t tskLstExp = {false, 1u, 1u, 0u, TKLtsk_runner};
+void test_TKLsdlr_setAndReturnTskLst(void) {
+    TKLtyp_tsk_t tskLstExp = {0};
     TKLtyp_tsk_t* const p_tskLstExp = &tskLstExp;
     TKLtyp_tsk_t* p_tskLstAct = NULL;
 
@@ -97,30 +85,24 @@ void test_TKLsdlr_setAndReturnTskLst(void)
     p_tskLstAct = TKLsdlr_getTskLst();
 
     TEST_ASSERT_EQUAL_PTR(p_tskLstExp, p_tskLstAct);
-
-    return;
 }
 
 /**
  * \brief Test that task count (number of task entries in the connected task
  * list) is initialized to `0`
  */
-void test_TKLsdlr_initTskCntTo0(void)
-{
+void test_TKLsdlr_initTskCntTo0(void) {
     const uint8_t tskCntExp = 0u;
 
-    TEST_ASSERT_EQUAL_UINT8( tskCntExp, TKLsdlr_cntTsk() );
-
-    return;
+    TEST_ASSERT_EQUAL_UINT8(tskCntExp, TKLsdlr_cntTsk());
 }
 
 /**
  * \brief Test if task Count (number of task entries in the connected task
  * list) is set and returned correctly
  */
-void test_TKLsdlr_setAndReturnTskCnt(void)
-{
-    TKLtyp_tsk_t tskLst = {false, 1u, 1u, 0u, TKLtsk_runner};
+void test_TKLsdlr_setAndReturnTskCnt(void) {
+    TKLtyp_tsk_t tskLst = {0};
     const uint8_t tskCntExp = 1u;
     uint8_t tskCntAct = 0u;
 
@@ -128,18 +110,13 @@ void test_TKLsdlr_setAndReturnTskCnt(void)
     tskCntAct = TKLsdlr_cntTsk();
 
     TEST_ASSERT_EQUAL_UINT8(tskCntExp, tskCntAct);
-
-    return;
 }
 
 /** \brief Test that task deadline overrun is initialized to `0` */
-void test_TKLsdlr_initTskOverrunCntTo0(void)
-{
+void test_TKLsdlr_initTskOverrunCntTo0(void) {
     const uint8_t overrunExp = 0u;
 
-    TEST_ASSERT_EQUAL_UINT8( overrunExp, TKLsdlr_cntTskOverrun() );
-
-    return;
+    TEST_ASSERT_EQUAL_UINT8(overrunExp, TKLsdlr_cntTskOverrun());
 }
 
 /**
@@ -147,11 +124,13 @@ void test_TKLsdlr_initTskOverrunCntTo0(void)
  * relative system time tick count before is not counted as a task deadline
  * overrun
  */
-void test_TKLsdlr_checkFirstLateSdlrExecIsNoTskOverrun(void)
-{
-    TKLtyp_tsk_t tskLst[] =
-    {
-        { true, 100u, 100u, 0u, TKLtsk_runner }
+void test_TKLsdlr_checkFirstLateSdlrExecIsNoTskOverrun(void) {
+    TKLtyp_tsk_t tskLst[] = {
+        {.active = true,
+         .period = 100u,
+         .deadline = 100u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner}
     };
     const uint8_t overrunExp = 0u;
 
@@ -163,20 +142,20 @@ void test_TKLsdlr_checkFirstLateSdlrExecIsNoTskOverrun(void)
     TKLsdlr_setTskLst(tskLst, 1u);
     TKLsdlr_exec();
 
-    TEST_ASSERT_EQUAL_UINT8( overrunExp, TKLsdlr_cntTskOverrun() );
-
-    return;
+    TEST_ASSERT_EQUAL_UINT8(overrunExp, TKLsdlr_cntTskOverrun());
 }
 
 /**
  * \brief Test if single task deadline overrun is detected and count returned
  * correctly
  */
-void test_TKLsdlr_detectAndCntSingleTskOverrun(void)
-{
-    TKLtyp_tsk_t tskLst[] =
-    {
-        { true, 100u, 50u, 0u, TKLtsk_runner }
+void test_TKLsdlr_detectAndCntSingleTskOverrun(void) {
+    TKLtyp_tsk_t tskLst[] = {
+        {.active = true,
+         .period = 100u,
+         .deadline = 50u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner}
     };
     const uint8_t overrunExp = 1u;
 
@@ -188,20 +167,20 @@ void test_TKLsdlr_detectAndCntSingleTskOverrun(void)
     TKLsdlr_setTskLst(tskLst, 1u);
     TKLsdlr_exec();
 
-    TEST_ASSERT_EQUAL_UINT8( overrunExp, TKLsdlr_cntTskOverrun() );
-
-    return;
+    TEST_ASSERT_EQUAL_UINT8(overrunExp, TKLsdlr_cntTskOverrun());
 }
 
 /**
  * \brief Test if multiple task deadline overruns are detected and counts
  * returned correctly
  */
-void test_TKLsdlr_detectAndCntMultiTskOverrun(void)
-{
-    TKLtyp_tsk_t tskLst[] =
-    {
-        { true, 100u, 100u, 0u, TKLtsk_runner }
+void test_TKLsdlr_detectAndCntMultiTskOverrun(void) {
+    TKLtyp_tsk_t tskLst[] = {
+        {.active = true,
+         .period = 100u,
+         .deadline = 100u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner}
     };
     const uint8_t overrunExp = 2u;
 
@@ -222,30 +201,29 @@ void test_TKLsdlr_detectAndCntMultiTskOverrun(void)
 
     TKLsdlr_setTickSrc(TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
-    for(uint8_t i = 0u; i < 3; i++)
-    {
+    for (uint8_t i = 0u; i < 3; i++) {
         TKLsdlr_exec();
     }
 
-    TEST_ASSERT_EQUAL_UINT8( overrunExp, TKLsdlr_cntTskOverrun() );
-
-    return;
+    TEST_ASSERT_EQUAL_UINT8(overrunExp, TKLsdlr_cntTskOverrun());
 }
 
 /**
  * \brief Test if multiple task deadline overruns are detected and counts
  * returned correctly on relative system time tick count rollover
  */
-void test_TKLsdlr_detectAndCntMultiTskOverrunOnTickRollover(void)
-{
-    TKLtyp_tsk_t tskLst[] =
-    {
-        { true, 100u, 100u, 0u, TKLtsk_runner }
+void test_TKLsdlr_detectAndCntMultiTskOverrunOnTickRollover(void) {
+    TKLtyp_tsk_t tskLst[] = {
+        {.active = true,
+         .period = 100u,
+         .deadline = 100u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner}
     };
     const uint8_t overrunExp = 2u;
 
     /* Task overrun (at rollover) */
-    TKLtick_getTick_ExpectAndReturn(UINT32_MAX - 10u); /* 4294967285 */
+    TKLtick_getTick_ExpectAndReturn(UINT32_MAX - 10u); /* `4294967285` */
     TKLtsk_runner_Expect();
     TKLtick_getTick_ExpectAndReturn(100u);
 
@@ -261,14 +239,11 @@ void test_TKLsdlr_detectAndCntMultiTskOverrunOnTickRollover(void)
 
     TKLsdlr_setTickSrc(TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
-    for(uint8_t i = 0u; i < 3; i++)
-    {
+    for (uint8_t i = 0u; i < 3; i++) {
         TKLsdlr_exec();
     }
 
-    TEST_ASSERT_EQUAL_UINT8( overrunExp, TKLsdlr_cntTskOverrun() );
-
-    return;
+    TEST_ASSERT_EQUAL_UINT8(overrunExp, TKLsdlr_cntTskOverrun());
 }
 
 /**
@@ -279,18 +254,18 @@ void test_TKLsdlr_detectAndCntMultiTskOverrunOnTickRollover(void)
  * This is an important edge case as it made a previously implemented detailed
  * design solution fail.
  */
-void test_TKLsdlr_detectAndCntSingleTskOverrunOnInconvTickRollover(void)
-{
-    TKLtyp_tsk_t tskLst[] =
-    {
-        /* Last run (offset) is 4294967095 */
-        { true, 100u, 100u,
-          UINT32_MAX - 200u, TKLtsk_runner }
+void test_TKLsdlr_detectAndCntSingleTskOverrunOnInconvTickRollover(void) {
+    TKLtyp_tsk_t tskLst[] = {
+        {.active = true,
+         .period = 100u,
+         .deadline = 100u,
+         .lastRun = UINT32_MAX - 200u, /* Last run (offset) `4294967095` */
+         .p_tskRunner = &TKLtsk_runner}
     };
     const uint8_t overrunExp = 1u;
 
     /* Task overrun (at rollover) */
-    TKLtick_getTick_ExpectAndReturn(UINT32_MAX - 10u); /* 4294967285 */
+    TKLtick_getTick_ExpectAndReturn(UINT32_MAX - 10u); /* `4294967285` */
     TKLtsk_runner_Expect();
     TKLtick_getTick_ExpectAndReturn(10u);
 
@@ -298,17 +273,17 @@ void test_TKLsdlr_detectAndCntSingleTskOverrunOnInconvTickRollover(void)
     TKLsdlr_setTskLst(tskLst, 1u);
     TKLsdlr_exec();
 
-    TEST_ASSERT_EQUAL_UINT8( overrunExp, TKLsdlr_cntTskOverrun() );
-
-    return;
+    TEST_ASSERT_EQUAL_UINT8(overrunExp, TKLsdlr_cntTskOverrun());
 }
 
 /** \brief Test if task deadline overrun count is reset correctly */
-void test_TKLsdlr_clearTskOverrun(void)
-{
-    TKLtyp_tsk_t tskLst[] =
-    {
-        { true, 10u, 10u, 0u, TKLtsk_runner }
+void test_TKLsdlr_clearTskOverrun(void) {
+    TKLtyp_tsk_t tskLst[] = {
+        {.active = true,
+         .period = 10u,
+         .deadline = 10u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner}
     };
     const uint8_t overrunExpA = 1u;
     const uint8_t overrunExpB = 0u;
@@ -322,67 +297,61 @@ void test_TKLsdlr_clearTskOverrun(void)
     TKLsdlr_setTskLst(tskLst, 1u);
     TKLsdlr_exec();
 
-    /* First, assert that task overrun is detected (counter not 0) before reset
-     */
-    TEST_ASSERT_EQUAL_UINT8( overrunExpA, TKLsdlr_cntTskOverrun() );
+    /* First, assert task overrun is detected (counter not `0`) before reset */
+    TEST_ASSERT_EQUAL_UINT8(overrunExpA, TKLsdlr_cntTskOverrun());
 
     TKLsdlr_clrTskOverrun();
 
-    TEST_ASSERT_EQUAL_UINT8( overrunExpB, TKLsdlr_cntTskOverrun() );
-
-    return;
+    TEST_ASSERT_EQUAL_UINT8(overrunExpB, TKLsdlr_cntTskOverrun());
 }
 
 /** \brief Test if single task is enabled correctly */
-void test_TKLsdlr_enaSingleTsk(void)
-{
-    TKLtyp_tsk_t tskLst[] =
-    {
-        { false, 1u, 1u, 0u, TKLtsk_runner }
+void test_TKLsdlr_enaSingleTsk(void) {
+    TKLtyp_tsk_t tskLst[] = {
+        {.active = false,
+         .period = 1u,
+         .deadline = 1u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner}
     };
-    const bool activeExp = true;
 
     TKLsdlr_setTskLst(tskLst, 1u);
     TKLsdlr_setTskAct(TKLtsk_runner, true, false);
 
-    TEST_ASSERT_EQUAL_UINT(activeExp, tskLst[0].active);
-
-    return;
+    TEST_ASSERT_TRUE(tskLst[0].active);
 }
 
 /** \brief Test if single task is disabled correctly */
-void test_TKLsdlr_disSingleTsk(void)
-{
-    TKLtyp_tsk_t tskLst[] =
-    {
-        { true, 1u, 1u, 0u, TKLtsk_runner }
+void test_TKLsdlr_disSingleTsk(void) {
+    TKLtyp_tsk_t tskLst[] = {
+        {.active = true,
+         .period = 1u,
+         .deadline = 1u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner}
     };
-    const bool activeExp = false;
 
     TKLsdlr_setTskLst(tskLst, 1u);
     TKLsdlr_setTskAct(TKLtsk_runner, false, false);
 
-    TEST_ASSERT_EQUAL_UINT(activeExp, tskLst[0].active);
-
-    return;
+    TEST_ASSERT_FALSE(tskLst[0].active);
 }
 
 /**
  * \brief Test if multiple identical task runners are enabled and disabled
  * correctly
  */
-void test_TKLsdlr_enaAndDisMultiSameTsk(void)
-{
+void test_TKLsdlr_enaAndDisMultiSameTsk(void) {
     const bool untouched = false;
-    TKLtyp_tsk_t tskLst[] =
-    {
-        { true, 1u, 1u, 0u, TKLtsk_runner0 },
-        { false, 1u, 1u, 0u, TKLtsk_runner1 },
-        { true, 1u, 1u, 0u, TKLtsk_runner0 },
-        { untouched, 1u, 1u, 0u, TKLtsk_runner2 },
-        { false, 1u, 1u, 0u, TKLtsk_runner1 },
-        { true, 1u, 1u, 0u, TKLtsk_runner0 },
-        { false, 1u, 1u, 0u, TKLtsk_runner1 }
+    TKLtyp_tsk_t tskLst[] = {
+        /* .active, .period, .deadline, .lastRun, .p_tskRunner */
+        {true, 1u, 1u, 0u, &TKLtsk_runner0},
+        {false, 1u, 1u, 0u, &TKLtsk_runner1},
+        {true, 1u, 1u, 0u, &TKLtsk_runner0},
+        {untouched, 1u, 1u, 0u, &TKLtsk_runner2},
+        {false, 1u, 1u, 0u, &TKLtsk_runner1},
+        {true, 1u, 1u, 0u, &TKLtsk_runner0},
+        {false, 1u, 1u, 0u, &TKLtsk_runner1}
     };
     const bool activeExpA = false;
     const bool activeExpB = true;
@@ -403,18 +372,18 @@ void test_TKLsdlr_enaAndDisMultiSameTsk(void)
 
     /* Should have stayed untouched */
     TEST_ASSERT_EQUAL_UINT(untouched, tskLst[3].active);
-
-    return;
 }
 
 /** \brief Test if time stamp of last task run is updated correctly */
-void test_TKLsdlr_updateSingleTskLastRun(void)
-{
-    TKLtyp_tsk_t tskLst[] =
-    {
-        { false, 1u, 1u, 0u, TKLtsk_runner }
+void test_TKLsdlr_updateSingleTskLastRun(void) {
+    TKLtyp_tsk_t tskLst[] = {
+        {.active = false,
+         .period = 1u,
+         .deadline = 1u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner}
     };
-    const uint32_t lastRunExp = 111;
+    const uint32_t lastRunExp = 111u;
 
     TKLtick_getTick_ExpectAndReturn(lastRunExp);
 
@@ -423,19 +392,19 @@ void test_TKLsdlr_updateSingleTskLastRun(void)
     TKLsdlr_setTskAct(TKLtsk_runner, true, true);
 
     TEST_ASSERT_EQUAL_UINT32(lastRunExp, tskLst[0].lastRun);
-
-    return;
 }
 
 /**
  * \brief Test correct execution of due-to-run task with 1 time tick period and
  * start at 0 time ticks
  */
-void test_TKLsdlr_execDueToRunTskAt1TickPeriodOn0TickStart(void)
-{
-    TKLtyp_tsk_t tskLst[] =
-    {
-        { true, 1u, 1u, 0u, TKLtsk_runner }
+void test_TKLsdlr_execDueToRunTskAt1TickPeriodOn0TickStart(void) {
+    TKLtyp_tsk_t tskLst[] = {
+        {.active = true,
+         .period = 1u,
+         .deadline = 1u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner}
     };
 
     /* No run */
@@ -458,23 +427,22 @@ void test_TKLsdlr_execDueToRunTskAt1TickPeriodOn0TickStart(void)
 
     TKLsdlr_setTickSrc(TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
-    for(uint8_t i = 0u; i < 4; i++)
-    {
+    for (uint8_t i = 0u; i < 4; i++) {
         TKLsdlr_exec();
     }
-
-    return;
 }
 
 /**
  * \brief Test correct execution of due-to-run task with 2 time ticks period
  * and start at non-0 time tick
  */
-void test_TKLsdlr_execDueToRunTskAt2TicksPeriodOnNon0TickStart(void)
-{
-    TKLtyp_tsk_t tskLst[] =
-    {
-        { true, 2u, 2u, 0u, TKLtsk_runner }
+void test_TKLsdlr_execDueToRunTskAt2TicksPeriodOnNon0TickStart(void) {
+    TKLtyp_tsk_t tskLst[] = {
+        {.active = true,
+         .period = 2u,
+         .deadline = 2u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner}
     };
 
     /* Run */
@@ -497,23 +465,22 @@ void test_TKLsdlr_execDueToRunTskAt2TicksPeriodOnNon0TickStart(void)
 
     TKLsdlr_setTickSrc(TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
-    for(uint8_t i = 0u; i < 4; i++)
-    {
+    for (uint8_t i = 0u; i < 4; i++) {
         TKLsdlr_exec();
     }
-
-    return;
 }
 
 /**
  * \brief Test correct execution of due-to-run task with 2 time ticks period
  * and start at non-0 time tick and skipped time ticks
  */
-void test_TKLsdlr_execDueToRunTskAt2TicksPeriodOnNon0TickStartAndTickLoss(void)
-{
-    TKLtyp_tsk_t tskLst[] =
-    {
-        { true, 2u, 2u, 0u, TKLtsk_runner }
+void test_TKLsdlr_execDueToRunTskAt2TicksPeriodOnNon0TickStartAndTickLoss(void) {
+    TKLtyp_tsk_t tskLst[] = {
+        {.active = true,
+         .period = 2u,
+         .deadline = 2u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner}
     };
 
     /* Run */
@@ -536,25 +503,21 @@ void test_TKLsdlr_execDueToRunTskAt2TicksPeriodOnNon0TickStartAndTickLoss(void)
 
     TKLsdlr_setTickSrc(TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
-    for(uint8_t i = 0u; i < 4; i++)
-    {
+    for (uint8_t i = 0u; i < 4; i++) {
         TKLsdlr_exec();
     }
-
-    return;
 }
 
 /**
  * \brief Test correct execution of multiple due-to-run tasks with different
  * time tick periods and start at non-0 time tick and skipped time ticks
  */
-void test_TKLsdlr_execDueToRunTskAtDiffPeriodOnNon0TickStartAndTickLoss(void)
-{
-    TKLtyp_tsk_t tskLst[] =
-    {
-        { true, 3u, 3u, 0u, TKLtsk_runner0 },
-        { true, 4u, 4u, 0u, TKLtsk_runner1 },
-        { true, 9u, 9u, 0u, TKLtsk_runner2 }
+void test_TKLsdlr_execDueToRunTskAtDiffPeriodOnNon0TickStartAndTickLoss(void) {
+    TKLtyp_tsk_t tskLst[] = {
+        /* .active, .period, .deadline, .lastRun, .p_tskRunner */
+        {true, 3u, 3u, 0u, TKLtsk_runner0},
+        {true, 4u, 4u, 0u, TKLtsk_runner1},
+        {true, 9u, 9u, 0u, TKLtsk_runner2}
     };
 
     /* Run task runner 0, 1, 2 */
@@ -606,40 +569,35 @@ void test_TKLsdlr_execDueToRunTskAtDiffPeriodOnNon0TickStartAndTickLoss(void)
 
     TKLsdlr_setTickSrc(TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 3u);
-    for(uint8_t i = 0u; i < 13; i++)
-    {
+    for (uint8_t i = 0u; i < 13; i++) {
         TKLsdlr_exec();
     }
-
-    return;
 }
 
 /**
  * \brief Test correct execution of multiple due-to-run tasks with different
  * time tick periods and offsets and start at 0 time ticks
  */
-void test_TKLsdlr_execDueToRunTskAtDiffPeriodAndOffsetOn0TickStart(void)
-{
-    TKLtyp_tsk_t tskLst[] =
-    {
-        /* Run at: 10, 40, 70, 100, ... */
-        { true,
-          30u,
-          30u,
-          0u - 20u, /* Offset 20 */
-          TKLtsk_runner0 },
-        /* Run at: 30, 70, 110, ... */
-        { true,
-          40u,
-          40u,
-          0u - 10u, /* Offset 10 */
-          TKLtsk_runner1 },
-        /* Run at: 90, 180, ... */
-        { true,
-          90u,
-          90u,
-          0u, /* No offset (0) */
-          TKLtsk_runner2 }
+void test_TKLsdlr_execDueToRunTskAtDiffPeriodAndOffsetOn0TickStart(void) {
+    TKLtyp_tsk_t tskLst[] = {
+        /* Run at: `10`, `40`, `70`, `100`, ... */
+        {.active = true,
+         .period = 30u,
+         .deadline = 30u,
+         .lastRun = 0u - 20u, /* Offset `20` */
+         .p_tskRunner = &TKLtsk_runner0},
+        /* Run at: `30`, `70`, `110`, ... */
+        {.active = true,
+         .period = 40u,
+         .deadline = 40u,
+         .lastRun = 0u - 10u, /* Offset `10` */
+         .p_tskRunner = &TKLtsk_runner1},
+        /* Run at: `90`, `180`, ... */
+        {.active = true,
+         .period = 90u,
+         .deadline = 90u,
+         .lastRun = 0u, /* No offset (`0`) */
+         .p_tskRunner = &TKLtsk_runner2}
     };
 
     /* Run no task runner */
@@ -705,45 +663,40 @@ void test_TKLsdlr_execDueToRunTskAtDiffPeriodAndOffsetOn0TickStart(void)
 
     TKLsdlr_setTickSrc(TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 3u);
-    for(uint8_t i = 0u; i < 17; i++)
-    {
+    for (uint8_t i = 0u; i < 17; i++) {
         TKLsdlr_exec();
     }
-
-    return;
 }
 
 /** \brief Test that task runner of disabled task is not run */
-void test_TKLsdlr_checkRunnerOfDisTskIsNotRun(void)
-{
-    TKLtyp_tsk_t tskLst[] =
-    {
+void test_TKLsdlr_checkRunnerOfDisTskIsNotRun(void) {
+    TKLtyp_tsk_t tskLst[] = {
         /* If task runner is run, test will fail (as it should), complaining
-         * that function `TKLtsk_runner` is called more times than expected
-         */
-        { false, 10u, 10u, 0u, TKLtsk_runner }
+           that function `TKLtsk_runner` is called more times than expected */
+        {.active = false,
+         .period = 10u,
+         .deadline = 10u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner}
     };
 
-    /* Expect only one call to `getTickCount` as no task runner is supposed to
-     * run.
-     * Now, the test will fail (as it should), if disabled task’s
-     * `TKLtsk_runner` is called.
-     */
+    /* Expect only one call as no task runner is supposed to run.  Now, test
+       will fail (as it should), if disabled task’s runner is called. */
     TKLtick_getTick_ExpectAndReturn(10u);
 
     TKLsdlr_setTickSrc(TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
     TKLsdlr_exec();
-
-    return;
 }
 
 /** \brief Test that `lastRun` value of disabled task is still updated */
-void test_TKLsdlr_checkLastRunOfDisTskIsStillUpdated(void)
-{
-    TKLtyp_tsk_t tskLst[] =
-    {
-        { false, 10u, 10u, 0u, TKLtsk_runner }
+void test_TKLsdlr_checkLastRunOfDisTskIsStillUpdated(void) {
+    TKLtyp_tsk_t tskLst[] = {
+        {.active = false,
+         .period = 10u,
+         .deadline = 10u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner}
     };
     const uint32_t lastRunExp = 320u;
 
@@ -754,25 +707,24 @@ void test_TKLsdlr_checkLastRunOfDisTskIsStillUpdated(void)
     TKLsdlr_exec();
 
     TEST_ASSERT_EQUAL_UINT32(lastRunExp, tskLst[0].lastRun);
-
-    return;
 }
 
 /**
  * \brief Test that `lastRun` value is always set to begin of period (time
  * slot)
  */
-void test_TKLsdlr_checkLastRunIsAlwaysSetToBeginOfPeriod(void)
-{
-    TKLtyp_tsk_t tskLst[] =
-    {
-        { true, 10u, 10u, 0u, TKLtsk_runner }
+void test_TKLsdlr_checkLastRunIsAlwaysSetToBeginOfPeriod(void) {
+    TKLtyp_tsk_t tskLst[] = {
+        {.active = true,
+         .period = 10u,
+         .deadline = 10u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner}
     };
-    const uint32_t lastRunExp = 320u; /* Begin of period for this
-                                                  test’s use case scenario (see
-                                                  comment below) */
+    const uint32_t lastRunExp = 320u; /* Begin of period for this test’s use
+                                         case scenario (see comment below) */
 
-    TKLtick_getTick_ExpectAndReturn(327u); /* Begin of period: 320 */
+    TKLtick_getTick_ExpectAndReturn(327u); /* Begin of period: `320` */
     TKLtsk_runner_Expect();
     TKLtick_getTick_ExpectAndReturn(329u);
 
@@ -781,64 +733,61 @@ void test_TKLsdlr_checkLastRunIsAlwaysSetToBeginOfPeriod(void)
     TKLsdlr_exec();
 
     TEST_ASSERT_EQUAL_UINT32(lastRunExp, tskLst[0].lastRun);
-
-    return;
 }
 
 /**
  * \brief Test correct execution of due-to-run task at 3 time ticks period with
  * relative system time tick count rollover
  */
-void test_TKLsdlr_execDueToRunTskAt3TickPeriodOnTickRollover(void)
-{
-    TKLtyp_tsk_t tskLst[] =
-    {
-        { true, 3u, 3u, 0u, TKLtsk_runner }
+void test_TKLsdlr_execDueToRunTskAt3TickPeriodOnTickRollover(void) {
+    TKLtyp_tsk_t tskLst[] = {
+        {.active = true,
+         .period = 3u,
+         .deadline = 3u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner}
     };
 
     /* Run */
-    TKLtick_getTick_ExpectAndReturn(UINT32_MAX - 3u); /* 4294967292 */
+    TKLtick_getTick_ExpectAndReturn(UINT32_MAX - 3u); /* `4294967292` */
     TKLtsk_runner_Expect();
     TKLtick_getTick_ExpectAndReturn(UINT32_MAX - 3u);
 
     /* No run */
-    TKLtick_getTick_ExpectAndReturn(UINT32_MAX - 2u); /* 4294967293 */
-    TKLtick_getTick_ExpectAndReturn(UINT32_MAX - 1u); /* 4294967294 */
+    TKLtick_getTick_ExpectAndReturn(UINT32_MAX - 2u); /* `4294967293` */
+    TKLtick_getTick_ExpectAndReturn(UINT32_MAX - 1u); /* `4294967294` */
 
     /* Run */
-    TKLtick_getTick_ExpectAndReturn(UINT32_MAX); /* 4294967295 */
+    TKLtick_getTick_ExpectAndReturn(UINT32_MAX); /* `4294967295` */
     TKLtsk_runner_Expect();
     TKLtick_getTick_ExpectAndReturn(UINT32_MAX);
 
     /* No run */
-    TKLtick_getTick_ExpectAndReturn(UINT32_MAX + 1u); /* 0 */
-    TKLtick_getTick_ExpectAndReturn(UINT32_MAX + 2u); /* 1 */
+    TKLtick_getTick_ExpectAndReturn(UINT32_MAX + 1u); /* `0` */
+    TKLtick_getTick_ExpectAndReturn(UINT32_MAX + 2u); /* `1` */
 
     /* Run */
-    TKLtick_getTick_ExpectAndReturn(UINT32_MAX + 3u); /* 2 */
+    TKLtick_getTick_ExpectAndReturn(UINT32_MAX + 3u); /* `2` */
     TKLtsk_runner_Expect();
     TKLtick_getTick_ExpectAndReturn(UINT32_MAX + 3u);
 
     /* No run */
-    TKLtick_getTick_ExpectAndReturn(UINT32_MAX + 4u); /* 3 */
-    TKLtick_getTick_ExpectAndReturn(UINT32_MAX + 5u); /* 4 */
+    TKLtick_getTick_ExpectAndReturn(UINT32_MAX + 4u); /* `3` */
+    TKLtick_getTick_ExpectAndReturn(UINT32_MAX + 5u); /* `4` */
 
     /* Run */
-    TKLtick_getTick_ExpectAndReturn(UINT32_MAX + 6u); /* 5 */
+    TKLtick_getTick_ExpectAndReturn(UINT32_MAX + 6u); /* `5` */
     TKLtsk_runner_Expect();
     TKLtick_getTick_ExpectAndReturn(UINT32_MAX + 6u);
 
     /* No run */
-    TKLtick_getTick_ExpectAndReturn(UINT32_MAX + 7u); /* 6 */
+    TKLtick_getTick_ExpectAndReturn(UINT32_MAX + 7u); /* `6` */
 
     TKLsdlr_setTickSrc(TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
-    for(uint8_t i = 0u; i < 11; i++)
-    {
+    for (uint8_t i = 0u; i < 11; i++) {
         TKLsdlr_exec();
     }
-
-    return;
 }
 
 #endif /* TEST */

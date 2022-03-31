@@ -3,22 +3,24 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-/* libc interface */
 #include <stdbool.h>
 
-/* Taskuler scheduler interface */
 #include "TKLsdlr.h"
-
-/* Taskuler BSP interfaces */
 #include "TKLint.h"
 #include "TKLtick.h"
 
 /* Make `main()` unit testable */
 #ifndef TEST
 #define MAIN main
+#define TESTABLE_ENDLESSLOOP_CONDITION true
 #else
 #define MAIN testable_main
-#endif
+#define TESTABLE_ENDLESSLOOP_CONDITION false
+#endif /* TEST */
+
+/* OPERATIONS
+ * ==========
+ */
 
 /** \brief Program entry point */
 int MAIN(void);

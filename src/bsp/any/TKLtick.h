@@ -3,10 +3,8 @@
 #ifndef TKLTICK_H
 #define TKLTICK_H
 
-/* libc */
 #include <stdint.h>
 
-/* Include Taskuler BSP interfaces */
 #include "TKLint.h"
 #include "TKLtimer.h"
 

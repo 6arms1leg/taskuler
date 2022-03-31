@@ -2,13 +2,12 @@
 
 #include "blink.h"
 
+#include "led.h"
+
 /* OPERATIONS
  * ==========
  */
 
-void blink_toggleLed(void)
-{
-    led_toggle(); /* Call the "toggle" LED driver function */
-
-    return;
+void blink_toggleLed(void) {
+    led_toggle(); /* Call LED driver */
 }

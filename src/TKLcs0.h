@@ -3,16 +3,13 @@
 #ifndef TKLCS0_H
 #define TKLCS0_H
 
-/* libc
- *
- * `"` used intentionally.  This allows the user to override and provide his
- * own type definitions before falling back to libc.
- */
+/* `"` used intentionally.  This allows the user to override and provide his
+   own implementation before falling back to libc. */
 #include "stdint.h"
 #include "assert.h"
 
 /** \brief User-provided macros to dis-/enable all relevant interrupts */
-#include "cs0_conf.h"
+#include "TKLcs0Cfg.h"
 
 /* OPERATIONS
  * ==========

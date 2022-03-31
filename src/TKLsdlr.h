@@ -4,8 +4,7 @@
 #define TKLSDLR_H
 
 /* `"` used intentionally.  This allows the user to override and provide his
- * own type definitions before falling back to libc.
- */
+   own type definitions before falling back to libc. */
 #include "stdint.h"
 #include "stddef.h"
 #include "stdbool.h"
@@ -13,7 +12,7 @@
 #include "TKLtyp.h"
 #include "TKLsdlrCfg.h"
 
-/** \brief Rel. sys. time tick query function signature */
+/** \brief Relative system time tick query function signature */
 typedef uint32_t (* TKLtyp_p_getTick_t)(void);
 
 /* OPERATIONS
@@ -21,7 +20,7 @@ typedef uint32_t (* TKLtyp_p_getTick_t)(void);
  */
 
 /**
- * \brief Registers the relative system time tick with the scheduler
+ * \brief Register relative system time tick with scheduler
  *
  * \param p_getTick Pointer to an access function that provides the current
  * relative system time tick count.
@@ -35,15 +34,15 @@ typedef uint32_t (* TKLtyp_p_getTick_t)(void);
 void TKLsdlr_setTickSrc(const TKLtyp_p_getTick_t p_getTick);
 
 /**
- * \brief Registers a task list with the scheduler
+ * \brief Register a task list with scheduler
  *
  * \param p_tskLst Task list
- * \param tskCnt Number of tasks within the provided task list
+ * \param tskCnt Number of tasks within provided task list
  */
 void TKLsdlr_setTskLst(TKLtyp_tsk_t* const p_tskLst, const uint8_t tskCnt);
 
 /**
- * \brief Get task list that is registered with the scheduler
+ * \brief Get task list that is registered with scheduler
  *
  * \return Task list that is registered with the scheduler
  *
@@ -52,11 +51,10 @@ void TKLsdlr_setTskLst(TKLtyp_tsk_t* const p_tskLst, const uint8_t tskCnt);
 TKLtyp_tsk_t* TKLsdlr_getTskLst(void);
 
 /**
- * \brief Get number of tasks within the task list that is registered with the
+ * \brief Get number of tasks within task list that is registered with
  * scheduler
  *
- * \return Number of tasks within task the list that is registered with the
- * scheduler
+ * \return Number of tasks within task list that is registered with scheduler
  *
  * \see TKLsdlr_setTaskAttributes()
  */
@@ -73,16 +71,16 @@ uint8_t TKLsdlr_cntTskOverrun(void);
 void TKLsdlr_clrTskOverrun(void);
 
 /**
- * \brief Activate/deactivate a task within the task list that is registered
- * with the scheduler
+ * \brief Activate/deactivate a task within task list that is registered with
+ * scheduler
  *
  * \param p_tskRunner Task runner that orchestrates module(s) interaction
  * sequence to achieve task goal
  * \param b_active Desired task activation status
- * \param b_updateLastRun Directive to update the time stamp of last task run
- * to the current relative system time tick count.
- * This is useful to start a timer (i.e., a one-shot task that deactives itself
- * at the end of its execution).
+ * \param b_updateLastRun Directive to update time stamp of last task run to
+ * current relative system time tick count.
+ * This is useful to start a timer (i.e., one-shot task that deactives itself
+ * at end of its execution).
  */
 void TKLsdlr_setTskAct(const TKLtyp_p_tskRunner_t p_tskRunner,
                        const bool active,
@@ -91,8 +89,7 @@ void TKLsdlr_setTskAct(const TKLtyp_p_tskRunner_t p_tskRunner,
 /**
  * \brief Scheduling algorithm execution cycle
  *
- * This function needs to be called from within the main `while(true)` endless
- * loop.
+ * This function needs to be called from within main endless "super loop".
  */
 void TKLsdlr_exec(void);
 
