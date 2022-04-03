@@ -4,7 +4,7 @@
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>540</x>
+      <x>430</x>
       <y>240</y>
       <w>120</w>
       <h>40</h>
@@ -16,7 +16,7 @@ tick count</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>590</x>
+      <x>480</x>
       <y>140</y>
       <w>20</w>
       <h>20</h>
@@ -27,7 +27,7 @@ tick count</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>590</x>
+      <x>480</x>
       <y>150</y>
       <w>30</w>
       <h>50</h>
@@ -38,7 +38,7 @@ tick count</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>640</x>
+      <x>530</x>
       <y>410</y>
       <w>100</w>
       <h>40</h>
@@ -50,7 +50,7 @@ last run</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>790</x>
+      <x>680</x>
       <y>470</y>
       <w>80</w>
       <h>40</h>
@@ -59,21 +59,9 @@ last run</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLState</id>
-    <coordinates>
-      <x>960</x>
-      <y>630</y>
-      <w>110</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>Increment task
-overrun count</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>580</x>
+      <x>470</x>
       <y>370</y>
       <w>40</w>
       <h>40</h>
@@ -84,7 +72,7 @@ overrun count</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>550</x>
+      <x>440</x>
       <y>180</y>
       <w>100</w>
       <h>40</h>
@@ -96,7 +84,7 @@ overrun count</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>590</x>
+      <x>480</x>
       <y>210</y>
       <w>30</w>
       <h>50</h>
@@ -107,7 +95,7 @@ overrun count</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>610</x>
+      <x>500</x>
       <y>370</y>
       <w>140</w>
       <h>60</h>
@@ -119,7 +107,7 @@ r2=[task due to run]</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>590</x>
+      <x>480</x>
       <y>400</y>
       <w>100</w>
       <h>160</h>
@@ -131,7 +119,7 @@ m1=[task not\ndue to run]</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>670</x>
+      <x>560</x>
       <y>470</y>
       <w>40</w>
       <h>40</h>
@@ -142,7 +130,7 @@ m1=[task not\ndue to run]</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>680</x>
+      <x>570</x>
       <y>440</y>
       <w>30</w>
       <h>50</h>
@@ -153,7 +141,7 @@ m1=[task not\ndue to run]</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>700</x>
+      <x>590</x>
       <y>460</y>
       <w>110</w>
       <h>50</h>
@@ -165,7 +153,7 @@ r1=[task\nenabled]</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>610</x>
+      <x>500</x>
       <y>500</y>
       <w>150</w>
       <h>80</h>
@@ -177,7 +165,7 @@ m2=[task\ndisabled]</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>810</x>
+      <x>700</x>
       <y>590</y>
       <w>40</w>
       <h>40</h>
@@ -188,7 +176,7 @@ m2=[task\ndisabled]</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>820</x>
+      <x>710</x>
       <y>500</y>
       <w>30</w>
       <h>50</h>
@@ -199,33 +187,21 @@ m2=[task\ndisabled]</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>820</x>
+      <x>710</x>
       <y>620</y>
       <w>140</w>
-      <h>90</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=[no task\ndeadline overrun]</panel_attributes>
-    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>840</x>
-      <y>590</y>
-      <w>190</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-r2=[task deadline overrrun]</panel_attributes>
-    <additional_attributes>170.0;40.0;170.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>360</x>
+      <x>250</x>
       <y>50</y>
-      <w>730</w>
+      <w>850</w>
       <h>740</h>
     </coordinates>
     <panel_attributes>ad Taskuler
@@ -237,7 +213,7 @@ fontsize=30</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>870</x>
+      <x>760</x>
       <y>70</y>
       <w>70</w>
       <h>30</h>
@@ -250,7 +226,7 @@ layer=1</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>580</x>
+      <x>470</x>
       <y>300</y>
       <w>40</w>
       <h>40</h>
@@ -261,7 +237,7 @@ layer=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>590</x>
+      <x>480</x>
       <y>270</y>
       <w>30</w>
       <h>50</h>
@@ -272,7 +248,7 @@ layer=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>590</x>
+      <x>480</x>
       <y>330</y>
       <w>140</w>
       <h>60</h>
@@ -284,7 +260,7 @@ m1=/ task list index = 0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>370</x>
+      <x>260</x>
       <y>310</y>
       <w>230</w>
       <h>270</h>
@@ -296,8 +272,8 @@ r2=[task list index &lt; task count]\n/ task list index++</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>810</x>
-      <y>690</y>
+      <x>700</x>
+      <y>670</y>
       <w>40</w>
       <h>40</h>
     </coordinates>
@@ -307,8 +283,8 @@ r2=[task list index &lt; task count]\n/ task list index++</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>820</x>
-      <y>720</y>
+      <x>710</x>
+      <y>700</y>
       <w>30</w>
       <h>50</h>
     </coordinates>
@@ -318,8 +294,8 @@ r2=[task list index &lt; task count]\n/ task list index++</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>820</x>
-      <y>750</y>
+      <x>710</x>
+      <y>730</y>
       <w>20</w>
       <h>20</h>
     </coordinates>
@@ -329,7 +305,7 @@ r2=[task list index &lt; task count]\n/ task list index++</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>820</x>
+      <x>710</x>
       <y>560</y>
       <w>30</w>
       <h>50</h>
@@ -338,20 +314,9 @@ r2=[task list index &lt; task count]\n/ task list index++</panel_attributes>
     <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>840</x>
-      <y>700</y>
-      <w>140</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>580</x>
+      <x>470</x>
       <y>540</y>
       <w>40</w>
       <h>40</h>
@@ -362,7 +327,7 @@ r2=[task list index &lt; task count]\n/ task list index++</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>770</x>
+      <x>660</x>
       <y>530</y>
       <w>120</w>
       <h>40</h>
@@ -374,7 +339,7 @@ tick count</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>670</x>
+      <x>560</x>
       <y>140</y>
       <w>240</w>
       <h>50</h>
@@ -386,7 +351,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>640</x>
+      <x>530</x>
       <y>160</y>
       <w>50</w>
       <h>50</h>
@@ -397,7 +362,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>380</x>
+      <x>270</x>
       <y>140</y>
       <w>150</w>
       <h>80</h>
@@ -409,7 +374,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>680</x>
+      <x>570</x>
       <y>210</y>
       <w>250</w>
       <h>80</h>
@@ -422,7 +387,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>650</x>
+      <x>540</x>
       <y>220</y>
       <w>50</w>
       <h>50</h>
@@ -433,10 +398,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>910</x>
-      <y>510</y>
-      <w>150</w>
-      <h>60</h>
+      <x>980</x>
+      <y>490</y>
+      <w>100</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>Indicate task overruns by counting occurrences
 style=wordwrap</panel_attributes>
@@ -445,18 +410,18 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1010</x>
+      <x>1020</x>
       <y>560</y>
-      <w>50</w>
-      <h>90</h>
+      <w>60</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>30.0;70.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;110.0;40.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>400</x>
+      <x>290</x>
       <y>340</y>
       <w>140</w>
       <h>60</h>
@@ -468,7 +433,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>370</x>
+      <x>260</x>
       <y>370</y>
       <w>50</w>
       <h>50</h>
@@ -479,7 +444,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>760</x>
+      <x>650</x>
       <y>310</y>
       <w>170</w>
       <h>80</h>
@@ -492,7 +457,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>730</x>
+      <x>620</x>
       <y>380</y>
       <w>70</w>
       <h>60</h>
@@ -503,7 +468,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>890</x>
+      <x>780</x>
       <y>430</y>
       <w>140</w>
       <h>50</h>
@@ -515,7 +480,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>860</x>
+      <x>750</x>
       <y>450</y>
       <w>50</w>
       <h>50</h>
@@ -526,7 +491,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>630</x>
+      <x>520</x>
       <y>610</y>
       <w>160</w>
       <h>90</h>
@@ -538,7 +503,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>760</x>
+      <x>650</x>
       <y>560</y>
       <w>50</w>
       <h>70</h>
@@ -549,7 +514,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>590</x>
+      <x>480</x>
       <y>570</y>
       <w>60</w>
       <h>60</h>
@@ -561,7 +526,7 @@ m1=[else]</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>590</x>
+      <x>480</x>
       <y>610</y>
       <w>20</w>
       <h>20</h>
@@ -570,32 +535,9 @@ m1=[else]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLState</id>
-    <coordinates>
-      <x>960</x>
-      <y>690</y>
-      <w>110</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>Exec. task
-overrun hook</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1000</x>
-      <y>660</y>
-      <w>30</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>600</x>
+      <x>490</x>
       <y>720</y>
       <w>190</w>
       <h>50</h>
@@ -607,12 +549,150 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>780</x>
-      <y>710</y>
-      <w>200</w>
+      <x>670</x>
+      <y>690</y>
+      <w>110</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>890</x>
+      <y>590</y>
+      <w>40</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>type=decision</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>920</x>
+      <y>580</y>
+      <w>180</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r2=[overrun counter\nunsaturated]</panel_attributes>
+    <additional_attributes>140.0;110.0;160.0;110.0;160.0;30.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>900</x>
+      <y>620</y>
+      <w>130</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=[overrun counter\nsaturated]</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>890</x>
+      <y>670</y>
+      <w>40</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>type=decision</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>950</x>
+      <y>670</y>
+      <w>110</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Increment task
+overrun count</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>730</x>
+      <y>580</y>
+      <w>180</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r2=[task\ndeadline overrrun]</panel_attributes>
+    <additional_attributes>160.0;30.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>730</x>
+      <y>680</y>
+      <w>50</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>760</x>
+      <y>670</y>
+      <w>110</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Exec. task
+overrun hook</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>860</x>
+      <y>680</y>
+      <w>50</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>920</x>
+      <y>680</y>
+      <w>50</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>820</x>
+      <y>510</y>
+      <w>140</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Task overrun counter saturation (instead of rollover)
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>890</x>
+      <y>560</y>
+      <w>40</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>180.0;10.0;10.0;30.0</additional_attributes>
+    <additional_attributes>20.0;30.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
