@@ -5,6 +5,7 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
+#include <limits.h>
 
 #include "unity.h"
 
@@ -98,7 +99,7 @@ void test_TKLsdlr_initTskCntTo0(void) {
 }
 
 /**
- * \brief Test if task Count (number of task entries in the connected task
+ * \brief Test if task count (number of task entries in the connected task
  * list) is set and returned correctly
  */
 void test_TKLsdlr_setAndReturnTskCnt(void) {
@@ -272,6 +273,38 @@ void test_TKLsdlr_detectAndCntSingleTskOverrunOnInconvTickRollover(void) {
     TKLsdlr_setTickSrc(TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
     TKLsdlr_exec();
+
+    TEST_ASSERT_EQUAL_UINT8(overrunExp, TKLsdlr_cntTskOverrun());
+}
+
+/**
+ * \brief Test if task deadline overrun counter gets correctly saturated
+ * (instead of rolling over)
+ */
+void test_TKLsdlr_saturateTskOverrun(void) {
+    TKLtyp_tsk_t tskLst[] = {
+        {.active = true,
+         .period = 100u,
+         .deadline = 10u,
+         .lastRun = 0u - 100u, /* Offset 0 */
+         .p_tskRunner = &TKLtsk_runner}
+    };
+    const uint8_t overrunExp = UCHAR_MAX; /* Saturated task overrun count */
+
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
+    TKLsdlr_setTskLst(tskLst, 1u);
+
+    /* Run more scheduler exec. cycles with task overruns than task deadline
+       overrun counter can hold so it gets saturated */
+    for (uint16_t i = 0u; i < UCHAR_MAX + 3u; i++) {
+        /* Task overruns */
+        TKLtick_getTick_ExpectAndReturn(tskLst[0].period * i);
+        TKLtsk_runner_Expect();
+        TKLtick_getTick_ExpectAndReturn((tskLst[0].period * i)
+                                        + tskLst[0].deadline + 1u);
+
+        TKLsdlr_exec();
+    }
 
     TEST_ASSERT_EQUAL_UINT8(overrunExp, TKLsdlr_cntTskOverrun());
 }

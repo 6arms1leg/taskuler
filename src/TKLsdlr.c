@@ -91,7 +91,9 @@ void TKLsdlr_exec(void) {
                    rollover) */
                 if ((*pv_p_getTick)() - p_tskLst[i].lastRun >
                     p_tskLst[i].deadline) {
-                    pv_tskOverrunCnt++; /* Incr. deadline overrun counter */
+                    if (UCHAR_MAX > pv_tskOverrunCnt) { /* Counter unsaturated? */
+                        pv_tskOverrunCnt++; /* Incr. deadline overrun counter */
+                    }
 
                     /* Run custom deadline overrun hook, if defined */
                     TKLSDLRCFG_OVERRUN_HOOK(p_tskLst[i].p_tskRunner);
