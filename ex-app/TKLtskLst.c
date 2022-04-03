@@ -23,13 +23,13 @@ static TKLtyp_tsk_t pv_tskLst[] = {
     {.active = true,
      .period = 2u * TKLTIMER_1S,
      .deadline = 250u * TKLTIMER_1MS,
-     .lastRun = TKLTIMER_0S - TKLTIMER_1S,
+     .lastRun = TKLTIMER_0S - TKLTIMER_1S, /* Offset 1 s */
      .p_tskRunner = &TKLtsk_blinkRunner},
     /* Tsk 1 */
     {.active = true,
      .period = 2u * TKLTIMER_1S,
      .deadline = 250u * TKLTIMER_1MS,
-     .lastRun = TKLTIMER_0S,
+     .lastRun = TKLTIMER_0S, /* Offset 2 s */
      .p_tskRunner = &TKLtsk_blinkRunner}
 };
 
