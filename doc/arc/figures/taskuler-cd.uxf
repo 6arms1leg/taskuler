@@ -24,45 +24,45 @@ fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
 
 
 // This text will be stored with each diagram;  use it for notes.</help_text>
-  <zoom_level>10</zoom_level>
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>800</x>
-      <y>460</y>
-      <w>190</w>
-      <h>170</h>
+      <x>768</x>
+      <y>368</y>
+      <w>144</w>
+      <h>136</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Type&gt;&gt;
-taskType
+    <panel_attributes>&lt;&lt;file&gt;&gt;
+TKLtyp.h
 --
 typedef struct {
     bool active;
     uint32_t period;
     uint32_t deadline;
     uint32_t lastRun;
-    void (*taskRunner)(void);
+    tskRunner_t tskRunner;
 } tsk_t;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>390</x>
-      <y>690</y>
-      <w>180</w>
-      <h>160</h>
+      <x>496</x>
+      <y>552</y>
+      <w>120</w>
+      <h>128</h>
     </coordinates>
     <panel_attributes>                    1
-timeTick
+tick
 --
--tickCount:uint32_t=0
+-tickCnt:uint32_t=0
 
 --
-init():void
-getTickCount():uint32_t
-incrementTickCount():void
-resetTickCount():void
+init(void):void
+getTick(void):uint32_t
+incrTick(void):void
+clrTick(void):void
 fg=gray</panel_attributes>
     <additional_attributes/>
   </element>
@@ -70,34 +70,34 @@ fg=gray</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>680</x>
-      <y>690</y>
-      <w>160</w>
-      <h>110</h>
+      <y>536</y>
+      <w>120</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>taskList
 --
--list[]:tsk_t
+-tskLst[]:tsk_t
 
 --
-getList():tsk_t*
-getTaskCount():uint8_t
+getTskLst(void):tsk_t*
+cntTsk(void):uint8_t
 fg=light_gray</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>470</x>
-      <y>890</y>
-      <w>100</w>
-      <h>110</h>
+      <x>560</x>
+      <y>712</y>
+      <w>80</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>                    1
-taskulerTimer
+timer
 --
 
 --
-init():void
+init(void):void
 ISR(TIMER)
 fg=gray</panel_attributes>
     <additional_attributes/>
@@ -105,10 +105,10 @@ fg=gray</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>690</x>
-      <y>1000</y>
-      <w>120</w>
-      <h>50</h>
+      <x>680</x>
+      <y>784</y>
+      <w>96</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>genericModule
 --
@@ -119,22 +119,22 @@ fg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>810</x>
-      <y>620</y>
-      <w>70</w>
-      <h>90</h>
+      <x>776</x>
+      <y>496</y>
+      <w>56</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;use&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>710</x>
-      <y>530</y>
-      <w>110</w>
-      <h>40</h>
+      <x>696</x>
+      <y>424</y>
+      <w>88</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;use&gt;&gt;</panel_attributes>
@@ -143,27 +143,27 @@ fg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>590</x>
-      <y>630</y>
-      <w>110</w>
-      <h>120</h>
+      <x>624</x>
+      <y>504</y>
+      <w>72</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-r1=taskList
+r1=tskLst
 m1=1
 m2=1</panel_attributes>
-    <additional_attributes>90.0;90.0;10.0;90.0;10.0;10.0</additional_attributes>
+    <additional_attributes>70.0;70.0;10.0;70.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>470</x>
-      <y>630</y>
-      <w>110</w>
-      <h>80</h>
+      <x>560</x>
+      <y>504</y>
+      <w>56</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-r1=getTickCount
+r1=getTick
 m1=1
 m2=1</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
@@ -171,10 +171,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>510</x>
-      <y>840</y>
-      <w>70</w>
-      <h>70</h>
+      <x>576</x>
+      <y>672</y>
+      <w>56</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;.&gt;
 &lt;&lt;use&gt;&gt;
@@ -184,10 +184,10 @@ fg=gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
-      <y>790</y>
-      <w>100</w>
-      <h>110</h>
+      <x>720</x>
+      <y>616</y>
+      <w>80</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=taskRunner
@@ -199,10 +199,10 @@ fg=light_gray</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>840</x>
-      <y>930</y>
-      <w>160</w>
-      <h>70</h>
+      <x>816</x>
+      <y>760</y>
+      <w>128</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Module might interact with other modules (e.g., drivers)
 style=wordwrap</panel_attributes>
@@ -211,21 +211,21 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>780</x>
-      <y>960</y>
-      <w>80</w>
-      <h>60</h>
+      <x>768</x>
+      <y>768</y>
+      <w>64</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;40.0;60.0;10.0</additional_attributes>
+    <additional_attributes>10.0;30.0;60.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>260</x>
-      <y>810</y>
-      <w>110</w>
-      <h>50</h>
+      <x>392</x>
+      <y>648</y>
+      <w>88</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>Board support package
 style=wordwrap</panel_attributes>
@@ -234,10 +234,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>830</y>
-      <w>130</w>
-      <h>100</h>
+      <x>472</x>
+      <y>664</y>
+      <w>104</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>110.0;80.0;10.0;10.0</additional_attributes>
@@ -245,26 +245,26 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>690</x>
-      <y>880</y>
-      <w>130</w>
-      <h>80</h>
+      <x>672</x>
+      <y>688</y>
+      <w>120</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>task
 --
 
 --
-taskRunner():void
+taskRunner(void):void
 fg=light_gray</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
-      <y>950</y>
-      <w>70</w>
-      <h>70</h>
+      <x>720</x>
+      <y>744</y>
+      <w>56</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;use&gt;&gt;
@@ -274,21 +274,21 @@ fg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>810</x>
-      <y>880</y>
-      <w>50</w>
+      <x>784</x>
+      <y>696</y>
+      <w>48</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;20.0;30.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;40.0;30.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>840</x>
-      <y>830</y>
-      <w>150</w>
-      <h>80</h>
+      <x>816</x>
+      <y>680</y>
+      <w>120</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>Task orchestrates module(s) interaction sequence to achieve task goal
 style=wordwrap</panel_attributes>
@@ -297,10 +297,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>780</x>
-      <y>1020</y>
-      <w>80</w>
-      <h>80</h>
+      <x>752</x>
+      <y>800</y>
+      <w>64</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=*
@@ -311,21 +311,21 @@ fg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>830</x>
-      <y>690</y>
-      <w>70</w>
-      <h>50</h>
+      <x>792</x>
+      <y>560</y>
+      <w>40</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;30.0;50.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;30.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>740</x>
-      <y>630</y>
-      <w>40</w>
-      <h>30</h>
+      <x>720</x>
+      <y>496</y>
+      <w>32</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>*IF2*
 style=wordwrap</panel_attributes>
@@ -334,10 +334,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>330</x>
-      <y>660</y>
-      <w>40</w>
-      <h>30</h>
+      <x>448</x>
+      <y>528</y>
+      <w>32</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>*IF1*
 style=wordwrap</panel_attributes>
@@ -346,21 +346,21 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>590</x>
-      <y>640</y>
-      <w>170</w>
-      <h>60</h>
+      <x>624</x>
+      <y>504</y>
+      <w>112</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;40.0;150.0;10.0</additional_attributes>
+    <additional_attributes>10.0;50.0;120.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>650</y>
-      <w>140</w>
-      <h>40</h>
+      <x>472</x>
+      <y>520</y>
+      <w>112</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>120.0;10.0;10.0;20.0</additional_attributes>
@@ -368,10 +368,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>370</x>
-      <y>100</y>
-      <w>640</w>
-      <h>250</h>
+      <x>344</x>
+      <y>80</y>
+      <w>512</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>*Taskuler framework interface (IF)*
 --
@@ -382,7 +382,7 @@ The IF consists of the following parts:
 The FW requires a pointer to a function that returns the current relative system time tick count.
 
 *IF2*
-The FW requires a pointer to a task list (an array of `tsk_t` elements) and the number of elements of that list.  It provides `taskType.h` to `#include` the type definitions for the task list’s array elements.
+The FW requires a pointer to a task list (an array of `tsk_t` elements) and the number of elements of that list.  It provides `TKLtyp.h` to `#include` the type definitions for the task list’s array elements.
 
 *IF3*
 The FW provides an optional task deadline overrun hook for custom, user-provided (recovery) actions.
@@ -392,10 +392,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>200</x>
-      <y>10</y>
-      <w>910</w>
-      <h>1090</h>
+      <x>328</x>
+      <y>8</y>
+      <w>640</w>
+      <h>856</h>
     </coordinates>
     <panel_attributes>cd Taskuler
 /Core modules and supplements/
@@ -406,10 +406,10 @@ fontsize=30</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>640</x>
-      <y>30</y>
-      <w>70</w>
-      <h>30</h>
+      <x>680</x>
+      <y>24</y>
+      <w>56</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>UML 2.0
 transparency=0
@@ -419,10 +419,10 @@ layer=1</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>220</x>
-      <y>100</y>
-      <w>130</w>
-      <h>80</h>
+      <x>752</x>
+      <y>24</y>
+      <w>160</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>Cyclic executive cooperative (non-preemptive) scheduler
 style=wordwrap</panel_attributes>
@@ -431,26 +431,26 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>310</x>
-      <y>900</y>
-      <w>140</w>
-      <h>90</h>
+      <x>448</x>
+      <y>720</y>
+      <w>96</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>&lt;&lt;file&gt;&gt;
-taskulerInterrupt.h
+TKLint.h
 --
-#define ENABLE ...
-#define DISABLE ...
+#define ENA() ...
+#define DIS() ...
 fg=gray</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
-      <y>840</y>
-      <w>70</w>
-      <h>80</h>
+      <x>512</x>
+      <y>672</y>
+      <w>56</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;use&gt;&gt;
@@ -460,10 +460,10 @@ fg=gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>830</y>
-      <w>60</w>
-      <h>90</h>
+      <x>472</x>
+      <y>664</y>
+      <w>48</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>40.0;70.0;10.0;10.0</additional_attributes>
@@ -471,10 +471,10 @@ fg=gray</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>590</x>
-      <y>930</y>
-      <w>70</w>
-      <h>50</h>
+      <x>488</x>
+      <y>808</y>
+      <w>56</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>Driver module
 style=wordwrap</panel_attributes>
@@ -483,34 +483,34 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>560</x>
-      <y>950</y>
-      <w>50</w>
-      <h>50</h>
+      <x>536</x>
+      <y>792</y>
+      <w>56</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>30.0;10.0;10.0;30.0</additional_attributes>
+    <additional_attributes>10.0;40.0;50.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>560</x>
-      <y>770</y>
-      <w>140</w>
-      <h>160</h>
+      <x>632</x>
+      <y>600</y>
+      <w>72</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;use&gt;&gt;
 fg=light_gray</panel_attributes>
-    <additional_attributes>10.0;140.0;70.0;140.0;70.0;10.0;120.0;10.0</additional_attributes>
+    <additional_attributes>10.0;160.0;30.0;160.0;30.0;10.0;60.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>880</x>
-      <y>660</y>
-      <w>170</w>
-      <h>150</h>
+      <x>816</x>
+      <y>544</y>
+      <w>136</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>To use multiple task lists and switch between them, this module can hold multiple lists (with corresponding access operations) or each task list can be implemented in a separate module
 style=wordwrap</panel_attributes>
@@ -519,10 +519,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>770</x>
-      <y>640</y>
-      <w>70</w>
-      <h>40</h>
+      <x>744</x>
+      <y>504</y>
+      <w>56</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>50.0;20.0;10.0;10.0</additional_attributes>
@@ -530,37 +530,37 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>220</x>
-      <y>370</y>
-      <w>500</w>
-      <h>270</h>
+      <x>344</x>
+      <y>296</y>
+      <w>360</w>
+      <h>216</h>
     </coordinates>
     <panel_attributes>                    1
 scheduler
 --
--getTickCount:fn_getTickCount*=NULL
--taskList:tsk_t*=NULL
--taskCount:uint8_t=0
--taskOverrunCount:uint8_t=0
+-getTick:getTick_t=NULL
+-tskLst:tsk_t*=NULL
+-tskCnt:uint8_t=0
+-tskOverrunCnt:uint8_t=0
 
 --
-setTickCountSource( (*p_fn_getTickCount)(void):uint32_t ):void
-setTaskAttributes(taskList:tsk_t*, taskCount:uint8_t):void
-getTaskList():tsk_t*
-getTaskCount():uint8_t
-getTaskOverrunCount():uint8_t
-resetTaskOverrunCount():void
-setTaskAct(taskRunner:fn_taskRunner*, active:bool, updateLastRun:bool):void
-execute():void</panel_attributes>
+setTickSrc(getTick:getTick_t):void
+setTskLst(tskLst:tsk_t*, tskCnt:uint8_t):void
+getTskLst(void):tsk_t*
+cntTsk(void):uint8_t
+cntTskOverrun(void):uint8_t
+clrTskOverrun(void):void
+setTskAct(tskRunner:tskRunner_t, active:bool, updLastRun:bool):void
+exec(void):void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>820</y>
-      <w>50</w>
-      <h>40</h>
+      <x>472</x>
+      <y>656</y>
+      <w>40</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>30.0;10.0;10.0;20.0</additional_attributes>
@@ -568,24 +568,24 @@ execute():void</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>770</x>
-      <y>370</y>
-      <w>320</w>
-      <h>70</h>
+      <x>744</x>
+      <y>296</y>
+      <w>192</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>&lt;&lt;file&gt;&gt;
-scheduler_conf.h
+TKLsdlrCfg.h
 --
-#define TASKOVERRUNHOOK(overrunTask) ...</panel_attributes>
+#define OVERRUN_HOOK(tsk_) ...</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>710</x>
-      <y>380</y>
-      <w>80</w>
-      <h>40</h>
+      <x>696</x>
+      <y>304</y>
+      <w>64</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;use&gt;&gt;</panel_attributes>
@@ -594,10 +594,10 @@ scheduler_conf.h
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>740</x>
-      <y>460</y>
-      <w>40</w>
-      <h>30</h>
+      <x>720</x>
+      <y>368</y>
+      <w>32</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>*IF3*
 style=wordwrap</panel_attributes>
@@ -606,10 +606,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>730</x>
-      <y>390</y>
-      <w>40</w>
-      <h>90</h>
+      <x>712</x>
+      <y>312</y>
+      <w>32</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;20.0;70.0</additional_attributes>

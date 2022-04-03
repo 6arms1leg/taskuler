@@ -402,7 +402,7 @@ style=wordwrap</panel_attributes>
       <w>150</w>
       <h>80</h>
     </coordinates>
-    <panel_attributes>Execution cycle continuously invoked in main `while` loop ...
+    <panel_attributes>Execution cycle continuously invoked in `main` endless "super loop" ...
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>

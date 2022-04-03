@@ -91,7 +91,7 @@ Quality metrics:
 ## Using timers
 
 Timers can be created by using a one-shot task that deactives itself at the end
-of its execution).
+of its execution.
 Its period then defines the timer’s timing.
 When enabling such a task (i.e., starting the timer), its time stamp of last
 task run must be updated.
