@@ -66,7 +66,7 @@ void test_TKLsdlr_setTickSrc(void) {
 
     TKLtick_getTick_ExpectAndReturn(0u);
 
-    TKLsdlr_setTickSrc(TKLtick_getTick); /* Set tick count source ... */
+    TKLsdlr_setTickSrc(&TKLtick_getTick); /* Set tick count source ... */
     TKLsdlr_setTskLst(tskLst, 1u);
     TKLsdlr_exec(); /* ... and test if it gets called (exactly once) */
 }
@@ -139,7 +139,7 @@ void test_TKLsdlr_checkFirstLateSdlrExecIsNoTskOverrun(void) {
     TKLtsk_runner_Expect();
     TKLtick_getTick_ExpectAndReturn(1099u);
 
-    TKLsdlr_setTickSrc(TKLtick_getTick);
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
     TKLsdlr_exec();
 
@@ -164,7 +164,7 @@ void test_TKLsdlr_detectAndCntSingleTskOverrun(void) {
     TKLtsk_runner_Expect();
     TKLtick_getTick_ExpectAndReturn(1051u);
 
-    TKLsdlr_setTickSrc(TKLtick_getTick);
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
     TKLsdlr_exec();
 
@@ -200,7 +200,7 @@ void test_TKLsdlr_detectAndCntMultiTskOverrun(void) {
     TKLtsk_runner_Expect();
     TKLtick_getTick_ExpectAndReturn(1301u);
 
-    TKLsdlr_setTickSrc(TKLtick_getTick);
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
     for (uint8_t i = 0u; i < 3; i++) {
         TKLsdlr_exec();
@@ -238,7 +238,7 @@ void test_TKLsdlr_detectAndCntMultiTskOverrunOnTickRollover(void) {
     TKLtsk_runner_Expect();
     TKLtick_getTick_ExpectAndReturn(231u);
 
-    TKLsdlr_setTickSrc(TKLtick_getTick);
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
     for (uint8_t i = 0u; i < 3; i++) {
         TKLsdlr_exec();
@@ -270,7 +270,7 @@ void test_TKLsdlr_detectAndCntSingleTskOverrunOnInconvTickRollover(void) {
     TKLtsk_runner_Expect();
     TKLtick_getTick_ExpectAndReturn(10u);
 
-    TKLsdlr_setTickSrc(TKLtick_getTick);
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
     TKLsdlr_exec();
 
@@ -326,7 +326,7 @@ void test_TKLsdlr_clearTskOverrun(void) {
     TKLtsk_runner_Expect();
     TKLtick_getTick_ExpectAndReturn(21u);
 
-    TKLsdlr_setTickSrc(TKLtick_getTick);
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
     TKLsdlr_exec();
 
@@ -420,7 +420,7 @@ void test_TKLsdlr_updateSingleTskLastRun(void) {
 
     TKLtick_getTick_ExpectAndReturn(lastRunExp);
 
-    TKLsdlr_setTickSrc(TKLtick_getTick);
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
     TKLsdlr_setTskAct(TKLtsk_runner, true, true);
 
@@ -458,7 +458,7 @@ void test_TKLsdlr_execDueToRunTskAt1TickPeriodOn0TickStart(void) {
     TKLtsk_runner_Expect();
     TKLtick_getTick_ExpectAndReturn(3u);
 
-    TKLsdlr_setTickSrc(TKLtick_getTick);
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
     for (uint8_t i = 0u; i < 4; i++) {
         TKLsdlr_exec();
@@ -496,7 +496,7 @@ void test_TKLsdlr_execDueToRunTskAt2TicksPeriodOnNon0TickStart(void) {
     TKLtsk_runner_Expect();
     TKLtick_getTick_ExpectAndReturn(204u);
 
-    TKLsdlr_setTickSrc(TKLtick_getTick);
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
     for (uint8_t i = 0u; i < 4; i++) {
         TKLsdlr_exec();
@@ -534,7 +534,7 @@ void test_TKLsdlr_execDueToRunTskAt2TicksPeriodOnNon0TickStartAndTickLoss(void) 
     TKLtsk_runner_Expect();
     TKLtick_getTick_ExpectAndReturn(507u);
 
-    TKLsdlr_setTickSrc(TKLtick_getTick);
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
     for (uint8_t i = 0u; i < 4; i++) {
         TKLsdlr_exec();
@@ -600,7 +600,7 @@ void test_TKLsdlr_execDueToRunTskAtDiffPeriodOnNon0TickStartAndTickLoss(void) {
     TKLtsk_runner2_Expect();
     TKLtick_getTick_ExpectAndReturn(504u);
 
-    TKLsdlr_setTickSrc(TKLtick_getTick);
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 3u);
     for (uint8_t i = 0u; i < 13; i++) {
         TKLsdlr_exec();
@@ -694,7 +694,7 @@ void test_TKLsdlr_execDueToRunTskAtDiffPeriodAndOffsetOn0TickStart(void) {
     /* Run no task runner */
     TKLtick_getTick_ExpectAndReturn(91u);
 
-    TKLsdlr_setTickSrc(TKLtick_getTick);
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 3u);
     for (uint8_t i = 0u; i < 17; i++) {
         TKLsdlr_exec();
@@ -717,7 +717,7 @@ void test_TKLsdlr_checkRunnerOfDisTskIsNotRun(void) {
        will fail (as it should), if disabled task’s runner is called. */
     TKLtick_getTick_ExpectAndReturn(10u);
 
-    TKLsdlr_setTickSrc(TKLtick_getTick);
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
     TKLsdlr_exec();
 }
@@ -735,7 +735,7 @@ void test_TKLsdlr_checkLastRunOfDisTskIsStillUpdated(void) {
 
     TKLtick_getTick_ExpectAndReturn(327u);
 
-    TKLsdlr_setTickSrc(TKLtick_getTick);
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
     TKLsdlr_exec();
 
@@ -761,7 +761,7 @@ void test_TKLsdlr_checkLastRunIsAlwaysSetToBeginOfPeriod(void) {
     TKLtsk_runner_Expect();
     TKLtick_getTick_ExpectAndReturn(329u);
 
-    TKLsdlr_setTickSrc(TKLtick_getTick);
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
     TKLsdlr_exec();
 
@@ -816,7 +816,7 @@ void test_TKLsdlr_execDueToRunTskAt3TickPeriodOnTickRollover(void) {
     /* No run */
     TKLtick_getTick_ExpectAndReturn(UINT32_MAX + 7u); /* `6` */
 
-    TKLsdlr_setTickSrc(TKLtick_getTick);
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
     for (uint8_t i = 0u; i < 11; i++) {
         TKLsdlr_exec();
