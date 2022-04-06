@@ -22,16 +22,22 @@ static volatile uint8_t pv_tskOverrunCnt;
  * ==========
  */
 
-/* "Invisible" API for unit tests to reset internal state (private vars.) */
 #ifdef TEST
-void TKLsdlr_utClrTickSrc(void) {
-    pv_p_getTick = NULL;
-}
-void TKLsdlr_utClrTskLst(void) {
-    pv_p_tskLst = NULL;
-}
-void TKLsdlr_utClrTskCnt(void) {
-    pv_tskCnt = 0u;
+/**
+ * \brief "Invisible" API for unit tests to modify the internal state (private
+ * vars.)
+ *
+ * \param p_getTick Pointer to an access function that provides the current
+ * relative system time tick count
+ * \param p_tskLst Task list
+ * \param tskCnt Number of tasks within provided task list
+ */
+void TKLsdlr_utModTickSrcTskLst(const TKLtyp_p_getTick_t p_getTick,
+                                TKLtyp_tsk_t* const p_tskLst,
+                                const uint8_t tskCnt) {
+    pv_p_getTick = p_getTick;
+    pv_p_tskLst = p_tskLst;
+    pv_tskCnt = tskCnt;
 }
 #endif /* TEST */
 

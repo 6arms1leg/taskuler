@@ -18,10 +18,10 @@
 
 #include "mock_TKLtsk.h"
 
-/* "Invisible" API for unit tests to reset internal state (private vars.) */
-extern void TKLsdlr_utClrTickSrc(void);
-extern void TKLsdlr_utClrTskLst(void);
-extern void TKLsdlr_utClrTskCnt(void);
+/* "Invisible" API for unit tests to modify internal state (private vars.) */
+extern void TKLsdlr_utModTickSrcTskLst(const TKLtyp_p_getTick_t p_getTick,
+                                       TKLtyp_tsk_t* const p_tskLst,
+                                       const uint8_t tskCnt);
 
 /* OPERATIONS
  * ==========
@@ -35,9 +35,7 @@ void setUp(void) {
 /** \brief Run after every test */
 void tearDown(void) {
     /* Reset internal state (private vars.) */
-    TKLsdlr_utClrTickSrc();
-    TKLsdlr_utClrTskLst();
-    TKLsdlr_utClrTskCnt();
+    TKLsdlr_utModTickSrcTskLst(NULL, NULL, 0u);
     TKLsdlr_clrTskOverrun();
 }
 
@@ -94,19 +92,17 @@ void test_TKLsdlr_assertNoNullPtrNo0TskCntOnSetTskAct(void) {
 
     TEST_ASSERT_FAIL_ASSERT(TKLsdlr_setTskAct(NULL, false, false));
 
-    TKLsdlr_utClrTickSrc(); /* Tick source not set */
+    TKLsdlr_utModTickSrcTskLst(NULL, tskLst, 1u); /* Tick source not set */
 
     TEST_ASSERT_FAIL_ASSERT(TKLsdlr_setTskAct(&TKLtsk_runner, false, false));
 
-    /* Task list not set */
-    TKLsdlr_setTickSrc(&TKLtick_getTick);
-    TKLsdlr_utClrTskLst();
+    TKLsdlr_utModTickSrcTskLst(&TKLtick_getTick, NULL, 1u); /* Task list not
+                                                               set */
 
     TEST_ASSERT_FAIL_ASSERT(TKLsdlr_setTskAct(&TKLtsk_runner, false, false));
 
-    /* Task count not set */
-    TKLsdlr_setTskLst(tskLst, 1u);
-    TKLsdlr_utClrTskCnt();
+    TKLsdlr_utModTickSrcTskLst(&TKLtick_getTick, tskLst, 0u); /* Task count not
+                                                                 set */
 
     TEST_ASSERT_FAIL_ASSERT(TKLsdlr_setTskAct(&TKLtsk_runner, false, false));
 }
@@ -122,15 +118,13 @@ void test_TKLsdlr_assertNoNullPtrNo0TskCntOnExec(void) {
 
     TEST_ASSERT_FAIL_ASSERT(TKLsdlr_exec());
 
-    /* Task list not set */
-    TKLsdlr_setTickSrc(&TKLtick_getTick);
-    TKLsdlr_utClrTskLst();
+    TKLsdlr_utModTickSrcTskLst(&TKLtick_getTick, NULL, 1u); /* Task list not
+                                                               set */
 
     TEST_ASSERT_FAIL_ASSERT(TKLsdlr_exec());
 
-    /* Task count not set */
-    TKLsdlr_setTskLst(tskLst, 1u);
-    TKLsdlr_utClrTskCnt();
+    TKLsdlr_utModTickSrcTskLst(&TKLtick_getTick, tskLst, 0u); /* Task count not
+                                                                 set */
 
     TEST_ASSERT_FAIL_ASSERT(TKLsdlr_exec());
 }
