@@ -6,7 +6,7 @@
 /* `"` used intentionally.  This allows the user to override and provide his
    own implementation before falling back to libc. */
 #include "stdint.h"
-#include "assert.h"
+#include "assert.h" /* For sanity checks (Design by Contract) */
 
 /** \brief User-provided macros to dis-/enable all relevant interrupts */
 #include "TKLcs0Cfg.h"

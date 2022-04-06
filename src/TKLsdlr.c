@@ -22,11 +22,30 @@ static volatile uint8_t pv_tskOverrunCnt;
  * ==========
  */
 
+/* "Invisible" API for unit tests to reset internal state (private vars.) */
+#ifdef TEST
+void TKLsdlr_utClrTickSrc(void) {
+    pv_p_getTick = NULL;
+}
+void TKLsdlr_utClrTskLst(void) {
+    pv_p_tskLst = NULL;
+}
+void TKLsdlr_utClrTskCnt(void) {
+    pv_tskCnt = 0u;
+}
+#endif /* TEST */
+
 void TKLsdlr_setTickSrc(const TKLtyp_p_getTick_t p_getTick) {
+    assert(NULL != p_getTick); /* Sanity check (Design by Contract) */
+
     pv_p_getTick = p_getTick;
 }
 
 void TKLsdlr_setTskLst(TKLtyp_tsk_t* const p_tskLst, const uint8_t tskCnt) {
+    /* Sanity check (Design by Contract) */
+    assert((NULL != p_tskLst) &&
+           (0u < tskCnt));
+
     pv_p_tskLst = p_tskLst;
     pv_tskCnt = tskCnt;
 }
@@ -50,6 +69,12 @@ void TKLsdlr_clrTskOverrun(void) {
 void TKLsdlr_setTskAct(const TKLtyp_p_tskRunner_t p_tskRunner,
                        const bool active,
                        const bool updLastRun) {
+    /* Sanity check (Design by Contract) */
+    assert((NULL != p_tskRunner) &&
+           (NULL != pv_p_getTick) &&
+           (NULL != pv_p_tskLst) &&
+           (0u < pv_tskCnt));
+
     TKLtyp_tsk_t* const p_tskLst = pv_p_tskLst; /* Set ptr. to task list */
     const uint8_t tskCnt = pv_tskCnt; /* Number of tasks in task list */
 
@@ -66,6 +91,11 @@ void TKLsdlr_setTskAct(const TKLtyp_p_tskRunner_t p_tskRunner,
 }
 
 void TKLsdlr_exec(void) {
+    /* Sanity check (Design by Contract) */
+    assert((NULL != pv_p_getTick) &&
+           (NULL != pv_p_tskLst) &&
+           (0u < pv_tskCnt));
+
     TKLtyp_tsk_t* const p_tskLst = pv_p_tskLst; /* Set ptr. to task list */
     const uint8_t tskCnt = pv_tskCnt; /* Number of tasks in task list */
     const uint32_t tickCnt = (*pv_p_getTick)(); /* Get curr. tick count */

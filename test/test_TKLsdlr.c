@@ -6,6 +6,8 @@
 #include <stddef.h>
 #include <stdbool.h>
 #include <limits.h>
+#include "assert.h" /* Sanity checks (Design by Contract); replaced for unit
+                       testing */
 
 #include "unity.h"
 
@@ -15,6 +17,11 @@
 #include "mock_TKLtick.h"
 
 #include "mock_TKLtsk.h"
+
+/* "Invisible" API for unit tests to reset internal state (private vars.) */
+extern void TKLsdlr_utClrTickSrc(void);
+extern void TKLsdlr_utClrTskLst(void);
+extern void TKLsdlr_utClrTskCnt(void);
 
 /* OPERATIONS
  * ==========
@@ -27,9 +34,10 @@ void setUp(void) {
 
 /** \brief Run after every test */
 void tearDown(void) {
-    /* Reset all private variables of module under test back to init. values */
-    TKLsdlr_setTickSrc(NULL);
-    TKLsdlr_setTskLst(NULL, 0u);
+    /* Reset internal state (private vars.) */
+    TKLsdlr_utClrTickSrc();
+    TKLsdlr_utClrTskLst();
+    TKLsdlr_utClrTskCnt();
     TKLsdlr_clrTskOverrun();
 }
 
@@ -54,6 +62,79 @@ void test_TKLsdlr_checkUintTickRolloverArith(void) {
     TEST_ASSERT_EQUAL_UINT8(resExpAMinusB, (a - b));
 }
 
+/**
+ * \brief Test that assert fires on attempt to set relative system time tick
+ * count source to `NULL`
+ */
+void test_TKLsdlr_assertNoNullPtrOnSetTickSrc(void) {
+    TEST_ASSERT_FAIL_ASSERT(TKLsdlr_setTickSrc(NULL));
+}
+
+/**
+ * \brief Test that assert fires on attempt to set task list to `NULL` or its
+ * length to `0`
+ */
+void test_TKLsdlr_assertNoNullPtrNo0TskCntOnSetTskLst(void) {
+    TKLtyp_tsk_t tskLst[1] = {0};
+
+    TEST_ASSERT_FAIL_ASSERT(TKLsdlr_setTskLst(NULL, 1u));
+    TEST_ASSERT_FAIL_ASSERT(TKLsdlr_setTskLst(tskLst, 0u));
+}
+
+/**
+ * \brief Test that assert fires on attempt to set task activation status with
+ * `NULL` pointer task runner or incomplete initialization
+ */
+void test_TKLsdlr_assertNoNullPtrNo0TskCntOnSetTskAct(void) {
+    TKLtyp_tsk_t tskLst[1] = {0};
+
+    /* Fully init. */
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
+    TKLsdlr_setTskLst(tskLst, 1u);
+
+    TEST_ASSERT_FAIL_ASSERT(TKLsdlr_setTskAct(NULL, false, false));
+
+    TKLsdlr_utClrTickSrc(); /* Tick source not set */
+
+    TEST_ASSERT_FAIL_ASSERT(TKLsdlr_setTskAct(&TKLtsk_runner, false, false));
+
+    /* Task list not set */
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
+    TKLsdlr_utClrTskLst();
+
+    TEST_ASSERT_FAIL_ASSERT(TKLsdlr_setTskAct(&TKLtsk_runner, false, false));
+
+    /* Task count not set */
+    TKLsdlr_setTskLst(tskLst, 1u);
+    TKLsdlr_utClrTskCnt();
+
+    TEST_ASSERT_FAIL_ASSERT(TKLsdlr_setTskAct(&TKLtsk_runner, false, false));
+}
+
+/**
+ * \brief Test that assert fires on attempt to execute scheduler cycle with
+ * incomplete initialization
+ */
+void test_TKLsdlr_assertNoNullPtrNo0TskCntOnExec(void) {
+    TKLtyp_tsk_t tskLst[1] = {0};
+
+    TKLsdlr_setTskLst(tskLst, 1u); /* Tick source not set */
+
+    TEST_ASSERT_FAIL_ASSERT(TKLsdlr_exec());
+
+    /* Task list not set */
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
+    TKLsdlr_utClrTskLst();
+
+    TEST_ASSERT_FAIL_ASSERT(TKLsdlr_exec());
+
+    /* Task count not set */
+    TKLsdlr_setTskLst(tskLst, 1u);
+    TKLsdlr_utClrTskCnt();
+
+    TEST_ASSERT_FAIL_ASSERT(TKLsdlr_exec());
+}
+
 /** \brief Test if relative system time tick count source is set correctly */
 void test_TKLsdlr_setTickSrc(void) {
     TKLtyp_tsk_t tskLst[] = {
@@ -71,11 +152,6 @@ void test_TKLsdlr_setTickSrc(void) {
     TKLsdlr_exec(); /* ... and test if it gets called (exactly once) */
 }
 
-/** \brief Test that task list is initialized with `Null` pointer */
-void test_TKLsdlr_initTskLstToNull(void) {
-    TEST_ASSERT_NULL(TKLsdlr_getTskLst());
-}
-
 /** \brief Test if task list is set and returned correctly */
 void test_TKLsdlr_setAndReturnTskLst(void) {
     TKLtyp_tsk_t tskLstExp[1] = {0};
@@ -85,16 +161,6 @@ void test_TKLsdlr_setAndReturnTskLst(void) {
     p_tskLstAct = TKLsdlr_getTskLst();
 
     TEST_ASSERT_EQUAL_PTR(tskLstExp, p_tskLstAct);
-}
-
-/**
- * \brief Test that task count (number of task entries in the connected task
- * list) is initialized to `0`
- */
-void test_TKLsdlr_initTskCntTo0(void) {
-    const uint8_t tskCntExp = 0u;
-
-    TEST_ASSERT_EQUAL_UINT8(tskCntExp, TKLsdlr_cntTsk());
 }
 
 /**
@@ -347,6 +413,7 @@ void test_TKLsdlr_enaSingleTsk(void) {
          .p_tskRunner = &TKLtsk_runner}
     };
 
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
     TKLsdlr_setTskAct(TKLtsk_runner, true, false);
 
@@ -363,6 +430,7 @@ void test_TKLsdlr_disSingleTsk(void) {
          .p_tskRunner = &TKLtsk_runner}
     };
 
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
     TKLsdlr_setTskAct(TKLtsk_runner, false, false);
 
@@ -388,6 +456,7 @@ void test_TKLsdlr_enaAndDisMultiSameTsk(void) {
     const bool activeExpA = false;
     const bool activeExpB = true;
 
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 7u);
     TKLsdlr_setTskAct(TKLtsk_runner0, activeExpA, false);
     TKLsdlr_setTskAct(TKLtsk_runner1, activeExpB, false);
