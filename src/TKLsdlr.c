@@ -51,6 +51,11 @@ void TKLsdlr_setTskLst(TKLtyp_tsk_t* const p_tskLst, const uint8_t tskCnt) {
     /* Sanity check (Design by Contract) */
     assert((NULL != p_tskLst) &&
            (0u < tskCnt));
+    for (uint8_t i = 0u; tskCnt > i; i++) {
+        assert((0u < p_tskLst[i].period) &&
+               (0u < p_tskLst[i].deadline) &&
+               (NULL != p_tskLst[i].p_tskRunner));
+    }
 
     pv_p_tskLst = p_tskLst;
     pv_tskCnt = tskCnt;

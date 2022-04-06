@@ -80,11 +80,72 @@ void test_TKLsdlr_assertNoNullPtrNo0TskCntOnSetTskLst(void) {
 }
 
 /**
+ * \brief Test that assert fires on attempt to set task list with `0` period,
+ * `0` deadline or `NULL` pointer task runner
+ */
+void test_TKLsdlr_assertNo0PeriodNo0DeadlineNoNullTskRunnerOnSetTskLst(void) {
+    TKLsdlr_setTickSrc(&TKLtick_getTick);
+
+    TKLtyp_tsk_t tskLstA[] = {
+        {.active = false,
+         .period = 0u, /* Invalid */
+         .deadline = 1u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner}
+    };
+
+    TEST_ASSERT_FAIL_ASSERT(TKLsdlr_setTskLst(tskLstA, 1u));
+
+    /* More than 1 task to also test `assert(...)` loop */
+    TKLtyp_tsk_t tskLstB[] = {
+        {.active = false,
+         .period = 1u,
+         .deadline = 1u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner0},
+        {.active = false,
+         .period = 1u,
+         .deadline = 0u, /* Invalid */
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner1}
+    };
+
+    TEST_ASSERT_FAIL_ASSERT(TKLsdlr_setTskLst(tskLstB, 2u));
+
+    /* More than 1 task to also test `assert(...)` loop */
+    TKLtyp_tsk_t tskLstC[] = {
+        {.active = false,
+         .period = 1u,
+         .deadline = 1u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner0},
+        {.active = false,
+         .period = 1u,
+         .deadline = 1u,
+         .lastRun = 0u,
+         .p_tskRunner = NULL}, /* Invalid */
+        {.active = false,
+         .period = 1u,
+         .deadline = 1u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner2}
+    };
+
+    TEST_ASSERT_FAIL_ASSERT(TKLsdlr_setTskLst(tskLstC, 3u));
+}
+
+/**
  * \brief Test that assert fires on attempt to set task activation status with
  * `NULL` pointer task runner or incomplete initialization
  */
 void test_TKLsdlr_assertNoNullPtrNo0TskCntOnSetTskAct(void) {
-    TKLtyp_tsk_t tskLst[1] = {0};
+    TKLtyp_tsk_t tskLst[] = {
+        {.active = false,
+         .period = 1u,
+         .deadline = 1u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner}
+    };
 
     /* Fully init. */
     TKLsdlr_setTickSrc(&TKLtick_getTick);
@@ -112,7 +173,13 @@ void test_TKLsdlr_assertNoNullPtrNo0TskCntOnSetTskAct(void) {
  * incomplete initialization
  */
 void test_TKLsdlr_assertNoNullPtrNo0TskCntOnExec(void) {
-    TKLtyp_tsk_t tskLst[1] = {0};
+    TKLtyp_tsk_t tskLst[] = {
+        {.active = false,
+         .period = 1u,
+         .deadline = 1u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner}
+    };
 
     TKLsdlr_setTskLst(tskLst, 1u); /* Tick source not set */
 
@@ -148,7 +215,13 @@ void test_TKLsdlr_setTickSrc(void) {
 
 /** \brief Test if task list is set and returned correctly */
 void test_TKLsdlr_setAndReturnTskLst(void) {
-    TKLtyp_tsk_t tskLstExp[1] = {0};
+    TKLtyp_tsk_t tskLstExp[] = {
+        {.active = false,
+         .period = 1u,
+         .deadline = 1u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner}
+    };
     TKLtyp_tsk_t* p_tskLstAct = NULL;
 
     TKLsdlr_setTskLst(tskLstExp, 1u);
@@ -162,7 +235,13 @@ void test_TKLsdlr_setAndReturnTskLst(void) {
  * list) is set and returned correctly
  */
 void test_TKLsdlr_setAndReturnTskCnt(void) {
-    TKLtyp_tsk_t tskLst[1] = {0};
+    TKLtyp_tsk_t tskLst[] = {
+        {.active = false,
+         .period = 1u,
+         .deadline = 1u,
+         .lastRun = 0u,
+         .p_tskRunner = &TKLtsk_runner}
+    };
     const uint8_t tskCntExp = 1u;
     uint8_t tskCntAct = 0u;
 
