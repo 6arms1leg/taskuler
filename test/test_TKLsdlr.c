@@ -78,14 +78,13 @@ void test_TKLsdlr_initTskLstToNull(void) {
 
 /** \brief Test if task list is set and returned correctly */
 void test_TKLsdlr_setAndReturnTskLst(void) {
-    TKLtyp_tsk_t tskLstExp = {0};
-    TKLtyp_tsk_t* const p_tskLstExp = &tskLstExp;
+    TKLtyp_tsk_t tskLstExp[1] = {0};
     TKLtyp_tsk_t* p_tskLstAct = NULL;
 
-    TKLsdlr_setTskLst(p_tskLstExp, 1u);
+    TKLsdlr_setTskLst(tskLstExp, 1u);
     p_tskLstAct = TKLsdlr_getTskLst();
 
-    TEST_ASSERT_EQUAL_PTR(p_tskLstExp, p_tskLstAct);
+    TEST_ASSERT_EQUAL_PTR(tskLstExp, p_tskLstAct);
 }
 
 /**
@@ -103,11 +102,11 @@ void test_TKLsdlr_initTskCntTo0(void) {
  * list) is set and returned correctly
  */
 void test_TKLsdlr_setAndReturnTskCnt(void) {
-    TKLtyp_tsk_t tskLst = {0};
+    TKLtyp_tsk_t tskLst[1] = {0};
     const uint8_t tskCntExp = 1u;
     uint8_t tskCntAct = 0u;
 
-    TKLsdlr_setTskLst(&tskLst, tskCntExp);
+    TKLsdlr_setTskLst(tskLst, tskCntExp);
     tskCntAct = TKLsdlr_cntTsk();
 
     TEST_ASSERT_EQUAL_UINT8(tskCntExp, tskCntAct);
