@@ -4,12 +4,15 @@
 
 #include "TKLtsk.h"
 
+#define TSK_CNT (sizeof(pv_tskLst) / sizeof(*pv_tskLst)) /* Num. of tasks in
+                                                            task list */
+
 /* ATTRIBUTES
  * ==========
  */
 
 /**
- * \brief Task (config.) list array
+ * \brief Private task (cfg.) list
  *
  * Holds task’s
  * * active status (`true`/`false`)
@@ -33,14 +36,12 @@ static TKLtyp_tsk_t pv_tskLst[] = {
      .p_tskRunner = &TKLtsk_blinkRunner}
 };
 
-/* OPERATIONS
- * ==========
- */
+/* Global opaque pointer to task (cfg.) list */
+TKLtyp_tsk_t* const TKLtskLst_p_tskLst = pv_tskLst;
 
-TKLtyp_tsk_t* TKLtskLst_getTskLst(void) {
-    return (pv_tskLst);
-}
+/* Private num. of tasks in task list */
+static const uint8_t pv_tskCnt = (uint8_t)TSK_CNT; /* Explicit type cast needed
+                                                      (safe here) */
 
-uint8_t TKLtskLst_cntTsk(void) {
-    return ((uint8_t)(sizeof(pv_tskLst) / sizeof(*pv_tskLst)));
-}
+/* Global opaque pointer to num. of tasks in task list */
+const uint8_t* const TKLtskLst_p_tskCnt = &pv_tskCnt;

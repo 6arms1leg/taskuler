@@ -18,7 +18,7 @@ int MAIN(void) {
 
     /* Init. scheduler */
     TKLsdlr_setTickSrc(&TKLtick_getTick);
-    TKLsdlr_setTskLst(TKLtskLst_getTskLst(), TKLtskLst_cntTsk());
+    TKLsdlr_setTskLst(TKLtskLst_p_tskLst, *TKLtskLst_p_tskCnt);
 
     TKLINT_ENA(); /* Crit. region end (enable ISRs) */
 

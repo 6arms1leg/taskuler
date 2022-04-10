@@ -14,21 +14,17 @@
  */
 
 /**
- * \brief Retrieve task list
+ * \brief Global opaque pointer to task (cfg.) list
  *
  * Used to register task list with scheduler.
- *
- * \return Pointer to task list
  */
-TKLtyp_tsk_t* TKLtskLst_getTskLst(void);
+extern TKLtyp_tsk_t* const TKLtskLst_p_tskLst;
 
 /**
- * \brief Retrieve number of tasks in task list
+ * \brief Global opaque pointer to number of tasks in task list
  *
  * Used to register task list with scheduler.
- *
- * \return Number of tasks in task list
  */
-uint8_t TKLtskLst_cntTsk(void);
+extern const uint8_t* const TKLtskLst_p_tskCnt;
 
 #endif /* TKLTSKLST_H */
