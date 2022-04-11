@@ -515,37 +515,33 @@ void test_TKLsdlr_disSingleTsk(void) {
  * correctly
  */
 void test_TKLsdlr_enaAndDisMultiSameTsk(void) {
-    const bool untouched = false;
     TKLtyp_tsk_t tskLst[] = {
         /* .active, .period, .deadline, .lastRun, .p_tskRunner */
         {true, 1u, 1u, 0u, &TKLtsk_runner0},
         {false, 1u, 1u, 0u, &TKLtsk_runner1},
         {true, 1u, 1u, 0u, &TKLtsk_runner0},
-        {untouched, 1u, 1u, 0u, &TKLtsk_runner2},
+        {false, 1u, 1u, 0u, &TKLtsk_runner2}, /* Leave untouched */
         {false, 1u, 1u, 0u, &TKLtsk_runner1},
         {true, 1u, 1u, 0u, &TKLtsk_runner0},
         {false, 1u, 1u, 0u, &TKLtsk_runner1}
     };
-    const bool activeExpA = false;
-    const bool activeExpB = true;
 
     TKLsdlr_setTickSrc(&TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 7u);
-    TKLsdlr_setTskAct(TKLtsk_runner0, activeExpA, false);
-    TKLsdlr_setTskAct(TKLtsk_runner1, activeExpB, false);
+    TKLsdlr_setTskAct(TKLtsk_runner0, false, false); /* Disable all `runner0` */
+    TKLsdlr_setTskAct(TKLtsk_runner1, true, false); /* Enable all `runner1` */
 
     /* Should have become disabled */
-    TEST_ASSERT_EQUAL_UINT(activeExpA, tskLst[0].active);
-    TEST_ASSERT_EQUAL_UINT(activeExpA, tskLst[2].active);
-    TEST_ASSERT_EQUAL_UINT(activeExpA, tskLst[5].active);
+    TEST_ASSERT_FALSE(tskLst[0].active);
+    TEST_ASSERT_FALSE(tskLst[2].active);
+    TEST_ASSERT_FALSE(tskLst[5].active);
 
     /* Should have become enabled */
-    TEST_ASSERT_EQUAL_UINT(activeExpB, tskLst[1].active);
-    TEST_ASSERT_EQUAL_UINT(activeExpB, tskLst[4].active);
-    TEST_ASSERT_EQUAL_UINT(activeExpB, tskLst[6].active);
+    TEST_ASSERT_TRUE(tskLst[1].active);
+    TEST_ASSERT_TRUE(tskLst[4].active);
+    TEST_ASSERT_TRUE(tskLst[6].active);
 
-    /* Should have stayed untouched */
-    TEST_ASSERT_EQUAL_UINT(untouched, tskLst[3].active);
+    TEST_ASSERT_FALSE(tskLst[3].active); /* Should have stayed untouched */
 }
 
 /** \brief Test if time stamp of last task run is updated correctly */
