@@ -8,6 +8,16 @@
 #include "stdint.h"
 #include "stdbool.h"
 
+/**
+ * \brief Helper to calc. positive offset from `0` for \ref TKLtyp_tsk_t.lastRun
+ *
+ * `offset_`, here, specifies time of first task exec.
+ * `period_` and `offset_` args. must both be of unsigned integer type.
+ *
+ * See \ref TKLtyp_tsk_t.lastRun for more details.
+ */
+#define TKLTYP_CALC_OFFSET(period_, offset_) (0u - (period_) + (offset_))
+
 /** \brief Task runner function signature */
 typedef void (* TKLtyp_p_tskRunner_t)(void);
 

@@ -5,7 +5,6 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
-#include <limits.h>
 #include "assert.h" /* Sanity checks (Design by Contract); replaced for unit
                        testing */
 
@@ -424,17 +423,17 @@ void test_TKLsdlr_saturateTskOverrun(void) {
         {.active = true,
          .period = 100u,
          .deadline = 10u,
-         .lastRun = 0u - 100u, /* Offset 0 */
+         .lastRun = TKLTYP_CALC_OFFSET(100u, 0u),
          .p_tskRunner = &TKLtsk_runner}
     };
-    const uint8_t overrunExp = UCHAR_MAX; /* Saturated task overrun count */
+    const uint8_t overrunExp = UINT8_MAX; /* Saturated task overrun count */
 
     TKLsdlr_setTickSrc(&TKLtick_getTick);
     TKLsdlr_setTskLst(tskLst, 1u);
 
     /* Run more scheduler exec. cycles with task overruns than task deadline
        overrun counter can hold so it gets saturated */
-    for (uint16_t i = 0u; i < UCHAR_MAX + 3u; i++) {
+    for (uint16_t i = 0u; i < UINT8_MAX + 3u; i++) {
         /* Task overruns */
         TKLtick_getTick_ExpectAndReturn(tskLst[0].period * i);
         TKLtsk_runner_Expect();
@@ -754,19 +753,19 @@ void test_TKLsdlr_execDueToRunTskAtDiffPeriodAndOffsetOn0TickStart(void) {
         {.active = true,
          .period = 30u,
          .deadline = 30u,
-         .lastRun = 0u - 20u, /* Offset `20` */
+         .lastRun = TKLTYP_CALC_OFFSET(30u, 10u),
          .p_tskRunner = &TKLtsk_runner0},
         /* Run at: `30`, `70`, `110`, ... */
         {.active = true,
          .period = 40u,
          .deadline = 40u,
-         .lastRun = 0u - 10u, /* Offset `10` */
+         .lastRun = TKLTYP_CALC_OFFSET(40u, 30u),
          .p_tskRunner = &TKLtsk_runner1},
         /* Run at: `90`, `180`, ... */
         {.active = true,
          .period = 90u,
          .deadline = 90u,
-         .lastRun = 0u, /* No offset (`0`) */
+         .lastRun = 0u, /* Offset `0 + 90` */
          .p_tskRunner = &TKLtsk_runner2}
     };
 
