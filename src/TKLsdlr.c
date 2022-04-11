@@ -132,7 +132,7 @@ void TKLsdlr_exec(void) {
                    rollover) */
                 if ((*pv_p_getTick)() - p_tskLst[i].lastRun >
                     p_tskLst[i].deadline) {
-                    if (UCHAR_MAX > pv_tskOverrunCnt) { /* Counter unsaturated? */
+                    if (UINT8_MAX > pv_tskOverrunCnt) { /* Counter unsaturated? */
                         pv_tskOverrunCnt++; /* Incr. deadline overrun counter */
                     }
 

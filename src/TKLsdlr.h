@@ -8,7 +8,6 @@
 #include "stdint.h"
 #include "stddef.h"
 #include "stdbool.h"
-#include "limits.h"
 #include "assert.h" /* For sanity checks (Design by Contract) */
 
 #include "TKLtyp.h"
