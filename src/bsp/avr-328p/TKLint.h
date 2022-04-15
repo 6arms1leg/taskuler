@@ -3,8 +3,6 @@
 #ifndef TKLINT_H
 #define TKLINT_H
 
-#include <stdbool.h>
-
 #include <avr/interrupt.h> /* Provides AVR MCU interrupt handling */
 
 /**

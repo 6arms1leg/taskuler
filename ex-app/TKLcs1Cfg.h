@@ -3,8 +3,6 @@
 #ifndef TKLCS1CFG_H
 #define TKLCS1CFG_H
 
-#include <stdint.h>
-
 /* `#include` mem. mapped interrupt register (and optionally driver) interfaces */
 #include /* >ADD HEADER(S) HERE< */
 
