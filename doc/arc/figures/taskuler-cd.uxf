@@ -29,7 +29,7 @@ fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
     <id>UMLClass</id>
     <coordinates>
       <x>768</x>
-      <y>368</y>
+      <y>352</y>
       <w>144</w>
       <h>136</h>
     </coordinates>
@@ -49,7 +49,7 @@ typedef struct {
     <id>UMLClass</id>
     <coordinates>
       <x>496</x>
-      <y>552</y>
+      <y>536</y>
       <w>120</w>
       <h>128</h>
     </coordinates>
@@ -70,7 +70,7 @@ fg=gray</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>680</x>
-      <y>536</y>
+      <y>520</y>
       <w>120</w>
       <h>88</h>
     </coordinates>
@@ -88,7 +88,7 @@ fg=light_gray</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>560</x>
-      <y>712</y>
+      <y>696</y>
       <w>80</w>
       <h>88</h>
     </coordinates>
@@ -106,7 +106,7 @@ fg=gray</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>680</x>
-      <y>784</y>
+      <y>768</y>
       <w>96</w>
       <h>40</h>
     </coordinates>
@@ -120,7 +120,7 @@ fg=light_gray</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>776</x>
-      <y>496</y>
+      <y>480</y>
       <w>56</w>
       <h>56</h>
     </coordinates>
@@ -132,7 +132,7 @@ fg=light_gray</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>696</x>
-      <y>424</y>
+      <y>408</y>
       <w>88</w>
       <h>32</h>
     </coordinates>
@@ -144,7 +144,7 @@ fg=light_gray</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>624</x>
-      <y>504</y>
+      <y>488</y>
       <w>72</w>
       <h>80</h>
     </coordinates>
@@ -158,7 +158,7 @@ m2=1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>560</x>
-      <y>504</y>
+      <y>488</y>
       <w>56</w>
       <h>64</h>
     </coordinates>
@@ -172,7 +172,7 @@ m2=1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>576</x>
-      <y>672</y>
+      <y>656</y>
       <w>56</w>
       <h>56</h>
     </coordinates>
@@ -185,7 +185,7 @@ fg=gray</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>720</x>
-      <y>616</y>
+      <y>600</y>
       <w>80</w>
       <h>88</h>
     </coordinates>
@@ -200,7 +200,7 @@ fg=light_gray</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>816</x>
-      <y>760</y>
+      <y>744</y>
       <w>128</w>
       <h>56</h>
     </coordinates>
@@ -212,7 +212,7 @@ style=wordwrap</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>768</x>
-      <y>768</y>
+      <y>752</y>
       <w>64</w>
       <h>40</h>
     </coordinates>
@@ -223,7 +223,7 @@ style=wordwrap</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>392</x>
-      <y>648</y>
+      <y>632</y>
       <w>88</w>
       <h>40</h>
     </coordinates>
@@ -235,7 +235,7 @@ style=wordwrap</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>472</x>
-      <y>664</y>
+      <y>648</y>
       <w>104</w>
       <h>80</h>
     </coordinates>
@@ -246,7 +246,7 @@ style=wordwrap</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>672</x>
-      <y>688</y>
+      <y>672</y>
       <w>120</w>
       <h>64</h>
     </coordinates>
@@ -262,7 +262,7 @@ fg=light_gray</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>720</x>
-      <y>744</y>
+      <y>728</y>
       <w>56</w>
       <h>56</h>
     </coordinates>
@@ -275,7 +275,7 @@ fg=light_gray</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>784</x>
-      <y>696</y>
+      <y>680</y>
       <w>48</w>
       <h>40</h>
     </coordinates>
@@ -286,7 +286,7 @@ fg=light_gray</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>816</x>
-      <y>680</y>
+      <y>664</y>
       <w>120</w>
       <h>64</h>
     </coordinates>
@@ -298,7 +298,7 @@ style=wordwrap</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>752</x>
-      <y>800</y>
+      <y>784</y>
       <w>64</w>
       <h>64</h>
     </coordinates>
@@ -312,7 +312,7 @@ fg=light_gray</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>792</x>
-      <y>560</y>
+      <y>544</y>
       <w>40</w>
       <h>32</h>
     </coordinates>
@@ -323,7 +323,7 @@ fg=light_gray</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>720</x>
-      <y>496</y>
+      <y>480</y>
       <w>32</w>
       <h>24</h>
     </coordinates>
@@ -335,7 +335,7 @@ style=wordwrap</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>448</x>
-      <y>528</y>
+      <y>512</y>
       <w>32</w>
       <h>24</h>
     </coordinates>
@@ -347,7 +347,7 @@ style=wordwrap</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>624</x>
-      <y>504</y>
+      <y>488</y>
       <w>112</w>
       <h>56</h>
     </coordinates>
@@ -358,7 +358,7 @@ style=wordwrap</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>472</x>
-      <y>520</y>
+      <y>504</y>
       <w>112</w>
       <h>32</h>
     </coordinates>
@@ -369,13 +369,13 @@ style=wordwrap</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>344</x>
-      <y>80</y>
-      <w>512</w>
-      <h>200</h>
+      <y>72</y>
+      <w>592</w>
+      <h>192</h>
     </coordinates>
     <panel_attributes>*Taskuler framework interface (IF)*
 --
-Items in grey are not part of the Taskuler framework (FW) and have to be provided by the user.
+Elements in grey are not part of the Taskuler framework (FW) and have to be provided by the user.
 The IF consists of the following parts:
 
 *IF1*
@@ -385,7 +385,7 @@ The FW requires a pointer to a function that returns the current relative system
 The FW requires a pointer to a task list (an array of `tsk_t` elements) and the number of elements of that list.  It provides `TKLtyp.h` to `#include` the type definitions for the task list’s array elements.
 
 *IF3*
-The FW provides an optional task deadline overrun hook for custom, user-provided (recovery) actions.
+The FW requires a definition for an optional task deadline overrun hook for custom, user-provided (recovery) actions.
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
@@ -393,9 +393,9 @@ style=wordwrap</panel_attributes>
     <id>UMLFrame</id>
     <coordinates>
       <x>328</x>
-      <y>8</y>
+      <y>0</y>
       <w>640</w>
-      <h>856</h>
+      <h>848</h>
     </coordinates>
     <panel_attributes>cd Taskuler
 /Core modules and supplements/
@@ -407,7 +407,7 @@ fontsize=30</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>680</x>
-      <y>24</y>
+      <y>16</y>
       <w>56</w>
       <h>24</h>
     </coordinates>
@@ -420,7 +420,7 @@ layer=1</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>752</x>
-      <y>24</y>
+      <y>16</y>
       <w>160</w>
       <h>40</h>
     </coordinates>
@@ -432,7 +432,7 @@ style=wordwrap</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>448</x>
-      <y>720</y>
+      <y>704</y>
       <w>96</w>
       <h>72</h>
     </coordinates>
@@ -448,7 +448,7 @@ fg=gray</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>512</x>
-      <y>672</y>
+      <y>656</y>
       <w>56</w>
       <h>64</h>
     </coordinates>
@@ -461,7 +461,7 @@ fg=gray</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>472</x>
-      <y>664</y>
+      <y>648</y>
       <w>48</w>
       <h>72</h>
     </coordinates>
@@ -472,7 +472,7 @@ fg=gray</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>488</x>
-      <y>808</y>
+      <y>792</y>
       <w>56</w>
       <h>40</h>
     </coordinates>
@@ -484,7 +484,7 @@ style=wordwrap</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>536</x>
-      <y>792</y>
+      <y>776</y>
       <w>56</w>
       <h>48</h>
     </coordinates>
@@ -495,7 +495,7 @@ style=wordwrap</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>632</x>
-      <y>600</y>
+      <y>584</y>
       <w>72</w>
       <h>144</h>
     </coordinates>
@@ -508,7 +508,7 @@ fg=light_gray</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>816</x>
-      <y>544</y>
+      <y>528</y>
       <w>136</w>
       <h>120</h>
     </coordinates>
@@ -520,7 +520,7 @@ style=wordwrap</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>744</x>
-      <y>504</y>
+      <y>488</y>
       <w>56</w>
       <h>32</h>
     </coordinates>
@@ -531,7 +531,7 @@ style=wordwrap</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>344</x>
-      <y>296</y>
+      <y>280</y>
       <w>360</w>
       <h>216</h>
     </coordinates>
@@ -558,7 +558,7 @@ exec(void):void</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>472</x>
-      <y>656</y>
+      <y>640</y>
       <w>40</w>
       <h>32</h>
     </coordinates>
@@ -569,21 +569,22 @@ exec(void):void</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>744</x>
-      <y>296</y>
+      <y>280</y>
       <w>192</w>
       <h>56</h>
     </coordinates>
     <panel_attributes>&lt;&lt;file&gt;&gt;
 TKLsdlrCfg.h
 --
-#define OVERRUN_HOOK(tsk_) ...</panel_attributes>
+#define OVERRUN_HOOK(tsk_) ...
+fg=light_gray</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>696</x>
-      <y>304</y>
+      <y>288</y>
       <w>64</w>
       <h>32</h>
     </coordinates>
@@ -595,7 +596,7 @@ TKLsdlrCfg.h
     <id>UMLNote</id>
     <coordinates>
       <x>720</x>
-      <y>368</y>
+      <y>352</y>
       <w>32</w>
       <h>24</h>
     </coordinates>
@@ -607,7 +608,7 @@ style=wordwrap</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>712</x>
-      <y>312</y>
+      <y>296</y>
       <w>32</w>
       <h>72</h>
     </coordinates>
