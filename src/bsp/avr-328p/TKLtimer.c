@@ -18,9 +18,11 @@
  */
 
 void TKLtimer_init(void) {
-    /* Time resolution ("tick") shall be 1e-3 s (= 1e3 Hz) */
-    TCCR0B |= (1u<<CS01) | (1u<<CS00); /* Set prescale value to `64` */
-    TIMSK0 |= (1u<<TOIE0); /* Enable Timer0 overflow interrupt */
+    /* Time resolution ("tick") shall be 1e-3 s (= 1e3 Hz).
+       Type casts for safety (MISRA-required if bit positions are implemented
+       as `enum`s). */
+    TCCR0B |= (1u << (uint8_t)CS01) | (1u << (uint8_t)CS00); /* Set prescale `64` */
+    TIMSK0 |= 1u << (uint8_t)TOIE0; /* Enable Timer0 overflow interrupt */
     TCNT0 = PRELOAD; /* Preload timer */
 }
 
