@@ -117,7 +117,7 @@ void TKLsdlr_exec(void) {
        * Ignore disabled tasks (but still update `lastRun` time)
        * Check for task deadline overrun and keep count
        * If a task was run, end cycle */
-    for (uint8_t i = 0u; i < tskCnt; i++) {
+    for (uint8_t i = 0u; tskCnt > i; i++) {
         /* Check if new execution period for task has started
            (still correct on tick count rollover) */
         if (tickCnt - p_tskLst[i].lastRun >= p_tskLst[i].period) {
