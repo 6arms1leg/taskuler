@@ -9,7 +9,7 @@
 #include "TKLtyp.h"
 #include "TKLtimer.h"
 
-/* OPERATIONS
+/* ATTRIBUTES
  * ==========
  */
 
