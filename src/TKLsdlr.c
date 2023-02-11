@@ -51,7 +51,7 @@ void TKLsdlr_setTskLst(TKLtyp_tsk_t* const p_tskLst, const uint8_t tskCnt) {
     /* Sanity check (Design by Contract) */
     assert((NULL != p_tskLst) &&
            (0u < tskCnt));
-    for (uint8_t i = 0u; tskCnt > i; i++) {
+    for (uint_fast8_t i = 0u; i < tskCnt; i++) {
         assert((0u < p_tskLst[i].period) &&
                (0u < p_tskLst[i].deadline) &&
                (NULL != p_tskLst[i].p_tskRunner));
@@ -87,10 +87,10 @@ void TKLsdlr_setTskAct(const TKLtyp_p_tskRunner_t p_tskRunner,
            (0u < pv_tskCnt));
 
     TKLtyp_tsk_t* const p_tskLst = pv_p_tskLst; /* Set ptr. to task list */
-    const uint8_t tskCnt = pv_tskCnt; /* Number of tasks in task list */
+    const uint_fast8_t tskCnt = pv_tskCnt; /* Number of tasks in task list */
 
     /* Find all tasks (matching function ptr.) and set them to "on"/"off" */
-    for (uint8_t i = 0u; tskCnt > i; i++) {
+    for (uint_fast8_t i = 0u; i < tskCnt; i++) {
         if (*p_tskRunner == (*p_tskLst[i].p_tskRunner)) { /* Task runner match? */
             p_tskLst[i].active = active;
 
@@ -108,7 +108,7 @@ void TKLsdlr_exec(void) {
            (0u < pv_tskCnt));
 
     TKLtyp_tsk_t* const p_tskLst = pv_p_tskLst; /* Set ptr. to task list */
-    const uint8_t tskCnt = pv_tskCnt; /* Number of tasks in task list */
+    const uint_fast8_t tskCnt = pv_tskCnt; /* Number of tasks in task list */
     const uint32_t tickCnt = (*pv_p_getTick)(); /* Get curr. tick count */
 
     /* Loop through all tasks in task list.
@@ -117,7 +117,7 @@ void TKLsdlr_exec(void) {
        * Ignore disabled tasks (but still update `lastRun` time)
        * Check for task deadline overrun and keep count
        * If a task was run, end cycle */
-    for (uint8_t i = 0u; tskCnt > i; i++) {
+    for (uint_fast8_t i = 0u; i < tskCnt; i++) {
         /* Check if new execution period for task has started
            (still correct on tick count rollover) */
         if (tickCnt - p_tskLst[i].lastRun >= p_tskLst[i].period) {
