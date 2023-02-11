@@ -94,7 +94,7 @@ void TKLsdlr_setTskAct(const TKLtyp_p_tskRunner_t p_tskRunner,
         if (*p_tskRunner == (*p_tskLst[i].p_tskRunner)) { /* Task runner match? */
             p_tskLst[i].active = active;
 
-            if (true == updLastRun) { /* Update last run? */
+            if (updLastRun) { /* Update last run? */
                 p_tskLst[i].lastRun = (*pv_p_getTick)(); /* Update time stamp */
             }
         }
@@ -120,19 +120,18 @@ void TKLsdlr_exec(void) {
     for (uint_fast8_t i = 0u; i < tskCnt; i++) {
         /* Check if new execution period for task has started
            (still correct on tick count rollover) */
-        if (tickCnt - p_tskLst[i].lastRun >= p_tskLst[i].period) {
+        if (p_tskLst[i].period <= tickCnt - p_tskLst[i].lastRun) {
             /* Save (ideal) time of when task was "ready-to-run" */
             p_tskLst[i].lastRun =
                 tickCnt - ((tickCnt - p_tskLst[i].lastRun) % p_tskLst[i].period);
 
-            if (true == p_tskLst[i].active) { /* Task enabled? */
+            if (p_tskLst[i].active) { /* Task enabled? */
                 (*p_tskLst[i].p_tskRunner)(); /* Run periodic task */
 
                 /* Check for task deadline overrun (still correct on time tick
                    rollover) */
-                if ((*pv_p_getTick)() - p_tskLst[i].lastRun >
-                    p_tskLst[i].deadline) {
-                    if (UINT8_MAX > pv_tskOverrunCnt) { /* Counter unsaturated? */
+                if (p_tskLst[i].deadline < (*pv_p_getTick)() - p_tskLst[i].lastRun) {
+                    if (pv_tskOverrunCnt < UINT8_MAX) { /* Counter unsaturated? */
                         pv_tskOverrunCnt++; /* Incr. deadline overrun counter */
                     }
 
