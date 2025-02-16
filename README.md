@@ -5,6 +5,8 @@ microkernel, nested-critical-regions, nested-critical-sections, non-preemptive,
 real-time, scheduler, timers
 -->
 
+![logo](./doc/logo/logo.png)
+
 # Taskuler - Simple "bare-metal" task scheduling framework
 
 This framework employs a simple and tiny
